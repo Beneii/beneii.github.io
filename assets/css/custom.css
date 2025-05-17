@@ -26,7 +26,6 @@ body {
   color: var(--text);
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: 'Comfortaa', sans-serif;
-  padding-top: 60px; /* Height of your nav bar */
 }
 
 a, .link {
@@ -499,7 +498,14 @@ html { scroll-behavior: smooth; }
 }
 
 /* Projects grid */
-.projects-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2rem; }
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cards try to be ~250px, fill available */
+  gap: 1.5rem; /* Slightly reduced gap */
+}
+
+/* To prevent single cards from stretching too wide if auto-fill leaves a lot of space */
+/* max-width: 320px; /* Optional: uncomment if you want to cap max width even if fewer than 4 */
 
 /* Footer */
 .site-footer{background:var(--surface-dark);color:var(--text-dark);padding:2rem 0;margin-top:4rem;}
@@ -513,7 +519,7 @@ html { scroll-behavior: smooth; }
   background-position: center;
   position: relative;
   color: #fff; /* Ensure text is white on image */
-  padding: 3rem 1rem;
+  padding: calc(3rem + 60px) 1rem 3rem 1rem; /* Top padding accounts for nav height */
   text-align: center;
   margin-bottom: 2rem;
 }
