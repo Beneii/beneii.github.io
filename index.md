@@ -25,7 +25,7 @@ title: Home
   <section class="home-section featured-projects-section">
     <h2>Featured Projects</h2>
     <div class="project-card">
-      <img src="https://picsum.photos/seed/project-ring-thumb/600/400" alt="Three Ring Generator Thumbnail" class="project-card-image">
+      <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator hero image" class="project-card-image">
       <div class="project-card-content">
         <h3>Blobby Ring Generator</h3>
         <p>An interactive 2D & 3D generative art tool. Draw on a canvas and see it transformed into a dynamic 3D ring structure using Three.js and Marching Cubes.</p>
