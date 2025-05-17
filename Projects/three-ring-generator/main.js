@@ -25,7 +25,7 @@ const maxY = gridResolutionY - 1;
 let isDrawing = false;
 let lastCell = null;
 let brushThickness = 1;
-let drawingMode = 'draw'; // Modes: 'draw', 'rectangle'
+let drawingMode = 'draw'; // Modes: 'draw', 'erase'
 let startPoint = null;
 
 // Default marching cube settings
@@ -141,20 +141,41 @@ function redo() {
   applyGrid(next);
 }
 
+function setActiveModeButton() {
+  const eraseBtn = document.getElementById('eraseModeButton');
+  if (drawingMode === 'erase') {
+    eraseBtn.classList.add('active');
+  } else {
+    eraseBtn.classList.remove('active');
+  }
+}
+
+// Toggle erase mode button
+document.getElementById('eraseModeButton').addEventListener('click', () => {
+  drawingMode = drawingMode === 'erase' ? 'draw' : 'erase';
+  setActiveModeButton();
+});
+
 canvas.addEventListener('mousedown', (event) => {
   isDrawing = true;
   pushUndoState();
   const { x, y } = getCellFromMouse(event);
   if (y < minY || y > maxY) return;
   startPoint = { x, y };
-  if (drawingMode === 'rectangle') return;
   
   const affectedCells = getCellsUnderBrush(x,y);
   affectedCells.forEach(cell => {
     if (cell.nx >= 0 && cell.ny >= 0 && cell.nx < gridResolutionX && cell.ny < gridResolutionY && !(cell.ny < minY || cell.ny > maxY) ) {
-        if(!voxelGrid[cell.ny][cell.nx]) { 
-            voxelGrid[cell.ny][cell.nx] = true;
-            paintCell(cell.nx, cell.ny, '#0077ff');
+        if (drawingMode === 'erase') {
+            if(voxelGrid[cell.ny][cell.nx]) {
+              voxelGrid[cell.ny][cell.nx] = false;
+              paintCell(cell.nx, cell.ny, '#ffffff');
+            }
+        } else { // draw mode
+            if(!voxelGrid[cell.ny][cell.nx]) { 
+                voxelGrid[cell.ny][cell.nx] = true;
+                paintCell(cell.nx, cell.ny, '#0077ff');
+            }
         }
     }
   });
@@ -220,9 +241,16 @@ function drawLine(x0, y0, x1, y1) {
     const affectedCells = getCellsUnderBrush(x0, y0);
     affectedCells.forEach(cell => {
       if (cell.nx >= 0 && cell.ny >= 0 && cell.nx < gridResolutionX && cell.ny < gridResolutionY && !(cell.ny < minY || cell.ny > maxY)) {
-          if(!voxelGrid[cell.ny][cell.nx]) { 
-              voxelGrid[cell.ny][cell.nx] = true;
-              paintCell(cell.nx, cell.ny, '#0077ff');
+          if (drawingMode === 'erase') {
+            if(voxelGrid[cell.ny][cell.nx]) {
+                voxelGrid[cell.ny][cell.nx] = false;
+                paintCell(cell.nx, cell.ny, '#ffffff');
+            }
+          } else {
+            if(!voxelGrid[cell.ny][cell.nx]) { 
+                voxelGrid[cell.ny][cell.nx] = true;
+                paintCell(cell.nx, cell.ny, '#0077ff');
+            }
           }
       }
     });
