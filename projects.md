@@ -19,6 +19,7 @@ permalink: /projects/
 </div>
 
 ## Pure Code
+<div class="projects-list">
 <div class="project-card reveal" data-title="Blobby Ring Generator" data-category="code">
   <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator" class="project-card-image">
   <div class="project-card-content">
@@ -27,8 +28,10 @@ permalink: /projects/
     <a href="/projects/blobby-ring-generator/" class="btn">Details &amp; Demo</a>
   </div>
 </div>
+<!-- Add more project-card blocks here -->
+</div>
 
-<!-- More project cards can be added in appropriate sections with data-category attr -->
+<p style="text-align:center;margin-top:2rem;"><a href="#" class="btn btn-secondary" id="loadMoreBtn">Load More Projects</a></p>
 
 <script src="/assets/js/project-filter.js" defer></script>
 <script src="/assets/js/dark-mode.js" defer></script>

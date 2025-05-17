@@ -15,4 +15,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   searchInput.addEventListener('input',filter);
   categorySel.addEventListener('change',filter);
+
+  const loadBtn=document.getElementById('loadMoreBtn');
+  if(loadBtn){
+    let shown=6;
+    const allCards=[...cards];
+    function showCards(){ allCards.forEach((c,i)=>{ c.style.display = i<shown ? 'block':'none';});}
+    showCards();
+    loadBtn.addEventListener('click',(e)=>{e.preventDefault(); shown+=6; showCards(); if(shown>=allCards.length) loadBtn.style.display='none';});
+  }
 }); 
