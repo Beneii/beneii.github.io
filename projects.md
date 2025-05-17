@@ -4,6 +4,8 @@ title: Projects
 permalink: /projects/
 ---
 
+{% include navbar.html %}
+
 Here are some things I've been hacking on. Click any project to see it live or read more.
 
 ---

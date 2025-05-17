@@ -4,6 +4,8 @@ title: "Blobby Ring Generator"
 permalink: /projects/blobby-ring-generator/
 ---
 
+{% include navbar.html %}
+
 <div class="project-detail">
   <div class="details">
     <h2>Overview</h2>

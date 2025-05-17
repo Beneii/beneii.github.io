@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+{% include navbar.html %}
+
 # Hello, I'm Benei 👋
 
 I'm a passionate developer and technology enthusiast who loves turning ideas into functional, user-focused solutions.

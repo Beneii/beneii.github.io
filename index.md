@@ -3,15 +3,15 @@ layout: page
 title: Home
 ---
 
+{% include navbar.html %}
+
 <div class="hero-section">
   <div class="hero-image-container">
     <img src="https://picsum.photos/seed/benei-portfolio-hero/1600/600" alt="Abstract Hero Image for Portfolio" class="hero-image">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-text">
-    <h1>{{ site.title }}</h1>
-    <p class="subtitle">{{ site.description }}</p>
-    <a href="{{ '/projects/' | relative_url }}" class="btn btn-hero">View My Work</a>
+    <img src="/assets/images/pixel-title.gif" alt="Portfolio Title" class="hero-gif">
   </div>
 </div>
 
