@@ -39,15 +39,16 @@ let voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResoluti
 // const voxelMaterial = new THREE.MeshStandardMaterial({ color: 0x0077ff }); // No longer needed
 const smoothMaterial = new THREE.MeshStandardMaterial({ color: 0xff5533, flatShading: true });
 const metallicMaterial = new THREE.MeshStandardMaterial({
-  color: 0xefefef, // lighter grey
+  color: 0x858585, // user requested lighter (mid-grey)
   metalness: 1.0,
-  roughness: 0.15,
+  roughness: 0.1,
 });
 
 // === Scene Setup ===
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-camera.position.set(0, 5, 15);
+// Move camera closer (approx 3× zoom)
+camera.position.set(0, 2, 5);
 camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
