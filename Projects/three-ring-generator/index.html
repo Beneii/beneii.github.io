@@ -138,9 +138,11 @@ layout: null
   <div id="drawingSection">
     <h1>Blobby Ring Generator</h1>
     <div id="controls">
-      <button id="toggleSmooth" class="toggle">Blobby Ring</button>
-      <button id="toggleMetallic" class="toggle">Metallic Blobby Ring</button>
-      <button id="resetGrid" class="toggle">Reset Grid</button>
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <button id="undoButton" class="toggle">Undo</button>
+        <button id="redoButton" class="toggle">Redo</button>
+        <button id="resetGrid" class="toggle">Reset Grid</button>
+      </div>
       <div style="display:flex;flex-wrap:wrap;gap:16px;width:100%;justify-content:center;align-items:flex-end;margin-bottom:8px;">
         <div class="slider-container">
           <label for="brushThicknessSlider">Brush Thickness</label>
@@ -179,7 +181,7 @@ layout: null
       <option value="smooth">Blobby Ring</option>
       <option value="metallic" selected>Metallic Blobby Ring</option>
     </select>
-    <button id="generateOverlayButton" class="toggle regen-btn" style="right:180px;top:10px;position:absolute;" title="Generate Mesh">Generate Mesh</button>
+    <button id="generateOverlayButton" class="toggle regen-btn" style="right:180px;top:10px;position:absolute;display:none;" title="Generate Mesh">Generate Mesh</button>
   </div>
   <script type="module" src="main.js"></script>
 </body>

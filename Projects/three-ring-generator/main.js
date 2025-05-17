@@ -260,8 +260,7 @@ function generateSmoothRing(materialToUse) {
     for (let x = 0; x < gridResolutionX; x++) {
       if (!voxelGrid[y][x]) continue;
 
-      // FLIP THE X-AXIS MAPPING HERE for the angle
-      const angle = (gridResolutionX - 1 - x) * angleStep; 
+      const angle = (gridResolutionX - 1 - x) * angleStep;
       const wx = ringRadius * Math.cos(angle);
       const wz = ringRadius * Math.sin(angle);
 
@@ -272,6 +271,7 @@ function generateSmoothRing(materialToUse) {
       marchingCubes.addBall(normX, normY, normZ, ballRadius, 1.0);
     }
   }
+  
   marchingCubes.update();
   return marchingCubes;
 }
@@ -281,12 +281,15 @@ let currentMesh = null;
 let currentMode = 'metallic'; // Default to metallic
 
 function regenerateMesh() {
-  if (currentMesh) scene.remove(currentMesh);
-  currentMesh = null; // Ensure it's reset
+  if (currentMesh) {
+    scene.remove(currentMesh);
+    currentMesh = null;
+  }
 
-  // if (currentMode === 'voxel') { // Voxel mode removed
-  //   currentMesh = generateVoxelRing(); 
-  // }
+  // Check if there are any voxels to generate
+  const hasVoxels = voxelGrid.some(row => row.some(cell => cell));
+  if (!hasVoxels) return;
+
   if (currentMode === 'smooth') {
     currentMesh = generateSmoothRing(smoothMaterial);
   } else if (currentMode === 'metallic') {
@@ -297,10 +300,6 @@ function regenerateMesh() {
     currentMesh.castShadow = true;
     currentMesh.receiveShadow = true;
     scene.add(currentMesh);
-  } else {
-    // If no mode somehow matches, or if voxelGrid is empty leading to no mesh from MarchingCubes
-    // we might want to ensure any old mesh is truly gone or show a placeholder/clear the 3D view explicitly.
-    // For now, removing and nullifying currentMesh should suffice.
   }
 }
 
@@ -382,13 +381,8 @@ document.getElementById('ringHeightSlider').addEventListener('input', (e) => {
   debouncedSliderRegenerateMesh();
 });
 
-document.getElementById('undoButton').addEventListener('click', () => {
-  undo();
-});
-
-document.getElementById('redoButton').addEventListener('click', () => {
-  redo();
-});
+document.getElementById('undoButton').addEventListener('click', undo);
+document.getElementById('redoButton').addEventListener('click', redo);
 
 // === Animation ===
 function animate() {
@@ -406,16 +400,14 @@ animate();
 
 document.getElementById('liveUpdateToggle').addEventListener('change', (e) => {
   liveUpdate = e.target.checked;
-  // Toggle overlay button visibility
-  const overlayBtn = document.getElementById('generateOverlayButton');
-  overlayBtn.style.display = liveUpdate ? 'none' : 'block';
+  document.getElementById('generateOverlayButton').style.display = liveUpdate ? 'none' : 'block';
   if (liveUpdate) {
-    debouncedLiveUpdate(); // Generate immediately when turning on
+    regenerateMesh(); // Generate initial mesh when enabling live update
   }
 });
 
 // set initial overlay visibility
-document.getElementById('generateOverlayButton').style.display = 'block';
+document.getElementById('generateOverlayButton').style.display = liveUpdate ? 'none' : 'block';
 
 // Texture dropdown
 document.getElementById('textureSelect').addEventListener('change', (e)=>{
