@@ -101,11 +101,10 @@ html.dark .hero-overlay {
 }
 
 .hero-text {
-  position: relative; /* Ensure it's above the overlay */
+  position: relative;
   z-index: 1;
   padding: 2rem;
-  background-color: rgba(0,0,0,0.1); /* Slight background for text block if needed */
-  border-radius: 8px;
+  /* transparent background now */
 }
 
 .hero-text h1 {
@@ -411,11 +410,11 @@ html.dark .site-nav {
 /* Tagline typing effect placeholder styling */
 #hero-tagline {
   display: block;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 1px;
-  color: var(--accent);
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid var(--accent);
