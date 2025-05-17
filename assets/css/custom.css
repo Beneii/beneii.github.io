@@ -287,22 +287,34 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   gap: 2rem;
   align-items: flex-start;
+  background-color: var(--surface-light);
+  padding: 2rem;
+  border-radius: 8px;
 }
-
+html.dark .project-detail {
+  background-color: var(--surface-dark);
+}
 .project-detail .details {
   flex: 1 1 320px;
 }
-
+.project-detail .details h2 {
+  color: var(--accent);
+}
+.project-detail .details p,
+.project-detail .details li {
+  color: var(--text);
+}
 .project-detail .media {
   flex: 0 0 320px;
   text-align: center;
 }
-
 .project-detail .media img {
   max-width: 100%;
-  height: auto;
-  border: 2px solid #ccc;
+  border-color: var(--surface-light);
   border-radius: 6px;
+}
+.project-detail .media .btn {
+  margin-top: 1rem;
 }
 
 .badge {

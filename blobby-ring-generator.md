@@ -5,7 +5,8 @@ permalink: /projects/blobby-ring-generator/
 ---
 
 {% include navbar.html %}
-
+{% include page-hero.html %}
+<div class="page-content-container">
 <div class="project-detail">
   <div class="details">
     <h2>Overview</h2>
@@ -39,8 +40,7 @@ permalink: /projects/blobby-ring-generator/
     </div>
   </div>
 </div>
-
----
+</div>
 
 <p style="text-align:center; margin-top:2rem;">
   <a href="/projects/">← Back to all projects</a>
