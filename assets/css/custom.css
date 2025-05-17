@@ -128,7 +128,7 @@ html.dark .hero-overlay {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: var(--accent);
-  color: var(--bg); /* Text color for button should contrast accent */
+  color: var(--text); /* Use main text color (dark on light bg, light on dark bg) */
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
@@ -138,7 +138,7 @@ html.dark .hero-overlay {
 
 .btn:hover {
   background-color: var(--accent);
-  color: var(--bg);
+  color: var(--text);
   filter: drop-shadow(0 0 4px var(--accent));
 }
 
