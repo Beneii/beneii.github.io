@@ -141,37 +141,31 @@ layout: null
       <button id="toggleSmooth" class="toggle">Blobby Ring</button>
       <button id="toggleMetallic" class="toggle">Metallic Blobby Ring</button>
       <button id="resetGrid" class="toggle">Reset Grid</button>
-      <label class="toggle" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
-        <input type="checkbox" id="liveUpdateToggle" style="margin:0;" /> Live Update
-      </label>
-      <button id="undoButton" class="toggle">Undo</button>
-      <button id="redoButton" class="toggle">Redo</button>
-
-      <div class="brush-container">
-        <label for="brushThicknessSlider">Brush Thickness</label>
-        <input id="brushThicknessSlider" type="range" min="1" max="10" value="1">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;width:100%;justify-content:center;align-items:flex-end;margin-bottom:8px;">
+        <div class="slider-container">
+          <label for="brushThicknessSlider">Brush Thickness</label>
+          <input id="brushThicknessSlider" type="range" min="1" max="10" value="1">
+        </div>
+        <div class="slider-container">
+          <label for="isolationSlider">Isolation Value</label>
+          <input id="isolationSlider" type="range" min="0" max="1000" value="300">
+        </div>
+        <div class="slider-container">
+          <label for="ballRadiusSlider">Ball Radius</label>
+          <input id="ballRadiusSlider" type="range" min="0" max="0.05" step="0.001" value="0.01">
+        </div>
+        <div class="slider-container">
+          <label for="resolutionSlider">Marching Cubes Resolution</label>
+          <input id="resolutionSlider" type="range" min="0" max="256" step="16" value="64">
+        </div>
+        <div class="slider-container">
+          <label for="ringHeightSlider">Ring Height Spacing</label>
+          <input id="ringHeightSlider" type="range" min="0" max="5" step="0.1" value="2">
+        </div>
+        <label class="toggle" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;margin-left:16px;">
+          <input type="checkbox" id="liveUpdateToggle" style="margin:0;" /> Live Update
+        </label>
       </div>
-
-      <div class="slider-container">
-        <label for="isolationSlider">Isolation Value</label>
-        <input id="isolationSlider" type="range" min="0" max="1000" value="300">
-      </div>
-
-      <div class="slider-container">
-        <label for="ballRadiusSlider">Ball Radius</label>
-        <input id="ballRadiusSlider" type="range" min="0" max="0.05" step="0.001" value="0.01">
-      </div>
-
-      <div class="slider-container">
-        <label for="resolutionSlider">Marching Cubes Resolution</label>
-        <input id="resolutionSlider" type="range" min="0" max="256" step="16" value="64">
-      </div>
-
-      <div class="slider-container">
-        <label for="ringHeightSlider">Ring Height Spacing</label>
-        <input id="ringHeightSlider" type="range" min="0" max="5" step="0.1" value="2">
-      </div>
-
       <button id="exportObjButton">Export as OBJ</button>
     </div>
     <canvas id="voxelGrid" width="512" height="512"></canvas>
@@ -181,11 +175,11 @@ layout: null
     </p>
   </div>
   <div id="rendererContainer" style="position:relative;">
-    <button id="generateOverlayButton" class="toggle regen-btn" title="Generate Mesh">Generate Mesh</button>
-    <select id="textureSelect" class="toggle regen-btn" style="right:110px; top:10px; position:absolute;">
+    <select id="textureSelect" class="toggle regen-btn" style="right:10px; top:10px; position:absolute;min-width:160px;">
       <option value="smooth">Blobby Ring</option>
       <option value="metallic" selected>Metallic Blobby Ring</option>
     </select>
+    <button id="generateOverlayButton" class="toggle regen-btn" style="right:180px;top:10px;position:absolute;" title="Generate Mesh">Generate Mesh</button>
   </div>
   <script type="module" src="main.js"></script>
 </body>
