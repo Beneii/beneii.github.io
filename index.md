@@ -11,7 +11,7 @@ title: Home
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-text">
-    <img src="/assets/images/pixel-title.gif" alt="Portfolio Title" class="hero-gif">
+    <img src="/assets/images/portfolio.gif" alt="Portfolio Title" class="hero-gif">
   </div>
 </div>
 

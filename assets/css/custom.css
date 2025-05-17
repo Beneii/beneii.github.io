@@ -371,6 +371,9 @@ html.dark .site-nav {
 }
 
 .hero-text img.hero-gif {
-  max-width: 80%;
+  width: 600px;
   height: auto;
+  max-width: 90%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 } 
