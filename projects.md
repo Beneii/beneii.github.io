@@ -19,7 +19,7 @@ permalink: /projects/
 </div>
 
 ## Pure Code
-<div class="project-card" data-title="Blobby Ring Generator" data-category="code">
+<div class="project-card reveal" data-title="Blobby Ring Generator" data-category="code">
   <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator" class="project-card-image">
   <div class="project-card-content">
     <h3>Blobby Ring Generator</h3>
@@ -32,3 +32,4 @@ permalink: /projects/
 
 <script src="/assets/js/project-filter.js" defer></script>
 <script src="/assets/js/dark-mode.js" defer></script>
+<script src="/assets/js/scroll-reveal.js" defer></script>

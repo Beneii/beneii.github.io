@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap');
 
 :root {
-  --bg: #ffffff;
-  --text: #222222;
-  --accent: #ff6d00; /* bright orange pop */
+  /* Brand palette */
+  --bg: #ffffff;            /* light bg */
+  --text: #0d1b2a;          /* navy text */
+  --accent: #ffb703;        /* warm amber accent */
+  --bg-dark: #0d1b2a;       /* dark navy */
+  --text-dark: #e4e4e4;
+  --accent-dark: #ffb703;
 }
 
 html.dark {
-  --bg: #1a1b1f;
-  --text: #e4e4e4;
-  --accent: #00c6ff; /* neon cyan pop in dark mode */
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --accent: var(--accent-dark);
 }
 
 body {
@@ -78,6 +82,8 @@ a:hover {
   height: 100%;
   object-fit: cover; /* Cover the area, might crop */
   object-position: center;
+  animation: kenburns 20s ease-in-out infinite;
+  transform-origin: center;
 }
 
 .hero-overlay {
@@ -129,11 +135,9 @@ html.dark .hero-overlay {
 }
 
 .btn:hover {
-  background-color: var(--text);
+  background-color: var(--accent);
   color: var(--bg);
-  border-color: var(--text);
-  transform: translateY(-2px);
-  opacity: 1; /* Override general link hover opacity if set */
+  filter: drop-shadow(0 0 4px var(--accent));
 }
 
 .btn-hero {
@@ -203,8 +207,12 @@ html.dark .project-card {
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+}
+
+.project-card:hover .project-card-image {
+  filter: brightness(0.85);
 }
 
 .project-card-image {
@@ -381,9 +389,38 @@ html.dark .site-nav {
 .projects-toolbar input,
 .projects-toolbar select {
   font-family: 'Comfortaa', sans-serif;
+  border: 1px solid var(--text);
 }
 
 /* spacing for project cards in listing */
 .projects-list .project-card {
   margin-bottom: 2rem;
-} 
+}
+
+/* ---------------- Hero Ken Burns ---------------- */
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0,0); }
+  50% { transform: scale(1.05) translate(-2%, -2%); }
+  100% { transform: scale(1) translate(0,0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-container .hero-image { animation: none; }
+}
+
+/* Tagline typing effect placeholder styling */
+#hero-tagline {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--accent);
+}
+
+/* ---------------- Scroll Reveal ---------------- */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); } 

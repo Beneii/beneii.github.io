@@ -11,17 +11,18 @@ title: Home
   </div>
   <div class="hero-text">
     <img src="/assets/images/portfolio.gif" alt="Portfolio Title" class="hero-gif">
+    <span id="hero-tagline"></span>
   </div>
 </div>
 
 <div class="page-content-container">
-  <section class="home-section intro-section">
+  <section class="home-section intro-section reveal">
     <h2>Welcome!</h2>
     <p>I'm {{ site.author }}, a passionate developer and technology enthusiast. This is my personal space to showcase projects, share insights, and document my journey in the world of tech. </p>
     <p><a href="{{ '/about/' | relative_url }}" class="link-highlight">Learn more about me &rarr;</a></p>
   </section>
 
-  <section class="home-section featured-projects-section">
+  <section class="home-section featured-projects-section reveal">
     <h2>Featured Projects</h2>
     <div class="project-card">
       <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator hero image" class="project-card-image">
@@ -36,4 +37,6 @@ title: Home
 
 </div>
 
+<script src="{{ '/assets/js/hero-typing.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script> 
