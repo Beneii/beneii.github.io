@@ -87,11 +87,6 @@ const ctx = canvas.getContext('2d');
 const cellWidth = canvas.width / gridResolutionX; // Calculate once
 const cellHeight = canvas.height / gridResolutionY; // Calculate once
 
-// New debounced function specifically for 3D view regeneration
-const debouncedRegenerate3DView = debounce(() => {
-  regenerateMesh();
-}, 250); // Adjust delay as needed, 250ms is a good start
-
 function drawGrid() { // This function now ONLY draws the 2D grid, no 3D regeneration
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let y = 0; y < gridResolutionY; y++) {
@@ -114,24 +109,25 @@ canvas.addEventListener('mousedown', (event) => {
   startPoint = { x, y };
   if (drawingMode === 'rectangle') return;
   
-  // Optimized drawing: directly paint and mark voxelGrid
   const affectedCells = getCellsUnderBrush(x,y);
   affectedCells.forEach(cell => {
     if (cell.nx >= 0 && cell.ny >= 0 && cell.nx < gridResolutionX && cell.ny < gridResolutionY && !(cell.ny < minY || cell.ny > maxY) ) {
-        if(!voxelGrid[cell.ny][cell.nx]) { // Only update if state changes
+        if(!voxelGrid[cell.ny][cell.nx]) { 
             voxelGrid[cell.ny][cell.nx] = true;
             paintCell(cell.nx, cell.ny, '#0077ff');
         }
     }
   });
-  debouncedRegenerate3DView(); // Trigger 3D update after drawing
-  lastCell = { x,y }; // lastCell should be the center of the brush click
+  // REMOVED: debouncedRegenerate3DView(); 
+  lastCell = { x,y }; 
 });
 
 canvas.addEventListener('mouseup', () => {
-  if(isDrawing) { // Only call if we were actually drawing
-    debouncedRegenerate3DView(); // Ensure final 3D update on mouse up
+  /* // REMOVED: Ensure final 3D update on mouse up
+  if(isDrawing) { 
+    debouncedRegenerate3DView(); 
   }
+  */
   isDrawing = false;
   lastCell = null;
   startPoint = null;
@@ -141,13 +137,13 @@ canvas.addEventListener('mousemove', (event) => {
   if (!isDrawing || drawingMode === 'rectangle') return;
 
   const { x, y } = getCellFromMouse(event);
-  if (y < minY || y > maxY) return; // Ignore moves outside allowed range
+  if (y < minY || y > maxY) return; 
 
   if (lastCell && (x !== lastCell.x || y !== lastCell.y)) {
-    drawLine(lastCell.x, lastCell.y, x, y); // drawLine will call drawCell, which now paints directly
+    drawLine(lastCell.x, lastCell.y, x, y); 
   }
   lastCell = { x, y };
-  // debouncedRegenerate3DView(); // Potentially call here too, or rely on mouseup for final update
+  // REMOVED: debouncedRegenerate3DView(); 
 });
 
 function getCellFromMouse(event) {
@@ -167,12 +163,10 @@ function drawLine(x0, y0, x1, y1) {
   let err = dx - dy;
 
   while (true) {
-    // drawCell(x0, y0); // OLD: this called drawGrid internally
-    // NEW: directly paint and mark voxelGrid from within drawLine\'s loop
     const affectedCells = getCellsUnderBrush(x0, y0);
     affectedCells.forEach(cell => {
       if (cell.nx >= 0 && cell.ny >= 0 && cell.nx < gridResolutionX && cell.ny < gridResolutionY && !(cell.ny < minY || cell.ny > maxY)) {
-          if(!voxelGrid[cell.ny][cell.nx]) { // Only update if state changes
+          if(!voxelGrid[cell.ny][cell.nx]) { 
               voxelGrid[cell.ny][cell.nx] = true;
               paintCell(cell.nx, cell.ny, '#0077ff');
           }
@@ -184,7 +178,7 @@ function drawLine(x0, y0, x1, y1) {
     if (e2 > -dy) { err -= dy; x0 += sx; }
     if (e2 < dx) { err += dx; y0 += sy; }
   }
-  debouncedRegenerate3DView(); // Update 3D view once after line is drawn
+  // REMOVED: debouncedRegenerate3DView(); 
 }
 
 // Helper function to get all cells affected by the current brush size
@@ -325,7 +319,7 @@ function exportToOBJ() {
 // === UI Event Listeners ===
 document.getElementById('toggleVoxel').addEventListener('click', () => {
   currentMode = 'voxel';
-  regenerateMesh();
+  regenerateMesh(); // Still regenerate immediately when changing view modes
 });
 
 document.getElementById('exportObjButton').addEventListener('click', exportToOBJ);
@@ -342,8 +336,13 @@ document.getElementById('toggleMetallic').addEventListener('click', () => {
 
 document.getElementById('resetGrid').addEventListener('click', () => {
   voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResolutionX).fill(false));
-  drawGrid(); // Full redraw for reset is fine
-  regenerateMesh(); // And update 3D view
+  drawGrid(); 
+  regenerateMesh(); 
+});
+
+// Add listener for the new Generate button
+document.getElementById('generate3DButton').addEventListener('click', () => {
+  regenerateMesh();
 });
 
 const debouncedSliderRegenerateMesh = debounce(regenerateMesh, 250);
@@ -383,6 +382,6 @@ function animate() {
 }
 
 // Initial draw of the empty grid and 3D view setup
-drawGrid(); // Draw the empty 2D grid (fast now)
-regenerateMesh(); // Initial empty 3D render
+drawGrid(); 
+regenerateMesh(); // Initial empty 3D render (or remove if you want it blank until first generation)
 animate();
