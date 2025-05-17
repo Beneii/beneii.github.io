@@ -500,7 +500,7 @@ html { scroll-behavior: smooth; }
 /* Projects grid */
 .projects-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cards try to be ~250px, fill available */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Cards try to be ~280px, fill available */
   gap: 1.5rem; /* Slightly reduced gap */
 }
 
