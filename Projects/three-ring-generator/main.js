@@ -331,16 +331,6 @@ document.getElementById('toggleVoxel').addEventListener('click', () => {
 
 document.getElementById('exportObjButton').addEventListener('click', exportToOBJ);
 
-document.getElementById('toggleSmooth').addEventListener('click', () => {
-  currentMode = 'smooth';
-  regenerateMesh();
-});
-
-document.getElementById('toggleMetallic').addEventListener('click', () => {
-  currentMode = 'metallic';
-  regenerateMesh();
-});
-
 document.getElementById('resetGrid').addEventListener('click', () => {
   voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResolutionX).fill(false));
   drawGrid(); 
