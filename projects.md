@@ -21,7 +21,7 @@ permalink: /projects/
   <h2>Pure Code</h2>
   <div class="projects-list">
     <div class="project-card reveal" data-title="Focus+" data-category="code">
-      <img src="/assets/images/focusplus.png" alt="Focus+ Chrome Extension" class="project-card-image">
+      <img src="/assets/images/focusplushero.png" alt="Focus+ Chrome Extension" class="project-card-image">
       <div class="project-card-content">
         <h3>Focus+</h3>
         <p>A Chrome extension that helps you stay focused and productive by blocking distracting websites and providing a clean, minimalist interface.</p>
