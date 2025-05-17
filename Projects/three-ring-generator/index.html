@@ -125,6 +125,24 @@ layout: null
     button.toggle.active {
       background: #0077ff; /* Active buttons highlighted */
     }
+
+    #regenerateOverlayButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 100; /* Ensure it's above the canvas */
+      padding: 10px 15px;
+      background-color: rgba(51, 51, 51, 0.8);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2rem; /* Make icon a bit bigger */
+      line-height: 1;
+    }
+    #regenerateOverlayButton:hover {
+      background-color: rgba(0, 119, 255, 0.9);
+    }
   </style>
 </head>
 <body>
@@ -165,7 +183,9 @@ layout: null
     </div>
     <canvas id="voxelGrid" width="512" height="512"></canvas>
   </div>
-  <div id="rendererContainer"></div>
+  <div id="rendererContainer">
+    <button id="regenerateOverlayButton" title="Regenerate 3D View">&#x21bb;</button>
+  </div>
   <script type="module" src="main.js"></script>
 </body>
 </html>

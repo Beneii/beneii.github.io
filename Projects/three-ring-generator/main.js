@@ -40,8 +40,8 @@ let voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResoluti
 const smoothMaterial = new THREE.MeshStandardMaterial({ color: 0xff5533, flatShading: true });
 const metallicMaterial = new THREE.MeshStandardMaterial({
   color: 0xc7c7c7,
-  metalness: 2.5, // Note: Three.js typically caps metalness at 1.0. Values > 1 might not behave as expected across all renderers/versions or might be clamped.
-  roughness: 0.05, // Slightly increased from 0 to reduce potential fireflies
+  metalness: 1.0, // Standard PBR metalness cap
+  roughness: 0.3, // Increased for a less mirror-like, brighter metallic surface
   // emissive: 0xc7c7c7, // Emissive usually makes it glow, might not be desired unless it\'s an unlit look.
 });
 
@@ -211,37 +211,29 @@ function generateVoxelRing() {
 // === Generate Smooth Ring ===
 function generateSmoothRing(materialToUse) {
   const marchingCubes = new MarchingCubes(marchingCubesResolution, materialToUse, true, true, 100000);
-
-  // Match the scale of the voxel ring
   marchingCubes.scale.set(ringRadius * 3, ringHeight * 3, ringRadius * 3);
   marchingCubes.isolation = isolationValue;
 
-  // Angular spacing
   const angleStep = (2 * Math.PI) / gridResolutionX;
-
-  // Vertical spacing
   const verticalStep = (2 * Math.PI * ringRadius) / gridResolutionX;
 
   for (let y = 0; y < gridResolutionY; y++) {
     const posY = -(y - (gridResolutionY - 1) / 2) * verticalStep;
-
     for (let x = 0; x < gridResolutionX; x++) {
-      if (!voxelGrid[y][x]) continue; // Only add blobs where voxels are active
+      if (!voxelGrid[y][x]) continue;
 
-      const angle = x * angleStep;
+      // FLIP THE X-AXIS MAPPING HERE for the angle
+      const angle = (gridResolutionX - 1 - x) * angleStep; 
       const wx = ringRadius * Math.cos(angle);
       const wz = ringRadius * Math.sin(angle);
 
-      // Normalize positions for Marching Cubes
       const normX = (wx + ringRadius * 3.0) / (ringRadius * 6.0);
       const normY = (posY + (gridResolutionY - 1) * verticalStep / 2) / ((gridResolutionY - 1) * verticalStep);
       const normZ = (wz + ringRadius * 3.0) / (ringRadius * 6.0);
 
-      // Add blobs to the scalar field
       marchingCubes.addBall(normX, normY, normZ, ballRadius, 1.0);
     }
   }
-
   marchingCubes.update();
   return marchingCubes;
 }
@@ -320,6 +312,12 @@ document.getElementById('resetGrid').addEventListener('click', () => {
 
 // Add listener for the new Generate button
 document.getElementById('generate3DButton').addEventListener('click', () => {
+  regenerateMesh();
+});
+
+// Add listener for the new OVERLAY Generate button
+document.getElementById('regenerateOverlayButton').addEventListener('click', () => {
+  console.log("Overlay button clicked"); // For debugging
   regenerateMesh();
 });
 

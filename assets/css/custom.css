@@ -46,3 +46,217 @@ a:hover {
 #mode-toggle:hover {
   transform: scale(1.1);
 } 
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  text-align: center;
+  color: white; /* Text color on hero */
+  height: 60vh; /* Adjust height as needed */
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensure overlay and image don't break layout */
+}
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind hero text and overlay */
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the area, might crop */
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+  z-index: 0; 
+}
+
+html.dark .hero-overlay {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay in dark mode */
+}
+
+.hero-text {
+  position: relative; /* Ensure it's above the overlay */
+  z-index: 1;
+  padding: 2rem;
+  background-color: rgba(0,0,0,0.1); /* Slight background for text block if needed */
+  border-radius: 8px;
+}
+
+.hero-text h1 {
+  font-size: 3rem; /* Responsive font size for hero title */
+  margin-bottom: 0.5rem;
+  color: #fff; /* Ensure hero h1 is white */
+}
+
+.hero-text .subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  color: #f0f0f0; /* Lighter subtitle color */
+}
+
+/* General Button Styles (can be expanded by theme or more specific selectors) */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent);
+  color: var(--bg); /* Text color for button should contrast accent */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 2px solid var(--accent);
+}
+
+.btn:hover {
+  background-color: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+  transform: translateY(-2px);
+  opacity: 1; /* Override general link hover opacity if set */
+}
+
+.btn-hero {
+   /* Specific hero button styles if needed - already inherits .btn */
+   /* e.g., larger font, different padding */
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent);
+  color: var(--bg); /* Text color when secondary button is hovered */
+}
+
+/* Page Content Container for consistent padding */
+.page-content-container {
+  max-width: 960px; /* Or your preferred content width */
+  margin: 2rem auto; /* Centering and spacing */
+  padding: 0 1rem;
+}
+
+/* Home Page Sections */
+.home-section {
+  padding: 2rem 0;
+  border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+html.dark .home-section {
+  border-bottom: 1px solid #333; /* Dark mode separator */
+}
+
+.home-section:last-child {
+  border-bottom: none;
+}
+
+.home-section h2 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.link-highlight {
+  font-weight: bold;
+  /* uses var(--accent) from global styles */
+}
+
+/* Project Card */
+.project-card {
+  background-color: var(--bg); /* Use CSS var for background */
+  border: 1px solid #ddd; /* Softer border */
+  border-radius: 8px;
+  overflow: hidden; /* To contain image corners */
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+html.dark .project-card {
+  background-color: #2d2d30; /* Slightly lighter than pure dark bg */
+  border-color: #444;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.project-card-image {
+  width: 100%;
+  height: auto;
+  max-height: 250px; /* Control image height */
+  object-fit: cover;
+  display: block;
+}
+
+.project-card-content {
+  padding: 1.5rem;
+}
+
+.project-card-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--text); /* Ensure text color adapts */
+}
+
+.project-card-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+  .hero-text .subtitle {
+    font-size: 1.2rem;
+  }
+  .hero-section {
+    height: 50vh;
+  }
+  .home-section h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+  .hero-text .subtitle {
+    font-size: 1rem;
+  }
+  .hero-section {
+    height: 40vh;
+  }
+  .project-card-content h3 {
+    font-size: 1.3rem;
+  }
+} 
