@@ -102,8 +102,43 @@ function drawGrid() { // This function now ONLY draws the 2D grid, no 3D regener
   // REMOVED: regenerateMesh(); from here
 }
 
+// === Undo/Redo Stacks ===
+const undoStack = [];
+const redoStack = [];
+
+function cloneGrid(grid) {
+  return grid.map(row => [...row]);
+}
+
+function pushUndoState() {
+  undoStack.push(cloneGrid(voxelGrid));
+  if (undoStack.length > 50) undoStack.shift(); // cap history
+  redoStack.length = 0; // clear redo on new action
+}
+
+function applyGrid(newGrid) {
+  voxelGrid = cloneGrid(newGrid);
+  drawGrid();
+  regenerateMesh();
+}
+
+function undo() {
+  if (undoStack.length === 0) return;
+  redoStack.push(cloneGrid(voxelGrid));
+  const prev = undoStack.pop();
+  applyGrid(prev);
+}
+
+function redo() {
+  if (redoStack.length === 0) return;
+  undoStack.push(cloneGrid(voxelGrid));
+  const next = redoStack.pop();
+  applyGrid(next);
+}
+
 canvas.addEventListener('mousedown', (event) => {
   isDrawing = true;
+  pushUndoState();
   const { x, y } = getCellFromMouse(event);
   if (y < minY || y > maxY) return;
   startPoint = { x, y };
@@ -348,6 +383,14 @@ document.getElementById('resolutionSlider').addEventListener('input', (e) => {
 document.getElementById('ringHeightSlider').addEventListener('input', (e) => {
   ringHeight = parseFloat(e.target.value);
   debouncedSliderRegenerateMesh();
+});
+
+document.getElementById('undoButton').addEventListener('click', () => {
+  undo();
+});
+
+document.getElementById('redoButton').addEventListener('click', () => {
+  redo();
 });
 
 // === Animation ===

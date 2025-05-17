@@ -126,22 +126,11 @@ layout: null
       background: #0077ff; /* Active buttons highlighted */
     }
 
-    #regenerateOverlayButton {
+    .regen-btn {
       position: absolute;
       top: 10px;
       right: 10px;
-      z-index: 100; /* Ensure it's above the canvas */
-      padding: 10px 15px;
-      background-color: rgba(51, 51, 51, 0.8);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1.2rem; /* Make icon a bit bigger */
-      line-height: 1;
-    }
-    #regenerateOverlayButton:hover {
-      background-color: rgba(0, 119, 255, 0.9);
+      z-index: 100;
     }
   </style>
 </head>
@@ -153,6 +142,8 @@ layout: null
       <button id="toggleMetallic" class="toggle">Metallic Blobby Ring</button>
       <button id="resetGrid" class="toggle">Reset Grid</button>
       <button id="generate3DButton" class="toggle">Generate 3D View</button>
+      <button id="undoButton" class="toggle">Undo</button>
+      <button id="redoButton" class="toggle">Redo</button>
 
       <div class="brush-container">
         <label for="brushThicknessSlider">Brush Thickness</label>
@@ -183,8 +174,8 @@ layout: null
     </div>
     <canvas id="voxelGrid" width="512" height="512"></canvas>
   </div>
-  <div id="rendererContainer">
-    <button id="regenerateOverlayButton" title="Regenerate 3D View">&#x21bb;</button>
+  <div id="rendererContainer" style="position:relative;">
+    <button id="regenerateOverlayButton" class="toggle regen-btn" title="Regenerate 3D View">&#x21bb;</button>
   </div>
   <script type="module" src="main.js"></script>
 </body>
