@@ -84,36 +84,54 @@ scene.add(directionalLight);
 // === Canvas Grid ===
 const canvas = document.getElementById('voxelGrid');
 const ctx = canvas.getContext('2d');
+const cellWidth = canvas.width / gridResolutionX; // Calculate once
+const cellHeight = canvas.height / gridResolutionY; // Calculate once
 
-function drawGrid() {
+// New debounced function specifically for 3D view regeneration
+const debouncedRegenerate3DView = debounce(() => {
+  regenerateMesh();
+}, 250); // Adjust delay as needed, 250ms is a good start
+
+function drawGrid() { // This function now ONLY draws the 2D grid, no 3D regeneration
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const cellWidth = canvas.width / gridResolutionX;
-  const cellHeight = canvas.height / gridResolutionY;
-
   for (let y = 0; y < gridResolutionY; y++) {
     for (let x = 0; x < gridResolutionX; x++) {
       if (y < minY || y > maxY) {
-        ctx.fillStyle = '#dddddd'; // Shaded area outside drawing range
+        ctx.fillStyle = '#dddddd';
       } else {
         ctx.fillStyle = voxelGrid[y][x] ? '#0077ff' : '#ffffff';
       }
       ctx.fillRect(x * cellWidth, y * cellHeight, cellWidth, cellHeight);
     }
   }
-  regenerateMesh();
+  // REMOVED: regenerateMesh(); from here
 }
 
 canvas.addEventListener('mousedown', (event) => {
   isDrawing = true;
   const { x, y } = getCellFromMouse(event);
-  if (y < minY || y > maxY) return; // Ignore clicks outside allowed range
+  if (y < minY || y > maxY) return;
   startPoint = { x, y };
   if (drawingMode === 'rectangle') return;
-  drawCell(x, y);
-  lastCell = { x, y };
+  
+  // Optimized drawing: directly paint and mark voxelGrid
+  const affectedCells = getCellsUnderBrush(x,y);
+  affectedCells.forEach(cell => {
+    if (cell.nx >= 0 && cell.ny >= 0 && cell.nx < gridResolutionX && cell.ny < gridResolutionY && !(cell.ny < minY || cell.ny > maxY) ) {
+        if(!voxelGrid[cell.ny][cell.nx]) { // Only update if state changes
+            voxelGrid[cell.ny][cell.nx] = true;
+            paintCell(cell.nx, cell.ny, '#0077ff');
+        }
+    }
+  });
+  debouncedRegenerate3DView(); // Trigger 3D update after drawing
+  lastCell = { x,y }; // lastCell should be the center of the brush click
 });
 
 canvas.addEventListener('mouseup', () => {
+  if(isDrawing) { // Only call if we were actually drawing
+    debouncedRegenerate3DView(); // Ensure final 3D update on mouse up
+  }
   isDrawing = false;
   lastCell = null;
   startPoint = null;
@@ -123,11 +141,13 @@ canvas.addEventListener('mousemove', (event) => {
   if (!isDrawing || drawingMode === 'rectangle') return;
 
   const { x, y } = getCellFromMouse(event);
-  if (y < minY || y > maxY) return;
+  if (y < minY || y > maxY) return; // Ignore moves outside allowed range
+
   if (lastCell && (x !== lastCell.x || y !== lastCell.y)) {
-    drawLine(lastCell.x, lastCell.y, x, y);
+    drawLine(lastCell.x, lastCell.y, x, y); // drawLine will call drawCell, which now paints directly
   }
   lastCell = { x, y };
+  // debouncedRegenerate3DView(); // Potentially call here too, or rely on mouseup for final update
 });
 
 function getCellFromMouse(event) {
@@ -147,33 +167,44 @@ function drawLine(x0, y0, x1, y1) {
   let err = dx - dy;
 
   while (true) {
-    drawCell(x0, y0);
+    // drawCell(x0, y0); // OLD: this called drawGrid internally
+    // NEW: directly paint and mark voxelGrid from within drawLine\'s loop
+    const affectedCells = getCellsUnderBrush(x0, y0);
+    affectedCells.forEach(cell => {
+      if (cell.nx >= 0 && cell.ny >= 0 && cell.nx < gridResolutionX && cell.ny < gridResolutionY && !(cell.ny < minY || cell.ny > maxY)) {
+          if(!voxelGrid[cell.ny][cell.nx]) { // Only update if state changes
+              voxelGrid[cell.ny][cell.nx] = true;
+              paintCell(cell.nx, cell.ny, '#0077ff');
+          }
+      }
+    });
+
     if (x0 === x1 && y0 === y1) break;
     const e2 = 2 * err;
-    if (e2 > -dy) {
-      err -= dy;
-      x0 += sx;
-    }
-    if (e2 < dx) {
-      err += dx;
-      y0 += sy;
-    }
+    if (e2 > -dy) { err -= dy; x0 += sx; }
+    if (e2 < dx) { err += dx; y0 += sy; }
   }
+  debouncedRegenerate3DView(); // Update 3D view once after line is drawn
 }
 
-function drawCell(x, y) {
-  if (y < minY || y > maxY) return;
-
-  for (let dy = -brushThickness + 1; dy < brushThickness; dy++) {
-    for (let dx = -brushThickness + 1; dx < brushThickness; dx++) {
-      const nx = x + dx;
-      const ny = y + dy;
-      if (nx >= 0 && ny >= 0 && nx < gridResolutionX && ny < gridResolutionY) {
-        voxelGrid[ny][nx] = true;
-      }
+// Helper function to get all cells affected by the current brush size
+function getCellsUnderBrush(centerX, centerY) {
+    const cells = [];
+    for (let dy = -brushThickness + 1; dy < brushThickness; dy++) {
+        for (let dx = -brushThickness + 1; dx < brushThickness; dx++) {
+            cells.push({ nx: centerX + dx, ny: centerY + dy });
+        }
     }
-  }
-  drawGrid();
+    return cells;
+}
+
+// Helper function to paint a single cell on the 2D canvas
+function paintCell(gridX, gridY, color) {
+    if (gridX < 0 || gridX >= gridResolutionX || gridY < 0 || gridY >= gridResolutionY) return;
+    if (gridY < minY || gridY > maxY) return; // Respect drawing boundaries
+
+    ctx.fillStyle = color;
+    ctx.fillRect(gridX * cellWidth, gridY * cellHeight, cellWidth, cellHeight);
 }
 
 // === Generate Voxel Ring ===
@@ -311,35 +342,37 @@ document.getElementById('toggleMetallic').addEventListener('click', () => {
 
 document.getElementById('resetGrid').addEventListener('click', () => {
   voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResolutionX).fill(false));
-  drawGrid();
+  drawGrid(); // Full redraw for reset is fine
+  regenerateMesh(); // And update 3D view
 });
 
-const debouncedRegenerateMesh = debounce(regenerateMesh, 250);
+const debouncedSliderRegenerateMesh = debounce(regenerateMesh, 250);
 
 document.getElementById('isolationSlider').addEventListener('input', (e) => {
   isolationValue = parseFloat(e.target.value);
-  debouncedRegenerateMesh();
+  debouncedSliderRegenerateMesh();
 });
 
 document.getElementById('ballRadiusSlider').addEventListener('input', (e) => {
   ballRadius = parseFloat(e.target.value);
-  if (ballRadius === 0) ballRadius = 0.001; // Prevent zero radius for marching cubes
-  debouncedRegenerateMesh();
+  if (ballRadius === 0) ballRadius = 0.001;
+  debouncedSliderRegenerateMesh();
 });
 
 document.getElementById('brushThicknessSlider').addEventListener('input', (e) => {
   brushThickness = parseInt(e.target.value, 10);
+  // No 3D regeneration needed here, brush size affects next draw operation
 });
 
 document.getElementById('resolutionSlider').addEventListener('input', (e) => {
   marchingCubesResolution = parseInt(e.target.value, 10);
-  if (marchingCubesResolution < 16) marchingCubesResolution = 16; // Ensure a minimum resolution
-  debouncedRegenerateMesh();
+  if (marchingCubesResolution < 16) marchingCubesResolution = 16;
+  debouncedSliderRegenerateMesh();
 });
 
 document.getElementById('ringHeightSlider').addEventListener('input', (e) => {
   ringHeight = parseFloat(e.target.value);
-  debouncedRegenerateMesh();
+  debouncedSliderRegenerateMesh();
 });
 
 // === Animation ===
@@ -349,5 +382,7 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-drawGrid();
+// Initial draw of the empty grid and 3D view setup
+drawGrid(); // Draw the empty 2D grid (fast now)
+regenerateMesh(); // Initial empty 3D render
 animate();
