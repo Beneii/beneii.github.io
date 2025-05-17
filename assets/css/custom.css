@@ -508,15 +508,31 @@ html { scroll-behavior: smooth; }
 
 /* Page Hero (for non-home pages) */
 .page-hero {
-  background-color: var(--surface-dark);
-  color: var(--text-dark);
+  background-image: url('/assets/images/heroimage.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #fff; /* Ensure text is white on image */
   padding: 3rem 1rem;
   text-align: center;
   margin-bottom: 2rem;
 }
 
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6); /* Dark overlay */
+  z-index: 1;
+}
+
 .page-hero h1 {
   font-size: 2.2rem;
   margin: 0;
-  color: var(--text-dark);
+  color: #fff; /* Ensure h1 is white */
+  position: relative; /* Above overlay */
+  z-index: 2;
 } 

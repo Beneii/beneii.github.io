@@ -21,15 +21,54 @@ permalink: /projects/
 
 ## Pure Code
 <div class="projects-list">
-<div class="project-card reveal" data-title="Blobby Ring Generator" data-category="code">
-  <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator" class="project-card-image">
-  <div class="project-card-content">
-    <h3>Blobby Ring Generator</h3>
-    <p>Draw voxels and generate a smooth or metallic 3-D ring in real-time with Three.js &amp; Marching Cubes.</p>
-    <a href="/projects/blobby-ring-generator/" class="btn">Details &amp; Demo</a>
+  <div class="project-card reveal" data-title="Blobby Ring Generator" data-category="code">
+    <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator" class="project-card-image">
+    <div class="project-card-content">
+      <h3>Blobby Ring Generator</h3>
+      <p>Draw voxels and generate a smooth or metallic 3-D ring in real-time with Three.js &amp; Marching Cubes.</p>
+      <a href="/projects/blobby-ring-generator/" class="btn">Details &amp; Demo</a>
+    </div>
+  </div>
+  <div class="project-card reveal" data-title="Data Viz Dashboard" data-category="code">
+    <img src="https://picsum.photos/seed/dataviz/600/400" alt="Data Viz Dashboard" class="project-card-image">
+    <div class="project-card-content">
+      <h3>Data Viz Dashboard</h3>
+      <p>An interactive dashboard for visualizing complex datasets using D3.js and React.</p>
+      <a href="#" class="btn">Details &amp; Demo</a>
+    </div>
   </div>
 </div>
-<!-- Add more project-card blocks here -->
+
+## Arduino / Robotics
+<div class="projects-list">
+  <div class="project-card reveal" data-title="Automated Plant Waterer" data-category="hardware">
+    <img src="https://picsum.photos/seed/plantbot/600/400" alt="Automated Plant Waterer" class="project-card-image">
+    <div class="project-card-content">
+      <h3>Automated Plant Waterer</h3>
+      <p>A smart system using Arduino and soil moisture sensors to keep your plants happy.</p>
+      <a href="#" class="btn">Details &amp; Demo</a>
+    </div>
+  </div>
+  <div class="project-card reveal" data-title="CNC Plotter Bot" data-category="hardware">
+    <img src="https://picsum.photos/seed/plotterbot/600/400" alt="CNC Plotter Bot" class="project-card-image">
+    <div class="project-card-content">
+      <h3>CNC Plotter Bot</h3>
+      <p>A custom-built 2D plotter that can draw vector graphics with precision.</p>
+      <a href="#" class="btn">Details &amp; Demo</a>
+    </div>
+  </div>
+</div>
+
+## Art / 3-D Design
+<div class="projects-list">
+  <div class="project-card reveal" data-title="Abstract Voxel Sculptures" data-category="art">
+    <img src="https://picsum.photos/seed/voxelart/600/400" alt="Abstract Voxel Sculptures" class="project-card-image">
+    <div class="project-card-content">
+      <h3>Abstract Voxel Sculptures</h3>
+      <p>A series of generative 3D sculptures created with custom voxel tools and Blender.</p>
+      <a href="#" class="btn">Details &amp; Demo</a>
+    </div>
+  </div>
 </div>
 
 <p style="text-align:center;margin-top:2rem;"><a href="#" class="btn btn-secondary" id="loadMoreBtn">Load More Projects</a></p>
