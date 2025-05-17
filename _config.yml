@@ -13,4 +13,10 @@ social_links:
 
 # Build settings
 markdown: kramdown
-permalink: pretty 
+permalink: pretty
+
+# Pages to appear in the site navigation
+header_pages:
+  - index.md
+  - projects.md
+  - about.md 
