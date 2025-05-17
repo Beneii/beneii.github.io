@@ -92,7 +92,7 @@ function drawGrid() { // This function now ONLY draws the 2D grid, no 3D regener
   for (let y = 0; y < gridResolutionY; y++) {
     for (let x = 0; x < gridResolutionX; x++) {
       if (y < minY || y > maxY) {
-        ctx.fillStyle = '#dddddd';
+        ctx.fillStyle = '#ffffff';
       } else {
         ctx.fillStyle = voxelGrid[y][x] ? '#0077ff' : '#ffffff';
       }
@@ -105,6 +105,9 @@ function drawGrid() { // This function now ONLY draws the 2D grid, no 3D regener
 // === Undo/Redo Stacks ===
 const undoStack = [];
 const redoStack = [];
+
+let liveUpdate = false;
+const debouncedLiveUpdate = debounce(regenerateMesh, 150);
 
 function cloneGrid(grid) {
   return grid.map(row => [...row]);
@@ -119,7 +122,7 @@ function pushUndoState() {
 function applyGrid(newGrid) {
   voxelGrid = cloneGrid(newGrid);
   drawGrid();
-  regenerateMesh();
+  if (liveUpdate) regenerateMesh();
 }
 
 function undo() {
@@ -153,7 +156,7 @@ canvas.addEventListener('mousedown', (event) => {
         }
     }
   });
-  // REMOVED: debouncedRegenerate3DView(); 
+  if (liveUpdate) debouncedLiveUpdate();
   lastCell = { x,y }; 
 });
 
@@ -213,7 +216,7 @@ function drawLine(x0, y0, x1, y1) {
     if (e2 > -dy) { err -= dy; x0 += sx; }
     if (e2 < dx) { err += dx; y0 += sy; }
   }
-  // REMOVED: debouncedRegenerate3DView(); 
+  if (liveUpdate) debouncedLiveUpdate();
 }
 
 // Helper function to get all cells affected by the current brush size
@@ -346,13 +349,13 @@ document.getElementById('resetGrid').addEventListener('click', () => {
 });
 
 // Add listener for the new Generate button
-document.getElementById('generate3DButton').addEventListener('click', () => {
+const mainGenerateBtn = document.getElementById('generate3DButton');
+mainGenerateBtn.addEventListener('click', () => {
   regenerateMesh();
 });
 
 // Add listener for the new OVERLAY Generate button
-document.getElementById('regenerateOverlayButton').addEventListener('click', () => {
-  console.log("Overlay button clicked"); // For debugging
+document.getElementById('generateOverlayButton').addEventListener('click', () => {
   regenerateMesh();
 });
 
@@ -404,3 +407,19 @@ function animate() {
 drawGrid(); 
 regenerateMesh(); // Initial render will now be metallic (or empty if grid is empty)
 animate();
+
+// Modify paint and drawLine update calls later: We'll add condition.
+
+document.getElementById('liveUpdateToggle').addEventListener('change', (e) => {
+  liveUpdate = e.target.checked;
+  // Toggle overlay button visibility
+  const overlayBtn = document.getElementById('generateOverlayButton');
+  overlayBtn.style.display = liveUpdate ? 'none' : 'block';
+  if (liveUpdate) {
+    debouncedLiveUpdate(); // Generate immediately when turning on
+  }
+  mainGenerateBtn.style.display = liveUpdate ? 'none' : 'inline-block';
+});
+
+// set initial overlay visibility
+document.getElementById('generateOverlayButton').style.display = 'block';

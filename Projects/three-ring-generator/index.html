@@ -141,6 +141,9 @@ layout: null
       <button id="toggleSmooth" class="toggle">Blobby Ring</button>
       <button id="toggleMetallic" class="toggle">Metallic Blobby Ring</button>
       <button id="resetGrid" class="toggle">Reset Grid</button>
+      <label class="toggle" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+        <input type="checkbox" id="liveUpdateToggle" style="margin:0;" /> Live Update
+      </label>
       <button id="generate3DButton" class="toggle">Generate 3D View</button>
       <button id="undoButton" class="toggle">Undo</button>
       <button id="redoButton" class="toggle">Redo</button>
@@ -173,9 +176,13 @@ layout: null
       <button id="exportObjButton">Export as OBJ</button>
     </div>
     <canvas id="voxelGrid" width="512" height="512"></canvas>
+    <p class="instructions" style="max-width:512px;margin:8px auto 0;font-size:0.9rem;line-height:1.4;">
+      Draw on the white band to add voxels. Use the sliders to tweak marching-cubes parameters (isolation = surface threshold, ball radius = blob size, resolution = marching-cubes grid detail, ring height = vertical spacing).<br>
+      Enable "Live Update" to see changes in real-time (may slow performance), or keep it off and press "Generate 3D View" when you're ready.
+    </p>
   </div>
   <div id="rendererContainer" style="position:relative;">
-    <button id="regenerateOverlayButton" class="toggle regen-btn" title="Regenerate 3D View">&#x21bb;</button>
+    <button id="generateOverlayButton" class="toggle regen-btn" title="Generate 3D View">&#x21bb;</button>
   </div>
   <script type="module" src="main.js"></script>
 </body>
