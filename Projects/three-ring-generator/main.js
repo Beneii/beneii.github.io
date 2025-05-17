@@ -39,10 +39,9 @@ let voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResoluti
 // const voxelMaterial = new THREE.MeshStandardMaterial({ color: 0x0077ff }); // No longer needed
 const smoothMaterial = new THREE.MeshStandardMaterial({ color: 0xff5533, flatShading: true });
 const metallicMaterial = new THREE.MeshStandardMaterial({
-  color: 0xc7c7c7,
-  metalness: 1.0, // Standard PBR metalness cap
-  roughness: 0.3, // Increased for a less mirror-like, brighter metallic surface
-  // emissive: 0xc7c7c7, // Emissive usually makes it glow, might not be desired unless it\'s an unlit look.
+  color: 0xefefef, // lighter grey
+  metalness: 1.0,
+  roughness: 0.15,
 });
 
 // === Scene Setup ===
@@ -166,6 +165,20 @@ canvas.addEventListener('mouseup', () => {
     debouncedRegenerate3DView(); 
   }
   */
+  isDrawing = false;
+  lastCell = null;
+  startPoint = null;
+});
+
+// Stop drawing if mouse leaves the canvas
+canvas.addEventListener('mouseleave', () => {
+  isDrawing = false;
+  lastCell = null;
+  startPoint = null;
+});
+
+// Ensure drawing stops even if mouseup occurs outside the canvas
+window.addEventListener('mouseup', () => {
   isDrawing = false;
   lastCell = null;
   startPoint = null;
