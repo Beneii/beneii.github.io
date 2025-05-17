@@ -29,7 +29,7 @@ title: Home
       <div class="project-card-content">
         <h3>Blobby Ring Generator</h3>
         <p>An interactive 2D & 3D generative art tool. Draw on a canvas and see it transformed into a dynamic 3D ring structure using Three.js and Marching Cubes.</p>
-        <a href="{{ '/Projects/three-ring-generator/' | relative_url }}" class="btn">Explore Generator</a>
+        <a href="{{ '/projects/blobby-ring-generator/' | relative_url }}" class="btn">Explore Project</a>
       </div>
     </div>
     <p style="text-align: center; margin-top: 2rem;"><a href="{{ '/projects/' | relative_url }}" class="btn btn-secondary">View All Projects</a></p>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap');
+
 :root {
   --bg: #ffffff;
   --text: #222222;
@@ -14,6 +16,7 @@ body {
   background-color: var(--bg);
   color: var(--text);
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 a, .link {
@@ -259,4 +262,10 @@ html.dark .project-card {
   .project-card-content h3 {
     font-size: 1.3rem;
   }
+}
+
+/* Ensure headings inherit or weight variation */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 600;
 } 

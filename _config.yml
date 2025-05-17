@@ -6,7 +6,7 @@ author: "Benei"
 remote_theme: "CloudCannon/vonge-jekyll-bookshop-template"
 
 # Custom assets (will be referenced in override includes)
-# custom_css: "/assets/css/custom.css"
+custom_css: "/assets/css/custom.css"
 # custom_js: "/assets/js/dark-mode.js"
 
 # (Optional) social links displayed by the theme

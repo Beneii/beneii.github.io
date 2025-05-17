@@ -17,6 +17,6 @@ Here are some things I've been hacking on. Click any project to see it live or r
 • Tech: Three.js, Marching Cubes, Vanilla JS.  
 • Features: draw on a 2-D grid, toggle voxel vs. smooth vs. metallic view, export OBJ.
 
-[Launch the generator](/Projects/three-ring-generator/) →
+[Project details & Live demo](/projects/blobby-ring-generator/) →
 
 <script src="/assets/js/dark-mode.js" defer></script>
