@@ -1,0 +1,352 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { MarchingCubes } from 'three/examples/jsm/objects/MarchingCubes.js';
+import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter.js';
+import { OBJExporter } from 'three/examples/jsm/exporters/OBJExporter.js';
+
+
+const gridResolutionX = 128; // Horizontal resolution
+const gridResolutionY = 128; // Vertical resolution
+const ringRadius = 1;
+let ringHeight = 1;
+
+// Define restricted vertical range (e.g., middle 50%)
+const minY = Math.floor(gridResolutionY * 0.25); // 25% from the top
+const maxY = Math.floor(gridResolutionY * 0.75); // 75% from the top
+
+let isDrawing = false;
+let lastCell = null;
+let brushThickness = 1;
+let drawingMode = 'draw'; // Modes: 'draw', 'rectangle'
+let startPoint = null;
+
+// Default marching cube settings
+let isolationValue = 300;
+let ballRadius = 0.01;
+let marchingCubesResolution = 64;
+
+let voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResolutionX).fill(false));
+
+// === Scene Setup ===
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+camera.position.set(0, 5, 15);
+camera.lookAt(0, 0, 0);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.shadowMap.enabled = true;
+renderer.setSize(window.innerWidth / 2, window.innerHeight);
+renderer.setClearColor(0x000000, 0);
+document.getElementById('rendererContainer').appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+
+// Add Lights with Shadows
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+directionalLight.position.set(5, 10, 7.5);
+directionalLight.castShadow = true;
+
+// Configure shadows for better quality
+directionalLight.shadow.mapSize.width = 1024;
+directionalLight.shadow.mapSize.height = 1024;
+directionalLight.shadow.camera.near = 0.1;
+directionalLight.shadow.camera.far = 50;
+directionalLight.shadow.camera.left = -10;
+directionalLight.shadow.camera.right = 10;
+directionalLight.shadow.camera.top = 10;
+directionalLight.shadow.camera.bottom = -10;
+
+scene.add(directionalLight);
+
+// === Canvas Grid ===
+const canvas = document.getElementById('voxelGrid');
+const ctx = canvas.getContext('2d');
+
+function drawGrid() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cellWidth = canvas.width / gridResolutionX;
+  const cellHeight = canvas.height / gridResolutionY;
+
+  for (let y = 0; y < gridResolutionY; y++) {
+    for (let x = 0; x < gridResolutionX; x++) {
+      if (y < minY || y > maxY) {
+        ctx.fillStyle = '#dddddd'; // Shaded area outside drawing range
+      } else {
+        ctx.fillStyle = voxelGrid[y][x] ? '#0077ff' : '#ffffff';
+      }
+      ctx.fillRect(x * cellWidth, y * cellHeight, cellWidth, cellHeight);
+    }
+  }
+  regenerateMesh();
+}
+
+canvas.addEventListener('mousedown', (event) => {
+  isDrawing = true;
+  const { x, y } = getCellFromMouse(event);
+  if (y < minY || y > maxY) return; // Ignore clicks outside allowed range
+  startPoint = { x, y };
+  if (drawingMode === 'rectangle') return;
+  drawCell(x, y);
+  lastCell = { x, y };
+});
+
+canvas.addEventListener('mouseup', () => {
+  isDrawing = false;
+  lastCell = null;
+  startPoint = null;
+});
+
+canvas.addEventListener('mousemove', (event) => {
+  if (!isDrawing || drawingMode === 'rectangle') return;
+
+  const { x, y } = getCellFromMouse(event);
+  if (y < minY || y > maxY) return;
+  if (lastCell && (x !== lastCell.x || y !== lastCell.y)) {
+    drawLine(lastCell.x, lastCell.y, x, y);
+  }
+  lastCell = { x, y };
+});
+
+function getCellFromMouse(event) {
+  const rect = canvas.getBoundingClientRect();
+  const cellWidth = canvas.width / gridResolutionX;
+  const cellHeight = canvas.height / gridResolutionY;
+  const x = Math.floor((event.clientX - rect.left) / cellWidth);
+  const y = Math.floor((event.clientY - rect.top) / cellHeight);
+  return { x, y };
+}
+
+function drawLine(x0, y0, x1, y1) {
+  const dx = Math.abs(x1 - x0);
+  const dy = Math.abs(y1 - y0);
+  const sx = x0 < x1 ? 1 : -1;
+  const sy = y0 < y1 ? 1 : -1;
+  let err = dx - dy;
+
+  while (true) {
+    drawCell(x0, y0);
+    if (x0 === x1 && y0 === y1) break;
+    const e2 = 2 * err;
+    if (e2 > -dy) {
+      err -= dy;
+      x0 += sx;
+    }
+    if (e2 < dx) {
+      err += dx;
+      y0 += sy;
+    }
+  }
+}
+
+
+
+function drawCell(x, y) {
+  if (y < minY || y > maxY) return;
+
+  for (let dy = -brushThickness + 1; dy < brushThickness; dy++) {
+    for (let dx = -brushThickness + 1; dx < brushThickness; dx++) {
+      const nx = x + dx;
+      const ny = y + dy;
+      if (nx >= 0 && ny >= 0 && nx < gridResolutionX && ny < gridResolutionY) {
+        voxelGrid[ny][nx] = true;
+      }
+    }
+  }
+  drawGrid();
+}
+
+// === Generate Voxel Ring ===
+function generateVoxelRing() {
+  const instancedMesh = new THREE.InstancedMesh(
+    new THREE.BoxGeometry(
+      ringRadius / gridResolutionX,
+      ringRadius / gridResolutionX,
+      ringRadius / gridResolutionX
+    ),
+    new THREE.MeshStandardMaterial({ color: 0x0077ff }),
+    gridResolutionX * gridResolutionY
+  );
+
+  let instanceIndex = 0;
+
+  // Calculate spacing
+  const angleStep = (2 * Math.PI) / gridResolutionX;
+  const verticalStep = (2 * Math.PI * ringRadius) / gridResolutionX;
+
+  for (let y = 0; y < gridResolutionY; y++) {
+    const posY = -(y - (gridResolutionY - 1) / 2) * verticalStep;
+
+    for (let x = 0; x < gridResolutionX; x++) {
+      if (!voxelGrid[y][x]) continue; // Skip inactive voxels
+
+      const angle = x * angleStep;
+      const wx = ringRadius * Math.cos(angle);
+      const wz = ringRadius * Math.sin(angle);
+
+      const matrix = new THREE.Matrix4().makeTranslation(wx, posY, wz);
+      instancedMesh.setMatrixAt(instanceIndex++, matrix);
+    }
+  }
+
+  instancedMesh.instanceMatrix.needsUpdate = true;
+  return instancedMesh;
+}
+
+
+
+
+// === Generate Smooth Ring ===
+function generateSmoothRing(material) {
+  const marchingCubes = new MarchingCubes(marchingCubesResolution, material);
+
+  // Match the scale of the voxel ring
+  marchingCubes.scale.set(ringRadius * 3, ringHeight * 3, ringRadius * 3);
+  marchingCubes.isolation = isolationValue;
+
+  // Angular spacing
+  const angleStep = (2 * Math.PI) / gridResolutionX;
+
+  // Vertical spacing
+  const verticalStep = (2 * Math.PI * ringRadius) / gridResolutionX;
+
+  for (let y = 0; y < gridResolutionY; y++) {
+    const posY = -(y - (gridResolutionY - 1) / 2) * verticalStep;
+
+    for (let x = 0; x < gridResolutionX; x++) {
+      if (!voxelGrid[y][x]) continue; // Only add blobs where voxels are active
+
+      const angle = x * angleStep;
+      const wx = ringRadius * Math.cos(angle);
+      const wz = ringRadius * Math.sin(angle);
+
+      // Normalize positions for Marching Cubes
+      const normX = (wx + ringRadius * 3.0) / (ringRadius * 6.0);
+      const normY = (posY + (gridResolutionY - 1) * verticalStep / 2) / ((gridResolutionY - 1) * verticalStep);
+      const normZ = (wz + ringRadius * 3.0) / (ringRadius * 6.0);
+
+      // Add blobs to the scalar field
+      marchingCubes.addBall(normX, normY, normZ, ballRadius, 1.0);
+    }
+  }
+
+  marchingCubes.update();
+  return marchingCubes;
+}
+
+
+
+
+
+
+
+
+// === Regenerate Mesh ===
+let currentMesh = null;
+let currentMode = 'voxel';
+
+function regenerateMesh() {
+  if (currentMesh) scene.remove(currentMesh);
+
+  if (currentMode === 'voxel') {
+    currentMesh = generateVoxelRing();
+  } else if (currentMode === 'smooth') {
+    currentMesh = generateSmoothRing(new THREE.MeshStandardMaterial({ color: 0xff5533, flatShading: true }));
+  } else if (currentMode === 'metallic') {
+    currentMesh = generateSmoothRing(
+      new THREE.MeshStandardMaterial({
+        color: 0xc7c7c7,
+        metalness: 2.5,
+        roughness: 0,
+        emissive: 0xc7c7c7,
+      })
+    );
+  }
+
+  currentMesh.castShadow = true;
+  currentMesh.receiveShadow = true;
+
+  scene.add(currentMesh);
+}
+
+function exportToOBJ() {
+  const exporter = new OBJExporter();
+  
+  // Export only the current mesh
+  if (currentMesh) {
+    const objData = exporter.parse(currentMesh);
+
+    // Create a blob and download the OBJ file
+    const blob = new Blob([objData], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'ring.obj';
+    link.click();
+  } else {
+    console.warn('No mesh to export.');
+  }
+}
+
+
+// === UI Event Listeners ===
+document.getElementById('toggleVoxel').addEventListener('click', () => {
+  currentMode = 'voxel';
+  regenerateMesh();
+});
+
+document.getElementById('exportObjButton').addEventListener('click', exportToOBJ);
+
+document.getElementById('toggleSmooth').addEventListener('click', () => {
+  currentMode = 'smooth';
+  regenerateMesh();
+});
+
+document.getElementById('toggleMetallic').addEventListener('click', () => {
+  currentMode = 'metallic';
+  regenerateMesh();
+});
+
+document.getElementById('resetGrid').addEventListener('click', () => {
+  voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResolutionX).fill(false));
+  drawGrid();
+});
+
+document.getElementById('isolationSlider').addEventListener('input', (e) => {
+  isolationValue = parseFloat(e.target.value);
+  regenerateMesh();
+});
+
+document.getElementById('ballRadiusSlider').addEventListener('input', (e) => {
+  ballRadius = parseFloat(e.target.value);
+  regenerateMesh();
+});
+
+document.getElementById('brushThicknessSlider').addEventListener('input', (e) => {
+  brushThickness = parseInt(e.target.value, 10);
+});
+
+document.getElementById('resolutionSlider').addEventListener('input', (e) => {
+  marchingCubesResolution = parseInt(e.target.value, 10);
+  regenerateMesh();
+});
+
+document.getElementById('ringHeightSlider').addEventListener('input', (e) => {
+  ringHeight = parseFloat(e.target.value);
+  regenerateMesh();
+});
+
+
+
+// === Animation ===
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+drawGrid();
+animate();

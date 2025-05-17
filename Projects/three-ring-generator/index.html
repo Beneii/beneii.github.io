@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blobby Ring Generator</title>
+  <!-- Import map for ES-modules so GitHub Pages can fetch Three.js from a CDN -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+      "three/examples/jsm/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+    }
+  }
+  </script>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      font-family: 'Courier New', monospace; /* Retro font style */
+      background: #f4f4f4;
+      color: #333;
+      overflow: hidden;
+    }
+
+    /* Control Panel Section */
+    #drawingSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: #fafafa; /* Light background for controls */
+      width: 50%; /* Half the screen width */
+      box-sizing: border-box;
+      padding: 10px;
+      border-right: 2px solid #ddd; /* Divider between sections */
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      border: 3px solid #333;
+      padding: 5px 15px;
+      background: #fff;
+      color: #333;
+    }
+
+    #controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .slider-container, .brush-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      background: #fff;
+      color: #333;
+      border: 2px solid #333;
+      border-radius: 8px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    #voxelGrid {
+      border: 3px solid #333;
+      margin-top: 10px;
+      background: #eaeaea;
+    }
+
+    /* Rendered View Section */
+    #rendererContainer {
+      width: 50%; /* Half the screen width */
+      height: 100%;
+      background: #f9f9f9; /* Light background for 3D view */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      background: #333; /* Dark buttons */
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    button.toggle.active {
+      background: #0077ff; /* Active buttons highlighted */
+    }
+  </style>
+</head>
+<body>
+  <div id="drawingSection">
+    <h1>Blobby Ring Generator</h1>
+    <div id="controls">
+      <button id="toggleVoxel" class="toggle">Voxel Ring</button>
+      <button id="toggleSmooth" class="toggle">Blobby Ring</button>
+      <button id="toggleMetallic" class="toggle">Metallic Blobby Ring</button>
+      <button id="resetGrid" class="toggle">Reset Grid</button>
+
+      <div class="brush-container">
+        <label for="brushThicknessSlider">Brush Thickness</label>
+        <input id="brushThicknessSlider" type="range" min="1" max="10" value="1">
+      </div>
+
+      <div class="slider-container">
+        <label for="isolationSlider">Isolation Value</label>
+        <input id="isolationSlider" type="range" min="0" max="1000" value="300">
+      </div>
+
+      <div class="slider-container">
+        <label for="ballRadiusSlider">Ball Radius</label>
+        <input id="ballRadiusSlider" type="range" min="0" max="0.05" step="0.001" value="0.01">
+      </div>
+
+      <div class="slider-container">
+        <label for="resolutionSlider">Marching Cubes Resolution</label>
+        <input id="resolutionSlider" type="range" min="0" max="256" step="16" value="64">
+      </div>
+
+      <div class="slider-container">
+        <label for="ringHeightSlider">Ring Height Spacing</label>
+        <input id="ringHeightSlider" type="range" min="0" max="5" step="0.1" value="2">
+      </div>
+
+      <button id="exportObjButton">Export as OBJ</button>
+    </div>
+    <canvas id="voxelGrid" width="512" height="512"></canvas>
+  </div>
+  <div id="rendererContainer"></div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
