@@ -36,3 +36,5 @@ permalink: /projects/
 <script src="/assets/js/project-filter.js" defer></script>
 <script src="/assets/js/dark-mode.js" defer></script>
 <script src="/assets/js/scroll-reveal.js" defer></script>
+
+{% include footer.html %}

@@ -24,4 +24,6 @@ When I'm not in front of a screen, you can find me exploring new music, dabbling
 Feel free to connect with me on [GitHub](https://github.com/Benei) or [LinkedIn](https://linkedin.com/in/Benei).
 
 <script src="/assets/js/scroll-reveal.js" defer></script>
-<script src="/assets/js/dark-mode.js" defer></script> 
+<script src="/assets/js/dark-mode.js" defer></script>
+
+{% include footer.html %} 
