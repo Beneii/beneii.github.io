@@ -36,7 +36,7 @@ let marchingCubesResolution = 64;
 let voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResolutionX).fill(false));
 
 // === Pre-initialize Materials ===
-const voxelMaterial = new THREE.MeshStandardMaterial({ color: 0x0077ff });
+// const voxelMaterial = new THREE.MeshStandardMaterial({ color: 0x0077ff }); // No longer needed
 const smoothMaterial = new THREE.MeshStandardMaterial({ color: 0xff5533, flatShading: true });
 const metallicMaterial = new THREE.MeshStandardMaterial({
   color: 0xc7c7c7,
@@ -202,41 +202,11 @@ function paintCell(gridX, gridY, color) {
 }
 
 // === Generate Voxel Ring ===
+/* // Removing Voxel Ring generation logic
 function generateVoxelRing() {
-  const instancedMesh = new THREE.InstancedMesh(
-    new THREE.BoxGeometry(
-      ringRadius / gridResolutionX,
-      ringRadius / gridResolutionX,
-      ringRadius / gridResolutionX
-    ),
-    voxelMaterial,
-    gridResolutionX * gridResolutionY
-  );
-
-  let instanceIndex = 0;
-
-  // Calculate spacing
-  const angleStep = (2 * Math.PI) / gridResolutionX;
-  const verticalStep = (2 * Math.PI * ringRadius) / gridResolutionX;
-
-  for (let y = 0; y < gridResolutionY; y++) {
-    const posY = -(y - (gridResolutionY - 1) / 2) * verticalStep;
-
-    for (let x = 0; x < gridResolutionX; x++) {
-      if (!voxelGrid[y][x]) continue; // Skip inactive voxels
-
-      const angle = x * angleStep;
-      const wx = ringRadius * Math.cos(angle);
-      const wz = ringRadius * Math.sin(angle);
-
-      const matrix = new THREE.Matrix4().makeTranslation(wx, posY, wz);
-      instancedMesh.setMatrixAt(instanceIndex++, matrix);
-    }
-  }
-
-  instancedMesh.instanceMatrix.needsUpdate = true;
-  return instancedMesh;
+  // ... (entire function content removed or commented out) ...
 }
+*/
 
 // === Generate Smooth Ring ===
 function generateSmoothRing(materialToUse) {
@@ -278,14 +248,16 @@ function generateSmoothRing(materialToUse) {
 
 // === Regenerate Mesh ===
 let currentMesh = null;
-let currentMode = 'voxel';
+let currentMode = 'metallic'; // Default to metallic
 
 function regenerateMesh() {
   if (currentMesh) scene.remove(currentMesh);
+  currentMesh = null; // Ensure it's reset
 
-  if (currentMode === 'voxel') {
-    currentMesh = generateVoxelRing();
-  } else if (currentMode === 'smooth') {
+  // if (currentMode === 'voxel') { // Voxel mode removed
+  //   currentMesh = generateVoxelRing(); 
+  // }
+  if (currentMode === 'smooth') {
     currentMesh = generateSmoothRing(smoothMaterial);
   } else if (currentMode === 'metallic') {
     currentMesh = generateSmoothRing(metallicMaterial);
@@ -295,6 +267,10 @@ function regenerateMesh() {
     currentMesh.castShadow = true;
     currentMesh.receiveShadow = true;
     scene.add(currentMesh);
+  } else {
+    // If no mode somehow matches, or if voxelGrid is empty leading to no mesh from MarchingCubes
+    // we might want to ensure any old mesh is truly gone or show a placeholder/clear the 3D view explicitly.
+    // For now, removing and nullifying currentMesh should suffice.
   }
 }
 
@@ -317,10 +293,12 @@ function exportToOBJ() {
 }
 
 // === UI Event Listeners ===
+/* // Removing Voxel toggle listener
 document.getElementById('toggleVoxel').addEventListener('click', () => {
   currentMode = 'voxel';
-  regenerateMesh(); // Still regenerate immediately when changing view modes
+  regenerateMesh(); 
 });
+*/
 
 document.getElementById('exportObjButton').addEventListener('click', exportToOBJ);
 
@@ -383,5 +361,5 @@ function animate() {
 
 // Initial draw of the empty grid and 3D view setup
 drawGrid(); 
-regenerateMesh(); // Initial empty 3D render (or remove if you want it blank until first generation)
+regenerateMesh(); // Initial render will now be metallic (or empty if grid is empty)
 animate();
