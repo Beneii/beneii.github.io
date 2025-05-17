@@ -5,6 +5,7 @@ permalink: /projects/
 ---
 
 {% include navbar.html %}
+{% include page-hero.html %}
 
 # Projects
 
