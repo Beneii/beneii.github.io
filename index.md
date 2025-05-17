@@ -7,8 +7,7 @@ title: Home
 
 <div class="hero-section">
   <div class="hero-image-container">
-    <img src="https://picsum.photos/seed/benei-portfolio-hero/1600/600" alt="Abstract Hero Image for Portfolio" class="hero-image">
-    <div class="hero-overlay"></div>
+    <img src="/assets/images/heroimage.png" alt="Hero Image" class="hero-image">
   </div>
   <div class="hero-text">
     <img src="/assets/images/portfolio.gif" alt="Portfolio Title" class="hero-gif">

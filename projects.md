@@ -6,19 +6,29 @@ permalink: /projects/
 
 {% include navbar.html %}
 
-Here are some things I've been hacking on. Click any project to see it live or read more.
+# Projects
 
----
+<div class="projects-toolbar" style="margin:1.5rem 0; display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
+  <input type="text" id="projectSearch" placeholder="Search projects…" style="flex:1 1 250px; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px;"/>
+  <select id="categoryFilter" style="padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px;">
+    <option value="all">All Categories</option>
+    <option value="code">Pure Code</option>
+    <option value="hardware">Arduino / Robotics</option>
+    <option value="art">Art / 3-D Design</option>
+  </select>
+</div>
 
-### Blobby Ring Generator
+## Pure Code
+<div class="project-card" data-title="Blobby Ring Generator" data-category="code">
+  <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator" class="project-card-image">
+  <div class="project-card-content">
+    <h3>Blobby Ring Generator</h3>
+    <p>Draw voxels and generate a smooth or metallic 3-D ring in real-time with Three.js &amp; Marching Cubes.</p>
+    <a href="/projects/blobby-ring-generator/" class="btn">Details &amp; Demo</a>
+  </div>
+</div>
 
-+<img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator hero image" style="max-width: 100%; border:2px solid #ccc; margin: 10px 0;" />
+<!-- More project cards can be added in appropriate sections with data-category attr -->
 
- Build trippy voxel art and turn it into a smooth 3-D ring in real-time.
-
-• Tech: Three.js, Marching Cubes, Vanilla JS.  
-• Features: draw on a 2-D grid, toggle voxel vs. smooth vs. metallic view, export OBJ.
-
-[Project details & Live demo](/projects/blobby-ring-generator/) →
-
+<script src="/assets/js/project-filter.js" defer></script>
 <script src="/assets/js/dark-mode.js" defer></script>

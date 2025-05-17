@@ -376,4 +376,14 @@ html.dark .site-nav {
   max-width: 90%;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+}
+
+.projects-toolbar input,
+.projects-toolbar select {
+  font-family: 'Comfortaa', sans-serif;
+}
+
+/* spacing for project cards in listing */
+.projects-list .project-card {
+  margin-bottom: 2rem;
 } 
