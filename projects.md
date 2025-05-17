@@ -82,7 +82,8 @@ permalink: /projects/
 </div>
 
 <script src="/assets/js/project-filter.js" defer></script>
-<script src="/assets/js/dark-mode.js" defer></script>
+<script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
 <script src="/assets/js/scroll-reveal.js" defer></script>
+<script src="/assets/js/dark-mode.js" defer></script>
 
 {% include footer.html %}
