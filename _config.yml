@@ -2,7 +2,12 @@ title: "Benei's Portfolio"
 description: "My personal portfolio showcasing projects, blog posts, and experiments."
 author: "Benei"
 # Use GitHub Pages-supported theme. Remove/change if you have custom styling.
-theme: minima
+# Supply theme replaces Minima
+remote_theme: "YJPL/Supply"
+
+# Custom assets (will be referenced in override includes)
+custom_css: "/assets/css/custom.css"
+custom_js: "/assets/js/dark-mode.js"
 
 # (Optional) social links displayed by the theme
 social_links:

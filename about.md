@@ -18,4 +18,6 @@ I'm a passionate developer and technology enthusiast who loves turning ideas int
 
 When I'm not in front of a screen, you can find me exploring new music, dabbling in design, or enjoying the outdoors.
 
-Feel free to connect with me on [GitHub](https://github.com/Benei) or [LinkedIn](https://linkedin.com/in/Benei). 
+Feel free to connect with me on [GitHub](https://github.com/Benei) or [LinkedIn](https://linkedin.com/in/Benei).
+
+<script src="/assets/js/dark-mode.js" defer></script> 
