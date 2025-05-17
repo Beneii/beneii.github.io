@@ -1,9 +1,17 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { MarchingCubes } from 'three/examples/jsm/objects/MarchingCubes.js';
-import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter.js';
 import { OBJExporter } from 'three/examples/jsm/exporters/OBJExporter.js';
 
+// Debounce function
+function debounce(func, delay) {
+  let timeout;
+  return function(...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+}
 
 const gridResolutionX = 128; // Horizontal resolution
 const gridResolutionY = 128; // Vertical resolution
@@ -26,6 +34,16 @@ let ballRadius = 0.01;
 let marchingCubesResolution = 64;
 
 let voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResolutionX).fill(false));
+
+// === Pre-initialize Materials ===
+const voxelMaterial = new THREE.MeshStandardMaterial({ color: 0x0077ff });
+const smoothMaterial = new THREE.MeshStandardMaterial({ color: 0xff5533, flatShading: true });
+const metallicMaterial = new THREE.MeshStandardMaterial({
+  color: 0xc7c7c7,
+  metalness: 2.5, // Note: Three.js typically caps metalness at 1.0. Values > 1 might not behave as expected across all renderers/versions or might be clamped.
+  roughness: 0.05, // Slightly increased from 0 to reduce potential fireflies
+  // emissive: 0xc7c7c7, // Emissive usually makes it glow, might not be desired unless it\'s an unlit look.
+});
 
 // === Scene Setup ===
 const scene = new THREE.Scene();
@@ -143,8 +161,6 @@ function drawLine(x0, y0, x1, y1) {
   }
 }
 
-
-
 function drawCell(x, y) {
   if (y < minY || y > maxY) return;
 
@@ -168,7 +184,7 @@ function generateVoxelRing() {
       ringRadius / gridResolutionX,
       ringRadius / gridResolutionX
     ),
-    new THREE.MeshStandardMaterial({ color: 0x0077ff }),
+    voxelMaterial,
     gridResolutionX * gridResolutionY
   );
 
@@ -197,12 +213,9 @@ function generateVoxelRing() {
   return instancedMesh;
 }
 
-
-
-
 // === Generate Smooth Ring ===
-function generateSmoothRing(material) {
-  const marchingCubes = new MarchingCubes(marchingCubesResolution, material);
+function generateSmoothRing(materialToUse) {
+  const marchingCubes = new MarchingCubes(marchingCubesResolution, materialToUse, true, true, 100000);
 
   // Match the scale of the voxel ring
   marchingCubes.scale.set(ringRadius * 3, ringHeight * 3, ringRadius * 3);
@@ -238,13 +251,6 @@ function generateSmoothRing(material) {
   return marchingCubes;
 }
 
-
-
-
-
-
-
-
 // === Regenerate Mesh ===
 let currentMesh = null;
 let currentMode = 'voxel';
@@ -255,22 +261,16 @@ function regenerateMesh() {
   if (currentMode === 'voxel') {
     currentMesh = generateVoxelRing();
   } else if (currentMode === 'smooth') {
-    currentMesh = generateSmoothRing(new THREE.MeshStandardMaterial({ color: 0xff5533, flatShading: true }));
+    currentMesh = generateSmoothRing(smoothMaterial);
   } else if (currentMode === 'metallic') {
-    currentMesh = generateSmoothRing(
-      new THREE.MeshStandardMaterial({
-        color: 0xc7c7c7,
-        metalness: 2.5,
-        roughness: 0,
-        emissive: 0xc7c7c7,
-      })
-    );
+    currentMesh = generateSmoothRing(metallicMaterial);
   }
 
-  currentMesh.castShadow = true;
-  currentMesh.receiveShadow = true;
-
-  scene.add(currentMesh);
+  if (currentMesh) {
+    currentMesh.castShadow = true;
+    currentMesh.receiveShadow = true;
+    scene.add(currentMesh);
+  }
 }
 
 function exportToOBJ() {
@@ -290,7 +290,6 @@ function exportToOBJ() {
     console.warn('No mesh to export.');
   }
 }
-
 
 // === UI Event Listeners ===
 document.getElementById('toggleVoxel').addEventListener('click', () => {
@@ -315,14 +314,17 @@ document.getElementById('resetGrid').addEventListener('click', () => {
   drawGrid();
 });
 
+const debouncedRegenerateMesh = debounce(regenerateMesh, 250);
+
 document.getElementById('isolationSlider').addEventListener('input', (e) => {
   isolationValue = parseFloat(e.target.value);
-  regenerateMesh();
+  debouncedRegenerateMesh();
 });
 
 document.getElementById('ballRadiusSlider').addEventListener('input', (e) => {
   ballRadius = parseFloat(e.target.value);
-  regenerateMesh();
+  if (ballRadius === 0) ballRadius = 0.001; // Prevent zero radius for marching cubes
+  debouncedRegenerateMesh();
 });
 
 document.getElementById('brushThicknessSlider').addEventListener('input', (e) => {
@@ -331,15 +333,14 @@ document.getElementById('brushThicknessSlider').addEventListener('input', (e) =>
 
 document.getElementById('resolutionSlider').addEventListener('input', (e) => {
   marchingCubesResolution = parseInt(e.target.value, 10);
-  regenerateMesh();
+  if (marchingCubesResolution < 16) marchingCubesResolution = 16; // Ensure a minimum resolution
+  debouncedRegenerateMesh();
 });
 
 document.getElementById('ringHeightSlider').addEventListener('input', (e) => {
   ringHeight = parseFloat(e.target.value);
-  regenerateMesh();
+  debouncedRegenerateMesh();
 });
-
-
 
 // === Animation ===
 function animate() {
