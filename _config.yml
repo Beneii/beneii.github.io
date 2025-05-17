@@ -3,11 +3,11 @@ description: "My personal portfolio showcasing projects, blog posts, and experim
 author: "Benei"
 # Use GitHub Pages-supported theme. Remove/change if you have custom styling.
 # Supply theme replaces Minima
-remote_theme: "YJPL/Supply"
+remote_theme: "CloudCannon/vonge-jekyll-bookshop-template"
 
 # Custom assets (will be referenced in override includes)
-custom_css: "/assets/css/custom.css"
-custom_js: "/assets/js/dark-mode.js"
+# custom_css: "/assets/css/custom.css"
+# custom_js: "/assets/js/dark-mode.js"
 
 # (Optional) social links displayed by the theme
 social_links:

@@ -39,9 +39,11 @@ let voxelGrid = Array.from({ length: gridResolutionY }, () => Array(gridResoluti
 // const voxelMaterial = new THREE.MeshStandardMaterial({ color: 0x0077ff }); // No longer needed
 const smoothMaterial = new THREE.MeshStandardMaterial({ color: 0xff5533, flatShading: true });
 const metallicMaterial = new THREE.MeshStandardMaterial({
-  color: 0x858585, // user requested lighter (mid-grey)
-  metalness: 1.0,
+  color: 0xffffff, // full white
+  metalness: 0.0, // lower metalness so white shows without env map
   roughness: 0.1,
+  emissive: 0xffffff,
+  emissiveIntensity: 0.05,
 });
 
 // === Scene Setup ===
