@@ -19,8 +19,8 @@ const ringRadius = 1;
 let ringHeight = 1;
 
 // Define restricted vertical range (e.g., middle 50%)
-const minY = Math.floor(gridResolutionY * 0.25); // 25% from the top
-const maxY = Math.floor(gridResolutionY * 0.75); // 75% from the top
+const minY = 0;
+const maxY = gridResolutionY - 1;
 
 let isDrawing = false;
 let lastCell = null;
@@ -348,12 +348,6 @@ document.getElementById('resetGrid').addEventListener('click', () => {
   regenerateMesh(); 
 });
 
-// Add listener for the new Generate button
-const mainGenerateBtn = document.getElementById('generate3DButton');
-mainGenerateBtn.addEventListener('click', () => {
-  regenerateMesh();
-});
-
 // Add listener for the new OVERLAY Generate button
 document.getElementById('generateOverlayButton').addEventListener('click', () => {
   regenerateMesh();
@@ -418,8 +412,13 @@ document.getElementById('liveUpdateToggle').addEventListener('change', (e) => {
   if (liveUpdate) {
     debouncedLiveUpdate(); // Generate immediately when turning on
   }
-  mainGenerateBtn.style.display = liveUpdate ? 'none' : 'inline-block';
 });
 
 // set initial overlay visibility
 document.getElementById('generateOverlayButton').style.display = 'block';
+
+// Texture dropdown
+document.getElementById('textureSelect').addEventListener('change', (e)=>{
+  currentMode = e.target.value;
+  regenerateMesh();
+});

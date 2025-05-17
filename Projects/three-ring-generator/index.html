@@ -144,7 +144,6 @@ layout: null
       <label class="toggle" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
         <input type="checkbox" id="liveUpdateToggle" style="margin:0;" /> Live Update
       </label>
-      <button id="generate3DButton" class="toggle">Generate 3D View</button>
       <button id="undoButton" class="toggle">Undo</button>
       <button id="redoButton" class="toggle">Redo</button>
 
@@ -182,7 +181,11 @@ layout: null
     </p>
   </div>
   <div id="rendererContainer" style="position:relative;">
-    <button id="generateOverlayButton" class="toggle regen-btn" title="Generate 3D View">&#x21bb;</button>
+    <button id="generateOverlayButton" class="toggle regen-btn" title="Generate Mesh">Generate Mesh</button>
+    <select id="textureSelect" class="toggle regen-btn" style="right:110px; top:10px; position:absolute;">
+      <option value="smooth">Blobby Ring</option>
+      <option value="metallic" selected>Metallic Blobby Ring</option>
+    </select>
   </div>
   <script type="module" src="main.js"></script>
 </body>
