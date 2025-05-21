@@ -1,28 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap');
 
 :root {
-  /* Brand palette – grayscale scheme plus amber accent */
-  --bg: #F5F5F5;            /* off-white light bg */
-  --text: #1B1C1D;          /* soft black text */
-  --accent: #FFBB00;        /* warm amber accent */
-
-  /* Dark mode */
-  --bg-dark: #1B1C1D;       /* soft black */
-  --text-dark: #F5F5F5;     /* off-white text on dark */
+  /* Dark theme colors */
+  --bg: #1B1C1D;       /* soft black */
+  --text: #F5F5F5;     /* off-white text */
+  --accent: #FFBB00;   /* warm amber accent */
   --surface-dark: #393E41;  /* charcoal */
   --surface-light: #6E7476; /* steel */
-
-  --primary-color: #007bff;
-  --text-color: #fff;
-}
-
-/* Set dark mode as default */
-html {
-  --bg: var(--bg-dark);
-  --text: var(--text-dark);
-  --accent: var(--accent-dark);
-  --text-color: #fff;
   --card-bg: #2d2d2d;
+  --text-color: #fff;
 }
 
 body {
@@ -30,7 +16,6 @@ body {
   padding: 0;
   background-color: var(--bg);
   color: var(--text);
-  transition: background-color 0.3s ease, color 0.3s ease;
   font-family: 'Comfortaa', sans-serif;
 }
 
@@ -41,6 +26,11 @@ a, .link {
 
 a:hover {
   opacity: 0.8;
+}
+
+/* Floating toggle */
+#mode-toggle {
+  display: none;
 }
 
 /* Hero Section */
@@ -144,7 +134,7 @@ a:hover {
 /* Home Page Sections */
 .home-section {
   padding: 2rem 0;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #eee; /* Subtle separator */
 }
 
 .home-section:last-child {
@@ -166,17 +156,17 @@ a:hover {
 /* Project Card */
 .project-card {
   background-color: var(--card-bg);
-  border: 1px solid #444;
+  border: 1px solid #ddd; /* Softer border */
   border-radius: 8px;
-  overflow: hidden;
+  overflow: hidden; /* To contain image corners */
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
 }
 
 .project-card:hover .project-card-image {
@@ -251,7 +241,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   gap: 2rem;
   align-items: flex-start;
-  background-color: var(--surface-dark);
+  background-color: var(--surface-light);
   padding: 2rem;
   border-radius: 8px;
 }
@@ -271,7 +261,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .project-detail .media img {
   max-width: 100%;
-  border-color: var(--surface-dark);
+  border-color: var(--surface-light);
   border-radius: 6px;
 }
 .project-detail .media .btn {
