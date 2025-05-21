@@ -1,3 +1,14 @@
-<div class="page-hero">
-  <h1>{{ page.title }}</h1>
-</div> 
+<section class="hero fade-in">
+  <div class="hero-content">
+    <h1 class="hero-title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="hero-subtitle">{{ page.description }}</p>
+    {% endif %}
+    {% if page.url == '/' %}
+    <div class="hero-cta">
+      <a href="#featured-projects" class="btn">View My Work</a>
+      <a href="/about" class="btn btn-outline">Learn More About Me</a>
+    </div>
+    {% endif %}
+  </div>
+</section> 

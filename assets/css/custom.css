@@ -11,20 +11,37 @@
   --text-dark: #F5F5F5;     /* off-white text on dark */
   --surface-dark: #393E41;  /* charcoal */
   --surface-light: #6E7476; /* steel */
+
+  /* Light theme variables */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent-color: #2563eb;
+  --border-color: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #d1d5db;
+  --accent-color: #3b82f6;
+  --border-color: #374151;
 }
 
 html.dark {
   --bg: var(--bg-dark);
   --text: var(--text-dark);
-  --accent: var(--accent-dark);
+  --accent: var(--accent-color);
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
   font-family: 'Comfortaa', sans-serif;
 }
 
@@ -129,19 +146,17 @@ html.dark .hero-overlay {
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: var(--accent);
-  color: var(--text); /* Use main text color (dark on light bg, light on dark bg) */
+  background-color: var(--accent-color);
+  color: white;
   text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  border: 2px solid var(--accent);
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.2s;
 }
 
 .btn:hover {
-  background-color: var(--accent);
-  color: var(--text);
-  filter: drop-shadow(0 0 4px var(--accent));
+  background-color: var(--accent-color);
+  opacity: 0.9;
 }
 
 .btn-hero {
@@ -195,28 +210,14 @@ html.dark .home-section {
 
 /* Project Card */
 .project-card {
-  background-color: var(--bg); /* Use CSS var for background */
-  border: 1px solid #ddd; /* Softer border */
+  background-color: var(--bg-secondary);
   border-radius: 8px;
-  overflow: hidden; /* To contain image corners */
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-html.dark .project-card {
-  background-color: #2d2d30; /* Slightly lighter than pure dark bg */
-  border-color: #444;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: transform 0.3s;
 }
 
 .project-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
-}
-
-.project-card:hover .project-card-image {
-  filter: brightness(0.85);
+  transform: translateY(-4px);
 }
 
 .project-card-image {
@@ -234,13 +235,13 @@ html.dark .project-card {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
-  color: var(--text); /* Ensure text color adapts */
+  color: var(--text-primary); /* Ensure text color adapts */
 }
 
 .project-card-content p {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--text);
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -302,7 +303,7 @@ html.dark .project-detail {
 }
 .project-detail .details p,
 .project-detail .details li {
-  color: var(--text);
+  color: var(--text-primary);
 }
 .project-detail .media {
   flex: 0 0 320px;
@@ -355,7 +356,7 @@ html.dark .site-nav.scrolled {
 }
 
 .site-nav.scrolled {
-  background: var(--bg);
+  background: var(--bg-primary);
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -371,7 +372,7 @@ html.dark .site-nav.scrolled {
 .site-nav .logo {
   font-weight: 700;
   text-decoration: none;
-  color: var(--text);
+  color: var(--text-primary);
   font-size: 1.25rem;
 }
 
@@ -384,17 +385,17 @@ html.dark .site-nav.scrolled {
 }
 
 .nav-links a {
-  color: var(--text);
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 600;
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--accent-color);
 }
 
 .nav-links a.active {
-  color: var(--accent);
+  color: var(--accent-color);
   position: relative;
 }
 
@@ -405,12 +406,12 @@ html.dark .site-nav.scrolled {
   bottom: -6px;
   width: 100%;
   height: 2px;
-  background-color: var(--accent);
+  background-color: var(--accent-color);
 }
 
 /* mode toggle in nav */
 #mode-toggle {
-  background: var(--accent);
+  background: var(--accent-color);
   color: var(--bg);
   border: none;
   border-radius: 50%;
@@ -445,7 +446,7 @@ html.dark .site-nav.scrolled {
 .projects-toolbar input,
 .projects-toolbar select {
   font-family: 'Comfortaa', sans-serif;
-  border: 1px solid var(--text);
+  border: 1px solid var(--text-primary);
 }
 
 /* spacing for project cards in listing */
@@ -474,7 +475,7 @@ html.dark .site-nav.scrolled {
   color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 2px solid var(--accent);
+  border-right: 2px solid var(--accent-color);
 }
 
 /* ---------------- Scroll Reveal ---------------- */
@@ -491,7 +492,7 @@ html { scroll-behavior: smooth; }
   left: 0;
   width: 100%;
   height: 160px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--bg) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--bg-primary) 100%);
   pointer-events: none;
 }
 
@@ -502,7 +503,7 @@ html { scroll-behavior: smooth; }
 .about-container { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; }
 .about-text { flex: 1 1 320px; }
 .about-portrait { flex: 0 0 240px; text-align:center; }
-.about-portrait img { width: 240px; height: 240px; object-fit: cover; border-radius: 50%; border:4px solid var(--accent); }
+.about-portrait img { width: 240px; height: 240px; object-fit: cover; border-radius: 50%; border:4px solid var(--accent-color); }
 
 @media(max-width: 768px){
   .about-container { flex-direction: column; text-align: center; }
@@ -553,4 +554,20 @@ html { scroll-behavior: smooth; }
   color: #fff; /* Ensure h1 is white */
   position: relative; /* Above overlay */
   z-index: 2;
+}
+
+/* Accessibility */
+:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
 } 

@@ -1,85 +1,74 @@
 ---
-layout: page
+layout: default
 title: Projects
-permalink: /projects/
+description: "Explore my portfolio of interactive systems, creative technology, and software projects"
 ---
 
-{% include navbar.html %}
 {% include page-hero.html %}
 
-<div class="page-content-container">
-  <div class="projects-toolbar" style="margin:1.5rem 0; display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
-    <input type="text" id="projectSearch" placeholder="Search projects…" style="flex:1 1 250px; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px;"/>
-    <select id="categoryFilter" style="padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px;">
-      <option value="all">All Categories</option>
-      <option value="code">Pure Code</option>
-      <option value="hardware">Arduino / Robotics</option>
-      <option value="art">Art / 3-D Design</option>
-    </select>
-  </div>
+<section class="projects-section fade-in">
+  <div class="container">
+    <div class="projects-toolbar">
+      <div class="projects-filter">
+        <label for="category-filter">Filter by:</label>
+        <select id="category-filter">
+          <option value="all">All Projects</option>
+          <option value="web">Web Development</option>
+          <option value="hardware">Hardware/Creative Tech</option>
+          <option value="game">Games/Experiments</option>
+          <option value="automation">Automation/Tooling</option>
+        </select>
+      </div>
+    </div>
 
-  <h2>Pure Code</h2>
-  <div class="projects-list">
-    <div class="project-card reveal" data-title="Focus+" data-category="code">
-      <img src="/assets/images/focusplushero.png" alt="Focus+ Chrome Extension" class="project-card-image">
-      <div class="project-card-content">
-        <h3>Focus+</h3>
-        <p>A Chrome extension that helps you stay focused and productive by blocking distracting websites and providing a clean, minimalist interface.</p>
-        <a href="https://chrome.google.com/webstore/detail/focus-plus/placeholder" class="btn">View on Chrome Web Store</a>
-      </div>
-    </div>
-    <div class="project-card reveal" data-title="Blobby Ring Generator" data-category="code">
-      <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator" class="project-card-image">
-      <div class="project-card-content">
-        <h3>Blobby Ring Generator</h3>
-        <p>Draw voxels and generate a smooth or metallic 3-D ring in real-time with Three.js &amp; Marching Cubes.</p>
-        <a href="/projects/blobby-ring-generator/" class="btn">Details &amp; Demo</a>
-      </div>
-    </div>
-    <div class="project-card reveal" data-title="Data Viz Dashboard" data-category="code">
-      <img src="https://picsum.photos/seed/dataviz/600/400" alt="Data Viz Dashboard" class="project-card-image">
-      <div class="project-card-content">
-        <h3>Data Viz Dashboard</h3>
-        <p>An interactive dashboard for visualizing complex datasets using D3.js and React.</p>
-        <a href="#" class="btn">Details &amp; Demo</a>
-      </div>
-    </div>
-  </div>
-
-  <h2>Arduino / Robotics</h2>
-  <div class="projects-list">
-    <div class="project-card reveal" data-title="Automated Plant Waterer" data-category="hardware">
-      <img src="https://picsum.photos/seed/plantbot/600/400" alt="Automated Plant Waterer" class="project-card-image">
-      <div class="project-card-content">
-        <h3>Automated Plant Waterer</h3>
-        <p>A smart system using Arduino and soil moisture sensors to keep your plants happy.</p>
-        <a href="#" class="btn">Details &amp; Demo</a>
-      </div>
-    </div>
-    <div class="project-card reveal" data-title="CNC Plotter Bot" data-category="hardware">
-      <img src="https://picsum.photos/seed/plotterbot/600/400" alt="CNC Plotter Bot" class="project-card-image">
-      <div class="project-card-content">
-        <h3>CNC Plotter Bot</h3>
-        <p>A custom-built 2D plotter that can draw vector graphics with precision.</p>
-        <a href="#" class="btn">Details &amp; Demo</a>
-      </div>
+    <div class="projects-grid">
+      {% for project in site.projects %}
+      <article class="project-card" data-category="{{ project.category }}">
+        {% if project.image %}
+        <img src="{{ project.image }}" alt="{{ project.title }}" class="project-image">
+        {% endif %}
+        <div class="project-content">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <div class="project-tags">
+            {% for tag in project.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          <div class="project-links">
+            <a href="{{ project.url }}" class="btn">View Details</a>
+            {% if project.demo_url %}
+            <a href="{{ project.demo_url }}" class="btn btn-outline" target="_blank">Live Demo</a>
+            {% endif %}
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" class="btn btn-outline" target="_blank">GitHub</a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
+</section>
 
-  <h2>Art / 3-D Design</h2>
-  <div class="projects-list">
-    <div class="project-card reveal" data-title="Abstract Voxel Sculptures" data-category="art">
-      <img src="https://picsum.photos/seed/voxelart/600/400" alt="Abstract Voxel Sculptures" class="project-card-image">
-      <div class="project-card-content">
-        <h3>Abstract Voxel Sculptures</h3>
-        <p>A series of generative 3D sculptures created with custom voxel tools and Blender.</p>
-        <a href="#" class="btn">Details &amp; Demo</a>
-      </div>
-    </div>
-  </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filter = document.getElementById('category-filter');
+  const projects = document.querySelectorAll('.project-card');
 
-  <p style="text-align:center;margin-top:2rem;"><a href="#" class="btn btn-secondary" id="loadMoreBtn">Load More Projects</a></p>
-</div>
+  filter.addEventListener('change', function() {
+    const category = this.value;
+    
+    projects.forEach(project => {
+      if (category === 'all' || project.dataset.category === category) {
+        project.style.display = 'block';
+      } else {
+        project.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
 
 <script src="/assets/js/project-filter.js" defer></script>
 <script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
