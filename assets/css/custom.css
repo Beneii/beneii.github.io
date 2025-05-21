@@ -1,15 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap');
 
 :root {
-  /* Dark theme colors */
-  --bg: #1B1C1D;       /* soft black */
-  --text: #F5F5F5;     /* off-white text */
-  --accent: #FFBB00;   /* warm amber accent */
-  --surface: #393E41;  /* charcoal */
-  --card-bg: #2d2d2d;
+  /* Brand palette – grayscale scheme plus amber accent */
+  --bg: #F5F5F5;            /* off-white light bg */
+  --text: #1B1C1D;          /* soft black text */
+  --accent: #FFBB00;        /* warm amber accent */
+
+  /* Dark mode */
+  --bg-dark: #1B1C1D;       /* soft black */
+  --text-dark: #F5F5F5;     /* off-white text on dark */
+  --surface-dark: #393E41;  /* charcoal */
+  --surface-light: #6E7476; /* steel */
 
   --primary-color: #007bff;
-  --text-color: #333;
+  --text-color: #fff;
+}
+
+/* Set dark mode as default */
+html {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --accent: var(--accent-dark);
+  --text-color: #fff;
+  --card-bg: #2d2d2d;
 }
 
 body {
@@ -17,6 +30,7 @@ body {
   padding: 0;
   background-color: var(--bg);
   color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
   font-family: 'Comfortaa', sans-serif;
 }
 
@@ -237,7 +251,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   gap: 2rem;
   align-items: flex-start;
-  background-color: var(--surface);
+  background-color: var(--surface-dark);
   padding: 2rem;
   border-radius: 8px;
 }
@@ -257,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .project-detail .media img {
   max-width: 100%;
-  border-color: var(--surface);
+  border-color: var(--surface-dark);
   border-radius: 6px;
 }
 .project-detail .media .btn {
@@ -522,7 +536,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* Footer */
-.site-footer{background:var(--surface);color:var(--text);padding:2rem 0;margin-top:4rem;}
+.site-footer{background:var(--surface-dark);color:var(--text);padding:2rem 0;margin-top:4rem;}
 .footer-container{max-width:960px;margin:0 auto;text-align:center;}
 .footer-container img{width:24px;height:24px;margin:0 8px;filter:invert(1);}
 
