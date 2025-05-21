@@ -6,7 +6,6 @@ permalink: /about/
 
 {% include navbar.html %}
 {% include page-hero.html %}
-<div class="page-content-container">
 
 ## Hello, I'm Benei 👋 {: .reveal }
 
@@ -27,7 +26,5 @@ Feel free to connect with me on [GitHub](https://github.com/Benei) or [LinkedIn]
 <script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script>
-
-</div>
 
 {% include footer.html %} 

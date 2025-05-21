@@ -12,15 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
   const stored = localStorage.getItem('darkMode') === '1';
   if (stored) root.classList.add('dark');
 
-  const button = document.createElement('button');
-  button.id = 'mode-toggle';
-  button.title = 'Toggle dark / light mode';
-  button.innerHTML = stored ? '☀️' : '🌙';
-  document.body.appendChild(button);
-
-  button.addEventListener('click', () => {
-    const isDark = root.classList.toggle('dark');
-    localStorage.setItem('darkMode', isDark ? '1' : '0');
-    button.innerHTML = isDark ? '☀️' : '🌙';
-  });
 }); 
