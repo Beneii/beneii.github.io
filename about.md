@@ -8,26 +8,33 @@ permalink: /about/
 {% include page-hero.html %}
 
 <div class="page-content-container">
-
-## Hello, I'm Benei 👋
-{:.reveal}
-
-I'm a passionate developer and technology enthusiast who loves turning ideas into functional, user-focused solutions.
-
-## What I do
-{:.reveal}
-
-- **Software Development:** Building applications with clean, maintainable code.
-- **Web Engineering:** Creating accessible and responsive web experiences.
-- **Continuous Learning:** Experimenting with new tools, frameworks, and best practices.
-
-## Outside of Code
-{:.reveal}
-
-When I'm not in front of a screen, you can find me exploring new music, dabbling in design, or enjoying the outdoors.
-
-Feel free to connect with me on [GitHub](https://github.com/Benei) or [LinkedIn](https://linkedin.com/in/Benei).
-
+  <section class="home-section intro-section reveal">
+    <h2>About Me</h2>
+    <div class="about-container">
+      <div class="about-text">
+        <p class="about-intro">I'm Benei, a passionate developer and technology enthusiast who loves turning ideas into functional, user-focused solutions. My journey in tech is all about building, learning, and sharing.</p>
+        <div class="expertise-grid">
+          <div class="expertise-item">
+            <h3>🔨 Software Development</h3>
+            <p>Building applications with clean, maintainable code. I enjoy solving problems and creating robust, scalable solutions.</p>
+          </div>
+          <div class="expertise-item">
+            <h3>🌐 Web Engineering</h3>
+            <p>Creating accessible and responsive web experiences. I care about usability, performance, and delightful user interfaces.</p>
+          </div>
+          <div class="expertise-item">
+            <h3>📚 Continuous Learning</h3>
+            <p>Experimenting with new tools, frameworks, and best practices. I believe in always growing and sharing knowledge with others.</p>
+          </div>
+        </div>
+        <p style="margin-top:2rem;">When I'm not in front of a screen, you can find me exploring new music, dabbling in design, or enjoying the outdoors.<br>
+        Feel free to connect with me on <a href="https://github.com/Benei" target="_blank">GitHub</a> or <a href="https://linkedin.com/in/Benei" target="_blank">LinkedIn</a>.</p>
+      </div>
+      <div class="about-portrait">
+        <img src="/assets/images/portrait.png" alt="Portrait of Benei" />
+      </div>
+    </div>
+  </section>
 </div>
 
 <script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
