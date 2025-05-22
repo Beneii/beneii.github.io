@@ -1,42 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
   const heroImage = document.querySelector('.hero-image');
-  const heroContainer = document.querySelector('.hero-image-container');
-  
-  if (!heroImage || !heroContainer) return;
+  if (!heroImage) return;
 
   // Parallax effect settings
-  const parallaxStrength = 0.05; // Adjust this value to control the movement intensity
-  const maxOffset = 20; // Maximum pixel offset
+  const maxOffset = 10; // Reduce max offset to prevent gaps
+  const scale = 1.08; // Slightly enlarge image to cover edges
 
   // Function to handle mouse movement
   const handleMouseMove = (e) => {
-    // Get mouse position relative to the viewport
     const mouseX = e.clientX / window.innerWidth;
     const mouseY = e.clientY / window.innerHeight;
-
-    // Calculate the offset (centered around 0)
     const offsetX = (mouseX - 0.5) * maxOffset;
     const offsetY = (mouseY - 0.5) * maxOffset;
-
-    // Apply the transform with a slight scale effect
-    heroImage.style.transform = `
-      translate(${offsetX}px, ${offsetY}px)
-      scale(1.05)
-    `;
+    heroImage.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
   };
 
-  // Function to handle mouse leave
-  const handleMouseLeave = () => {
-    heroImage.style.transform = 'translate(0, 0) scale(1)';
-  };
+  // Reset on mouse leave (optional, but not needed if always tracking)
+  // window.addEventListener('mouseout', () => {
+  //   heroImage.style.transform = `translate(0, 0) scale(${scale})`;
+  // });
 
-  // Add event listeners
-  heroContainer.addEventListener('mousemove', handleMouseMove);
-  heroContainer.addEventListener('mouseleave', handleMouseLeave);
+  window.addEventListener('mousemove', handleMouseMove);
 
   // Handle reduced motion preference
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    heroContainer.removeEventListener('mousemove', handleMouseMove);
-    heroContainer.removeEventListener('mouseleave', handleMouseLeave);
+    window.removeEventListener('mousemove', handleMouseMove);
+    heroImage.style.transform = `scale(1)`;
   }
 }); 

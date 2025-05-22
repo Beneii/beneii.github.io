@@ -33,7 +33,7 @@ body.loaded {
 :root {
   --bg: #1B1C1D;            /* dark background */
   --text: #F5F5F5;          /* off-white text */
-  --accent: #FFBB00;        /* warm amber accent */
+  --accent: #ff8800;        /* warm amber accent */
   --surface-dark: #393E41;  /* charcoal */
   --surface-light: #6E7476; /* steel */
   --primary-color: #007bff;
@@ -101,6 +101,7 @@ a:hover {
   transform-origin: center;
   transition: transform 0.1s ease-out;
   will-change: transform;
+  transform: scale(1.08);
 }
 
 .hero-overlay {
@@ -630,4 +631,22 @@ html, body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
+}
+
+.btn.hero-cta,
+.btn.hero-cta-secondary {
+  background: none !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  font-size: 1.1rem;
+  padding: 0.9rem 2rem;
+  transition: none;
+  text-shadow: none;
+}
+.btn.hero-cta:hover,
+.btn.hero-cta-secondary:hover {
+  background: none !important;
+  color: #fff !important;
+  filter: none;
 } 
