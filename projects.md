@@ -44,6 +44,14 @@ permalink: /projects/
         <a href="/projects/sixes-machine/" class="btn">Read Case Study</a>
       </div>
     </div>
+    <div class="project-card reveal" data-title="PlanIt" data-category="code">
+      <img src="/assets/images/PlanIt1.png" alt="PlanIt iOS App" class="project-card-image">
+      <div class="project-card-content">
+        <h3>PlanIt</h3>
+        <p>Planet-themed iOS app for tasks & calendar management. Integrates with Canvas or lets you add your own tasks!</p>
+        <a href="/projects/planit/" class="btn">Read Case Study</a>
+      </div>
+    </div>
   </div>
 
   <h2>Arduino / Robotics</h2>
