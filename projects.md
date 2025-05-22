@@ -36,12 +36,12 @@ permalink: /projects/
         <a href="/projects/blobby-ring-generator/" class="btn">Read Case Study</a>
       </div>
     </div>
-    <div class="project-card reveal" data-title="Data Viz Dashboard" data-category="code">
-      <img src="https://picsum.photos/seed/dataviz/600/400" alt="Data Viz Dashboard" class="project-card-image">
+    <div class="project-card reveal" data-title="Sixes Machine" data-category="code">
+      <img src="/assets/images/sixes-placeholder.png" alt="Sixes Machine Automation" class="project-card-image">
       <div class="project-card-content">
-        <h3>Data Viz Dashboard</h3>
-        <p>An interactive dashboard for visualizing complex datasets using D3.js and React.</p>
-        <a href="#" class="btn">Details &amp; Demo</a>
+        <h3>Sixes Machine</h3>
+        <p>Automates filling the job column in MYOB shop sales with '6' using mouse/clipboard scripting. Saves hours of manual work!</p>
+        <a href="/projects/sixes-machine/" class="btn">Read Case Study</a>
       </div>
     </div>
   </div>
