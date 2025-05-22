@@ -25,7 +25,7 @@ permalink: /projects/
       <div class="project-card-content">
         <h3>Focus+</h3>
         <p>A Chrome extension that helps you stay focused and productive by blocking distracting websites and providing a clean, minimalist interface.</p>
-        <a href="https://chrome.google.com/webstore/detail/focus-plus/placeholder" class="btn">View on Chrome Web Store</a>
+        <a href="/projects/focus-plus/" class="btn">Read Case Study</a>
       </div>
     </div>
     <div class="project-card reveal" data-title="Blobby Ring Generator" data-category="code">
@@ -33,7 +33,7 @@ permalink: /projects/
       <div class="project-card-content">
         <h3>Blobby Ring Generator</h3>
         <p>Draw voxels and generate a smooth or metallic 3-D ring in real-time with Three.js &amp; Marching Cubes.</p>
-        <a href="/projects/blobby-ring-generator/" class="btn">Details &amp; Demo</a>
+        <a href="/projects/blobby-ring-generator/" class="btn">Read Case Study</a>
       </div>
     </div>
     <div class="project-card reveal" data-title="Data Viz Dashboard" data-category="code">
