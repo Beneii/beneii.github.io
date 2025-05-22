@@ -34,6 +34,7 @@ body.loaded {
   --bg: #1B1C1D;            /* dark background */
   --text: #F5F5F5;          /* off-white text */
   --accent: #4da3ff;        /* warm amber accent */
+  --nav-highlight: #ff8800;
   --surface-dark: #393E41;  /* charcoal */
   --surface-light: #eaeaea; /* steel */
   --primary-color: #4da3ff;
@@ -45,6 +46,7 @@ html.light {
   --bg: #f5f7fa;
   --text: #1B1C1D;
   --accent: #4da3ff;
+  --nav-highlight: #4da3ff;
   --surface-dark: #eaeaea;
   --surface-light: #fff;
   --primary-color: #4da3ff;
@@ -422,7 +424,7 @@ html.dark .site-nav.scrolled {
 }
 
 .nav-links a.active {
-  color: var(--accent);
+  color: var(--nav-highlight);
   position: relative;
 }
 
@@ -433,7 +435,7 @@ html.dark .site-nav.scrolled {
   bottom: -6px;
   width: 100%;
   height: 2px;
-  background-color: var(--accent);
+  background-color: var(--nav-highlight);
 }
 
 /* mode toggle in nav */
