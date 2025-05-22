@@ -7,7 +7,7 @@ title: Home
 
 <div class="hero-section">
   <div class="hero-image-container">
-    <img src="/assets/images/heroimage.png" alt="Hero Image" class="hero-image">
+    <img src="/assets/images/heroimage.png" alt="Hero Image" class="hero-image" id="hero-image">
     <div class="hero-gradient-overlay"></div>
   </div>
   <div class="hero-text">

@@ -33,12 +33,23 @@ body.loaded {
 :root {
   --bg: #1B1C1D;            /* dark background */
   --text: #F5F5F5;          /* off-white text */
-  --accent: #ff8800;        /* warm amber accent */
+  --accent: #4da3ff;        /* warm amber accent */
   --surface-dark: #393E41;  /* charcoal */
-  --surface-light: #6E7476; /* steel */
-  --primary-color: #007bff;
-  --text-color: #fff;
+  --surface-light: #eaeaea; /* steel */
+  --primary-color: #4da3ff;
+  --text-color: #F5F5F5;
   --card-bg: #2d2d2d;
+}
+
+html.light {
+  --bg: #f5f7fa;
+  --text: #1B1C1D;
+  --accent: #4da3ff;
+  --surface-dark: #eaeaea;
+  --surface-light: #fff;
+  --primary-color: #4da3ff;
+  --text-color: #1B1C1D;
+  --card-bg: #fff;
 }
 
 body {
@@ -93,6 +104,10 @@ a:hover {
   pointer-events: none;
   z-index: 2;
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--bg) 100%);
+}
+
+html.light .hero-gradient-overlay {
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--bg) 100%);
 }
 
 .hero-image {
@@ -623,7 +638,7 @@ html { scroll-behavior: smooth; }
 .page-hero h1 {
   font-size: 2.2rem;
   margin: 0;
-  color: #fff; /* Ensure h1 is white */
+  color: var(--text-color);
   position: relative; /* Above overlay */
   z-index: 2;
 }
@@ -639,7 +654,7 @@ html, body {
 .btn.hero-cta-secondary {
   background: none !important;
   border: none !important;
-  color: #fff !important;
+  color: var(--text-color) !important;
   box-shadow: none !important;
   font-size: 1.1rem;
   padding: 0.9rem 2rem;
@@ -649,6 +664,6 @@ html, body {
 .btn.hero-cta:hover,
 .btn.hero-cta-secondary:hover {
   background: none !important;
-  color: #fff !important;
+  color: var(--text-color) !important;
   filter: none;
 } 
