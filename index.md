@@ -8,6 +8,7 @@ title: Home
 <div class="hero-section">
   <div class="hero-image-container">
     <img src="/assets/images/heroimage.png" alt="Hero Image" class="hero-image">
+    <div class="hero-gradient-overlay"></div>
   </div>
   <div class="hero-text">
     <img src="/assets/images/portfolio.gif" alt="Portfolio Title" class="hero-gif">
