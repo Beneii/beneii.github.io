@@ -668,4 +668,18 @@ html, body {
   background: none !important;
   color: var(--text-color) !important;
   filter: none;
+}
+
+html.light .hero-section,
+html.light .hero-section * {
+  color: #fff !important;
+}
+
+html.light .site-nav,
+html.light .site-nav * {
+  color: #fff !important;
+}
+
+#mode-toggle {
+  color: #fff !important;
 } 
