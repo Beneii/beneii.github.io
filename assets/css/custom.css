@@ -33,11 +33,11 @@ body.loaded {
 :root {
   --bg: #1B1C1D;            /* dark background */
   --text: #F5F5F5;          /* off-white text */
-  --accent: #4da3ff;        /* warm amber accent */
+  --accent: #ff8800;        /* warm amber accent */
   --nav-highlight: #ff8800;
   --surface-dark: #393E41;  /* charcoal */
   --surface-light: #eaeaea; /* steel */
-  --primary-color: #4da3ff;
+  --primary-color: #ff8800;
   --text-color: #F5F5F5;
   --card-bg: #2d2d2d;
 }

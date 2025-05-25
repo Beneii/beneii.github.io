@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (stored === '0') {
     root.classList.add('light');
     if (modeToggle) modeToggle.textContent = '☀️';
-    if (heroImage) heroImage.src = '/assets/images/heroimagelight.png';
+    if (heroImage) heroImage.src = '/assets/images/heroimagelight.jpg';
   } else {
     root.classList.remove('light');
     if (modeToggle) modeToggle.textContent = '🌙';
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isLight) {
         localStorage.setItem('darkMode', '0');
         modeToggle.textContent = '☀️';
-        if (heroImage) heroImage.src = '/assets/images/heroimagelight.png';
+        if (heroImage) heroImage.src = '/assets/images/heroimagelight.jpg';
       } else {
         localStorage.setItem('darkMode', '1');
         modeToggle.textContent = '🌙';
