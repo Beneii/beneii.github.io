@@ -629,14 +629,7 @@ html { scroll-behavior: smooth; }
 }
 
 .page-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.6); /* Dark overlay */
-  z-index: 1;
+  background: none !important;
 }
 
 .page-hero h1 {
@@ -693,4 +686,9 @@ html.light .site-nav.scrolled, html.light .site-nav.scrolled * {
 
 html.light .page-hero {
   background-image: url('/assets/images/heroimagelight.jpg'); /* use light hero image */
+}
+
+/* Ensure page title remains white in light mode */
+html.light .page-hero h1 {
+  color: #fff !important;
 } 
