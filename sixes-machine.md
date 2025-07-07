@@ -11,8 +11,11 @@ permalink: /projects/sixes-machine/
     <div class="details">
       <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
         <figure style="flex:1;min-width:250px;text-align:center;">
-          <img src="/assets/images/sixes-placeholder.png" alt="Sixes Machine Automation hero image" style="max-width:100%;border-radius:8px;"/>
-          <figcaption>Automated 'Sixes' Machine (MYOB Automation Script)</figcaption>
+          <video controls style="max-width:100%;border-radius:8px;">
+            <source src="/assets/images/Screen Recording 2025-05-22 105303.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Automated 'Sixes' Machine in action (screen recording)</figcaption>
         </figure>
       </div>
       <h2>Project Overview</h2>
