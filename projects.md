@@ -52,6 +52,14 @@ permalink: /projects/
         <a href="/projects/planit/" class="btn">Read Case Study</a>
       </div>
     </div>
+    <div class="project-card reveal" data-title="Space Monkeys" data-category="code">
+      <img src="https://picsum.photos/seed/spacemonkeys/600/400" alt="Space Monkeys Game" class="project-card-image">
+      <div class="project-card-content">
+        <h3>Space Monkeys</h3>
+        <p>A frantic zero-gravity multiplayer arena brawler created in Unity for a university group project.</p>
+        <a href="/projects/space-monkeys/" class="btn">Read Case Study</a>
+      </div>
+    </div>
   </div>
 
   <h2>Arduino / Robotics</h2>
