@@ -29,6 +29,12 @@ permalink: /projects/space-monkeys/
         <li><kbd>Esc</kbd> — Main Menu</li>
       </ul>
 
+      <h3>Teamwork & Recognition</h3>
+      <p>Working on <strong>Space Monkeys</strong> taught our team the value of clear communication, tight iteration loops, and collective ownership of game feel. These lessons have strengthened my collaboration skills for future projects.</p>
+
+      <p class="badge" style="display:inline-block;margin-bottom:1rem;background-color:#ff8800;color:#000;padding:4px 10px;border-radius:999px;font-weight:600;">2025 UTS Student Games Showcase Nominee</p>
+      <p>Our Subject Coordinator hand-picked Space Monkeys for the <em>2025 UTS Student Games Showcase</em>.  At the event I presented the game, gathered focused feedback, explored other standout projects, and spoke with industry guests from Riot Games and MSI—an invaluable chance to network and refine our craft.</p>
+
       <p style="margin-top:1rem;font-style:italic;">Game Design Methodologies Assessment #2 — Group Cozy: Liam Skinner, James Kirwan, Ben Jones, Maia Nixon</p>
 
       <h3>Tech Stack</h3>

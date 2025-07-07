@@ -55,7 +55,7 @@ permalink: /projects/
       <div class="project-card-content">
         <h3>Space Monkeys</h3>
         <span class="badge">C#</span>
-        <p>A frantic zero-gravity multiplayer arena brawler created in Unity for a university group project.</p>
+        <p>4-level elemental platformer built in Unity. Nominated for the 2025 UTS Student Games Showcase and a showcase of strong team collaboration.</p>
         <a href="/projects/space-monkeys/" class="btn">Read Case Study</a>
       </div>
     </div>
