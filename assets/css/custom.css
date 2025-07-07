@@ -684,4 +684,13 @@ html.light .site-nav * {
 
 #mode-toggle {
   color: #fff !important;
+}
+
+/* === Light Mode Fixes === */
+html.light .site-nav.scrolled, html.light .site-nav.scrolled * {
+  color: var(--text) !important; /* ensure readable text on white nav */
+}
+
+html.light .page-hero {
+  background-image: url('/assets/images/heroimagelight.jpg'); /* use light hero image */
 } 
