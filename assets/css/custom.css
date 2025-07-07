@@ -701,6 +701,10 @@ html.light .page-hero h1 {
   padding: 1rem;
   overflow-x: auto;
   max-height: 600px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  white-space: pre;
+  line-height: 1.4;
 }
 
 html.light .code-scroll {
