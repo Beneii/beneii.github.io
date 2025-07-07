@@ -51,7 +51,7 @@ permalink: /projects/
       </div>
     </div>
     <div class="project-card reveal" data-title="Space Monkeys" data-category="csharp">
-      <img src="https://picsum.photos/seed/spacemonkeys/600/400" alt="Space Monkeys Game" class="project-card-image">
+      <img src="/assets/images/SpaceMonkeys.png" alt="Space Monkeys Game" class="project-card-image" style="image-rendering:pixelated;image-rendering:crisp-edges;">
       <div class="project-card-content">
         <h3>Space Monkeys</h3>
         <span class="badge">C#</span>

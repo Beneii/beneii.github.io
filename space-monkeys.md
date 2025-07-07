@@ -11,12 +11,25 @@ permalink: /projects/space-monkeys/
     <div class="details">
       <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
         <figure style="flex:1;min-width:250px;text-align:center;">
-          <img src="https://picsum.photos/seed/spacemonkeys/800/500" alt="Space Monkeys Game hero image" style="max-width:100%;border-radius:8px;"/>
+          <img src="/assets/images/SpaceMonkeys.png" alt="Space Monkeys pixel art hero image" style="max-width:100%;border-radius:8px;image-rendering:pixelated;image-rendering:crisp-edges;"/>
           <figcaption>Space Monkeys – Group Game Project</figcaption>
         </figure>
       </div>
-      <h2>About the Game</h2>
-      <p><strong>Space Monkeys</strong> is a frantic local-multiplayer brawler created in under 12 weeks for our university group capstone. Up to four players jet-pack around a zero-gravity arena, slinging bananas and physics-based projectiles to knock each other into the void.</p>
+      <h2>Game Overview</h2>
+      <p><strong>Space Monkey, you're our last hope!</strong> Our spaceship has run out of fuel and the only way home is to gather elemental resources from Earth across multiple eras.  Guide our brave simian hero through <strong>4 challenging levels (plus a tutorial)</strong>, each built around a unique elemental power.</p>
+
+      <p>Dash, jump, and unleash <em>Fire, Water, Earth, and Air</em> abilities to collect every element, appease the Monkey King, and blast the crew back into orbit. Levels intentionally feature tight jumps and tricky puzzles—keep trying, mastery is rewarded!</p>
+
+      <h3>Controls</h3>
+      <ul>
+        <li><kbd>A</kbd> / <kbd>←</kbd> — Move Left</li>
+        <li><kbd>D</kbd> / <kbd>→</kbd> — Move Right</li>
+        <li><kbd>W</kbd> / <kbd>Space</kbd> — Jump</li>
+        <li><kbd>1-4</kbd> — Switch Elemental Powers</li>
+        <li><kbd>Esc</kbd> — Main Menu</li>
+      </ul>
+
+      <p style="margin-top:1rem;font-style:italic;">Game Design Methodologies Assessment #2 — Group Cozy: Liam Skinner, James Kirwan, Ben Jones, Maia Nixon</p>
 
       <h3>Tech Stack</h3>
       <ul>
