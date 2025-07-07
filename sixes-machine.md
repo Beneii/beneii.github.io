@@ -31,6 +31,7 @@ permalink: /projects/sixes-machine/
       <h2>Automation Script (AutoHotkey)</h2>
       <p>The complete script is provided below for reference and learning purposes.</p>
 
+      <div class="code-scroll">
       {% raw %}
       ```autohotkey
       #Persistent
@@ -269,6 +270,7 @@ permalink: /projects/sixes-machine/
       Esc::ExitApp
       ```
       {% endraw %}
+      </div>
 
       <h2>Case Study Coming Soon</h2>
       <p>This page will soon feature a full case study, technical reflection, and screenshots of the Sixes Machine in action.</p>
