@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* Loading overlay */
 .loading-overlay {
@@ -60,7 +60,9 @@ body {
   background-color: var(--bg);
   color: var(--text);
   transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Inter', 'Comfortaa', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 a, .link {
@@ -192,15 +194,15 @@ html.dark .hero-overlay {
 
 /* Page Content Container for consistent padding */
 .page-content-container {
-  max-width: 960px; /* Or your preferred content width */
-  margin: 2rem auto; /* Centering and spacing */
+  max-width: 760px;
+  margin: 2rem auto;
   padding: 0 1rem;
 }
 
 /* Home Page Sections */
 .home-section {
-  padding: 2rem 0;
-  border-bottom: 1px solid #eee; /* Subtle separator */
+  padding: 4rem 0;
+  border-bottom: 1px solid #eee;
 }
 
 html.dark .home-section {
