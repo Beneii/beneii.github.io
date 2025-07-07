@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Sixes Machine"
-permalink: /projects/sixes-machine/
+title: "Shop Sales Automation"
+permalink: /projects/shop-sales-automation/
 ---
 
 {% include navbar.html %}
@@ -15,7 +15,7 @@ permalink: /projects/sixes-machine/
             <source src="/assets/images/Screen Recording 2025-05-22 105303.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <figcaption>Automated 'Sixes' Machine in action (screen recording)</figcaption>
+          <figcaption>Shop Sales Automation – AutoHotkey script in action</figcaption>
         </figure>
       </div>
       <h2>Project Overview</h2>

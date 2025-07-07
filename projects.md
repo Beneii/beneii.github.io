@@ -32,13 +32,13 @@ permalink: /projects/
         <a href="/projects/blobby-ring-generator/" class="btn">Read Case Study</a>
       </div>
     </div>
-    <div class="project-card reveal" data-title="Sixes Machine" data-category="autohotkey">
-      <img src="/assets/images/sixes-placeholder.png" alt="Sixes Machine Automation" class="project-card-image">
+    <div class="project-card reveal" data-title="Shop Sales Automation" data-category="autohotkey">
+      <img src="https://www.autohotkey.com/static/ahk_logo.png" alt="Shop Sales Automation" class="project-card-image" style="image-rendering:crisp-edges;">
       <div class="project-card-content">
-        <h3>Sixes Machine</h3>
+        <h3>Shop Sales Automation</h3>
         <span class="badge">AutoHotkey</span>
         <p>Automates filling the job column in MYOB shop sales with '6' using mouse/clipboard scripting. Saves hours of manual work!</p>
-        <a href="/projects/sixes-machine/" class="btn">Read Case Study</a>
+        <a href="/projects/shop-sales-automation/" class="btn">Read Case Study</a>
       </div>
     </div>
     <div class="project-card reveal" data-title="PlanIt" data-category="swift">
