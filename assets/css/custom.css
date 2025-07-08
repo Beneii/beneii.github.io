@@ -528,9 +528,8 @@ html { scroll-behavior: smooth; }
 /* About section two-column */
 .about-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 1fr; /* Single column now that portrait is removed */
+  gap: 2rem;
 }
 
 .about-intro {
