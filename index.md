@@ -62,7 +62,6 @@ title: Home
           <p>An interactive 2D & 3D generative art tool that transforms your drawings into dynamic 3D ring structures. Experience the magic of real-time 3D visualization.</p>
           <div class="project-card-actions">
             <a href="{{ '/projects/blobby-ring-generator/' | relative_url }}" class="btn">Explore Project</a>
-            <a href="https://github.com/Benei/blobby-ring-generator" class="btn btn-secondary" target="_blank">View Code</a>
           </div>
         </div>
       </div>

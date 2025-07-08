@@ -69,7 +69,7 @@ permalink: /projects/blobby-ring-generator/
       </div>
 
       ## Conclusion
-      The Blobby Ring Generator empowers users to create, visualize, and export custom ring designs with precision and ease. Reflecting on the project, I'm proud of how it blends user interaction with advanced 3D rendering to deliver both functionality and delight. I'd love to hear your feedback or see the rings you create—<a href="/Projects/three-ring-generator/">try it live</a> and drop me a line on <a href="https://github.com/Benei" target="_blank">GitHub</a>!
+      The Blobby Ring Generator empowers users to create, visualize, and export custom ring designs with precision and ease. Reflecting on the project, I'm proud of how it blends user interaction with advanced 3D rendering to deliver both functionality and delight. I'd love to hear your feedback or see the rings you create—<a href="/Projects/three-ring-generator/">try it live</a> and drop me a line on <a href="https://github.com/beneii" target="_blank">GitHub</a>!
 
       <p style="text-align:center; margin-top:2rem;">
         <a href="/projects/">← Back to all projects</a>

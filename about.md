@@ -28,7 +28,7 @@ permalink: /about/
           </div>
         </div>
         <p style="margin-top:2rem;">When I'm not in front of a screen, you can find me exploring new music, dabbling in design, or enjoying the outdoors.<br>
-        Feel free to connect with me on <a href="https://github.com/Benei" target="_blank">GitHub</a> or <a href="https://linkedin.com/in/Benei" target="_blank">LinkedIn</a>.</p>
+        Feel free to connect with me on <a href="https://github.com/beneii" target="_blank">GitHub</a> or email me at <a href="mailto:ben.eifion.jones@gmail.com">ben.eifion.jones@gmail.com</a>.</p>
       </div>
     </div>
   </section>

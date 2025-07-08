@@ -33,7 +33,7 @@ permalink: /projects/
       </div>
     </div>
     <div class="project-card reveal" data-title="Shop Sales Automation" data-category="autohotkey">
-      <img src="https://www.autohotkey.com/static/ahk_logo.png" alt="Shop Sales Automation" class="project-card-image" style="image-rendering:crisp-edges;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/MYOB_logo.svg/512px-MYOB_logo.svg.png" alt="Shop Sales Automation (MYOB)" class="project-card-image" style="image-rendering:crisp-edges;">
       <div class="project-card-content">
         <h3>Shop Sales Automation</h3>
         <span class="badge">AutoHotkey</span>
