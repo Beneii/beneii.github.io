@@ -30,9 +30,6 @@ permalink: /about/
         <p style="margin-top:2rem;">When I'm not in front of a screen, you can find me exploring new music, dabbling in design, or enjoying the outdoors.<br>
         Feel free to connect with me on <a href="https://github.com/Benei" target="_blank">GitHub</a> or <a href="https://linkedin.com/in/Benei" target="_blank">LinkedIn</a>.</p>
       </div>
-      <div class="about-portrait">
-        <img src="/assets/images/portrait.png" alt="Portrait of Benei" />
-      </div>
     </div>
   </section>
 </div>

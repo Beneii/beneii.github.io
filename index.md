@@ -44,9 +44,6 @@ title: Home
         
         <a href="{{ '/about/' | relative_url }}" class="btn">Learn more&nbsp;&rarr;</a>
       </div>
-      <div class="about-portrait">
-        <img src="/assets/images/portrait.png" alt="Portrait of Benei" />
-      </div>
     </div>
   </section>
 
