@@ -10,12 +10,12 @@ permalink: /projects/blobby-ring-generator/
   <div class="project-detail">
     <div class="details">
       
-      ## Introduction
+      <h2>Introduction</h2>
       When I first saw voxel art tutorials online, I loved the chunky aesthetic—but hated how clunky exporting to 3D always felt. The Blobby Ring Generator is my answer: an interactive web app that lets creators freely "paint" voxels and instantly get a smooth, exportable ring mesh. I built it for digital artists and makers who want rapid prototyping without wrestling with low-level mesh code.
       <br><br>
       The most innovative aspect? Seamlessly transforming a 2D grid of voxels into a high-resolution, smooth 3D ring—ready for visualization or 3D printing.
 
-      ## Project Overview
+      <h2>Project Overview</h2>
       The Blobby Ring Generator enables users to design custom 3D rings through a grid-based voxel approach, converting these voxels into smooth 3D models using the Marching Cubes algorithm. Leveraging Three.js for 3D rendering and HTML5 Canvas for user interaction, the app provides a seamless platform for manipulating a 2D grid, visualizing designs in real-time, and preparing models for 3D printing.
 
       <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
@@ -26,7 +26,7 @@ permalink: /projects/blobby-ring-generator/
         <!-- Add more screenshots or GIFs here -->
       </div>
 
-      ## Feature Reflection: Voxel Grid to Marching Cubes Conversion
+      <h2>Feature Reflection: Voxel Grid to Marching Cubes Conversion</h2>
       <strong>Recount:</strong> <br>
       A pivotal feature is the interactive voxel grid. Users toggle voxels on a 2D grid, representing different ring layers. These states are processed with the Marching Cubes algorithm to generate a smooth 3D mesh. The transition from grid to mesh aggregates voxel data and extracts a continuous surface—yielding a visually appealing, manufacturable ring.
       <br><br>
@@ -39,7 +39,7 @@ permalink: /projects/blobby-ring-generator/
       <strong>Improve:</strong> <br>
       Future iterations could add advanced drawing tools (variable brush sizes/shapes), real-time mesh updates, and performance optimizations (Web Workers, alternative algorithms) for even more detailed designs.
 
-      ## Feature Reflection: Export Functionality for 3D Printing
+      <h2>Feature Reflection: Export Functionality for 3D Printing</h2>
       <strong>Recount:</strong> <br>
       Another highlight is export functionality: users can download their rings as OBJ or GLTF files, ready for 3D printing. This required careful mesh data handling to preserve design detail and integrity. Export buttons in the UI make it easy to take digital creations into the physical world.
       <br><br>
@@ -52,23 +52,17 @@ permalink: /projects/blobby-ring-generator/
       <strong>Improve:</strong> <br>
       Expanding export options, adding validation checks, and offering export customization (resolution, compression) would further enhance this feature. Tutorials on preparing/printing files could also help users succeed.
 
-      ## Key Learnings
+      <h2>Key Learnings</h2>
       - Mastered Three.js's Marching Cubes nuances (resolution vs. isoLevel)
       - Learned to balance instant feedback with CPU/GPU constraints
       - Improved UI state management for async mesh rebuilds
       - Gained experience in user-centric design and 3D printing workflows
 
-      ## Metrics & Impact
-      <div style="margin:2rem 0;text-align:center;">
-        <strong>Performance:</strong> 16³ = 60 FPS, 32³ = 30 FPS (on my laptop)<br>
-        <strong>Usage:</strong> Over 200 rings generated in the first week · GitHub ⭐ 45
-      </div>
-
       <div style="text-align:center;margin:2rem 0;">
         <a href="/Projects/three-ring-generator/" class="btn">Launch the Live Generator →</a>
       </div>
 
-      ## Conclusion
+      <h2>Conclusion</h2>
       The Blobby Ring Generator empowers users to create, visualize, and export custom ring designs with precision and ease. Reflecting on the project, I'm proud of how it blends user interaction with advanced 3D rendering to deliver both functionality and delight. I'd love to hear your feedback or see the rings you create—<a href="/Projects/three-ring-generator/">try it live</a> and drop me a line on <a href="https://github.com/beneii" target="_blank">GitHub</a>!
 
       <p style="text-align:center; margin-top:2rem;">
