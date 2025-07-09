@@ -11,6 +11,10 @@ permalink: /projects/shop-sales-automation/
     <div class="details">
       <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
         <figure style="flex:1;min-width:250px;text-align:center;">
+          <video controls style="max-width:100%;border-radius:8px;margin-bottom:1.5rem;">
+            <source src="/assets/images/Screen Recording 2025-05-22 105303.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
           <div style="max-width:100%;border-radius:8px;background:var(--surface-dark);padding:2rem;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text);">
             <div style="font-size:3rem;margin-bottom:1rem;">⚙️</div>
             <div style="font-size:1.2rem;font-weight:600;">Shop Sales Automation</div>
