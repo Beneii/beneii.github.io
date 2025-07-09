@@ -1,6 +1,6 @@
 # beneii.github.io
 
-Welcome to **Benei's personal portfolio**! This repository powers the website hosted at <https://beneii.github.io>, built with GitHub Pages and Jekyll.
+Welcome to **Ben's personal portfolio**! This repository powers the website hosted at <https://beneii.github.io>, built with GitHub Pages and Jekyll.
 
 ## What you will find here
 

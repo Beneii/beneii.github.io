@@ -1,6 +1,6 @@
-title: "Benei's Portfolio"
+title: "Ben's Portfolio"
 description: "My personal portfolio showcasing projects, blog posts, and experiments."
-author: "Benei"
+author: "Ben"
 # Use GitHub Pages-supported theme. Remove/change if you have custom styling.
 # Supply theme replaces Minima
 remote_theme: "CloudCannon/vonge-jekyll-bookshop-template"
@@ -12,9 +12,9 @@ custom_css: "/assets/css/custom.css"
 # (Optional) social links displayed by the theme
 social_links:
   - name: GitHub
-    url: https://github.com/Benei
+    url: https://github.com/beneii
   - name: LinkedIn
-    url: https://linkedin.com/in/Benei
+    url: https://linkedin.com/in/Ben
 
 # Build settings
 markdown: kramdown

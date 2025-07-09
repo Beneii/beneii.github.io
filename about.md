@@ -12,7 +12,7 @@ permalink: /about/
     <h2>About Me</h2>
     <div class="about-container">
       <div class="about-text">
-        <p class="about-intro">I'm Benei, a passionate developer and technology enthusiast who loves turning ideas into functional, user-focused solutions. My journey in tech is all about building, learning, and sharing.</p>
+        <p class="about-intro">I'm Ben, a passionate developer and technology enthusiast who loves turning ideas into functional, user-focused solutions. My journey in tech is all about building, learning, and sharing.</p>
         <div class="expertise-grid">
           <div class="expertise-item">
             <h3>🔨 Software Development</h3>
