@@ -24,11 +24,12 @@ permalink: /projects/planit/
         <img src="/assets/images/PlanIt3.png" alt="PlanIt Screenshot 3" style="height:400px;max-width:250px;object-fit:contain;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);scroll-snap-align:center;"/>
         <img src="/assets/images/PlanIt4.png" alt="PlanIt Screenshot 4" style="height:400px;max-width:250px;object-fit:contain;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);scroll-snap-align:center;"/>
       </div>
-      <h2>Case Study Coming Soon</h2>
-      <p>This page will soon feature a full case study, technical reflection, and more details about PlanIt's features and development process.</p>
       <div style="text-align:center;margin:2rem 0;">
-        <a href="/projects/" class="btn">← Back to all projects</a>
+        <a href="https://chrome.google.com/webstore/detail/focus-plus/placeholder" class="btn" target="_blank">View on Chrome Web Store</a>
       </div>
+      <p style="text-align:center; margin-top:2rem;">
+        <a href="/projects/">← Back to all projects</a>
+      </p>
     </div>
   </div>
 </div>

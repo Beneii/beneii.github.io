@@ -50,8 +50,6 @@ permalink: /projects/space-monkeys/
         <a href="https://github.com/JamesKirwanUTS/Cozy" class="btn btn-secondary" target="_blank">View Source Code</a>
       </div>
 
-      <h2>Case Study Coming Soon</h2>
-      <p>A full post-mortem covering design decisions, system architecture, and our play-testing results will be published here soon.</p>
       <div style="text-align:center;margin:2rem 0;">
         <a href="/projects/" class="btn">← Back to all projects</a>
       </div>

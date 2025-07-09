@@ -11,15 +11,18 @@ permalink: /projects/shop-sales-automation/
     <div class="details">
       <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
         <figure style="flex:1;min-width:250px;text-align:center;">
-          <video controls style="max-width:100%;border-radius:8px;">
-            <source src="/assets/images/Screen Recording 2025-05-22 105303.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <img src="/assets/images/automation-placeholder.png" alt="Shop Sales Automation placeholder" style="max-width:100%;border-radius:8px;background:var(--surface-dark);padding:2rem;min-height:200px;display:flex;align-items:center;justify-content:center;color:var(--text);">
+            <div style="text-align:center;">
+              <div style="font-size:3rem;margin-bottom:1rem;">⚙️</div>
+              <div style="font-size:1.2rem;font-weight:600;">Shop Sales Automation</div>
+              <div style="font-size:0.9rem;opacity:0.8;margin-top:0.5rem;">AutoHotkey Script</div>
+            </div>
+          </img>
           <figcaption>Shop Sales Automation – AutoHotkey script in action</figcaption>
         </figure>
       </div>
       <h2>Project Overview</h2>
-      <p>The <strong>Sixes Machine</strong> is a custom automation tool designed to streamline a repetitive task at work: filling the job column of every shop sale in MYOB with the number '6'. The script uses recorded mouse positions, clipboard checks, and row counting to automate the process, looping through each transaction until completion. It dramatically reduces manual effort and error, making a tedious process fast and reliable.</p>
+      <p>The <strong>Shop Sales Automation</strong> is a custom automation tool designed to streamline a repetitive task at work: filling the job column of every shop sale in MYOB with the number '6'. The script uses recorded mouse positions, clipboard checks, and row counting to automate the process, looping through each transaction until completion. It dramatically reduces manual effort and error, making a tedious process fast and reliable.</p>
       <h2>How It Works</h2>
       <ul>
         <li>Records mouse positions for key UI elements in MYOB.</li>
@@ -272,8 +275,6 @@ permalink: /projects/shop-sales-automation/
       {% endraw %}
       </div>
 
-      <h2>Case Study Coming Soon</h2>
-      <p>This page will soon feature a full case study, technical reflection, and screenshots of the Sixes Machine in action.</p>
       <div style="text-align:center;margin:2rem 0;">
         <a href="/projects/" class="btn">← Back to all projects</a>
       </div>
