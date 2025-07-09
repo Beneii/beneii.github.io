@@ -16,7 +16,7 @@ permalink: /projects/focus-plus/
         </figure>
       </div>
       <div style="text-align:center;margin:2rem 0;">
-        <a href="https://chrome.google.com/webstore/detail/focus-plus/placeholder" class="btn" target="_blank">View on Chrome Web Store</a>
+        <p style="font-size:1.1rem;max-width:500px;margin:0 auto 1.5rem auto;">Focus+ is a simple timer application that blocks chosen websites for a set period, helping you stay focused and productive. Just set your timer, pick your distractions, and get to work!</p>
       </div>
       <p style="text-align:center; margin-top:2rem;">
         <a href="/projects/">← Back to all projects</a>

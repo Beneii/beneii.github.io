@@ -11,13 +11,11 @@ permalink: /projects/shop-sales-automation/
     <div class="details">
       <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
         <figure style="flex:1;min-width:250px;text-align:center;">
-          <img src="/assets/images/automation-placeholder.png" alt="Shop Sales Automation placeholder" style="max-width:100%;border-radius:8px;background:var(--surface-dark);padding:2rem;min-height:200px;display:flex;align-items:center;justify-content:center;color:var(--text);">
-            <div style="text-align:center;">
-              <div style="font-size:3rem;margin-bottom:1rem;">⚙️</div>
-              <div style="font-size:1.2rem;font-weight:600;">Shop Sales Automation</div>
-              <div style="font-size:0.9rem;opacity:0.8;margin-top:0.5rem;">AutoHotkey Script</div>
-            </div>
-          </img>
+          <div style="max-width:100%;border-radius:8px;background:var(--surface-dark);padding:2rem;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text);">
+            <div style="font-size:3rem;margin-bottom:1rem;">⚙️</div>
+            <div style="font-size:1.2rem;font-weight:600;">Shop Sales Automation</div>
+            <div style="font-size:0.9rem;opacity:0.8;margin-top:0.5rem;">AutoHotkey Script</div>
+          </div>
           <figcaption>Shop Sales Automation – AutoHotkey script in action</figcaption>
         </figure>
       </div>
