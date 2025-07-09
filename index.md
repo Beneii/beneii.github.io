@@ -73,6 +73,24 @@ title: Home
     </div>
   </section>
 
+  <section id="contact" class="home-section contact-section reveal">
+    <h2>Contact</h2>
+    <div class="contact-container" style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;max-width:400px;margin:0 auto;">
+      <div class="contact-method">
+        <strong>Email:</strong> <a href="mailto:ben.eifion.jones@gmail.com">ben.eifion.jones@gmail.com</a>
+      </div>
+      <div class="contact-method">
+        <strong>GitHub:</strong> <a href="https://github.com/beneii" target="_blank">github.com/beneii</a>
+      </div>
+      <div class="contact-method">
+        <strong>Phone:</strong> <a href="tel:0451662807">0451 662 807</a>
+      </div>
+      <div class="contact-method">
+        <strong>Discord:</strong> <span style="background:#23272a;color:#fff;padding:2px 8px;border-radius:6px;">benei</span>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <script src="{{ '/assets/js/hero-typing.js' | relative_url }}" defer></script>
