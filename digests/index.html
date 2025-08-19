@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Digests - Ben's Site</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 2rem;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .nav-home {
+            margin-bottom: 2rem;
+        }
+        
+        .nav-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .nav-home a:hover {
+            text-decoration: underline;
+        }
+        
+        .digest-list {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .digest-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .digest-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .digest-date {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .digest-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .digest-link:hover {
+            text-decoration: underline;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .how-it-works {
+            background: #e8f4f8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .how-it-works h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .how-it-works p {
+            margin-bottom: 0;
+            color: #5a6c7d;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-home">
+        <a href="../">← Back to Main Site</a>
+    </div>
+    
+    <div class="header">
+        <h1>📰 Daily Digests</h1>
+        <p class="subtitle">AI-generated daily summaries and insights</p>
+    </div>
+    
+    <div class="digest-list" id="digestList">
+        <div class="empty-state">
+            <p>No digests available yet. Your n8n automation will start populating this page with daily digests!</p>
+        </div>
+    </div>
+    
+    <div class="how-it-works">
+        <h3>🤖 How it works</h3>
+        <p>This page automatically updates when your n8n workflow commits new digest files. Each digest will be available at: <code>https://beneii.github.io/digests/YYYY-MM-DD.html</code></p>
+    </div>
+    
+    <script>
+        // This script will automatically discover and list available digest files
+        // For now, we'll manually add them as they're created
+        
+        // Future enhancement: You could add a GitHub API call to automatically
+        // discover all .html files in the digests directory
+        
+        function addDigestToList(date, filename) {
+            const digestList = document.getElementById('digestList');
+            const emptyState = digestList.querySelector('.empty-state');
+            
+            if (emptyState) {
+                emptyState.remove();
+            }
+            
+            const digestItem = document.createElement('div');
+            digestItem.className = 'digest-item';
+            digestItem.innerHTML = `
+                <div class="digest-date">${formatDate(date)}</div>
+                <a href="${filename}" class="digest-link">Read digest →</a>
+            `;
+            
+            // Insert in chronological order (newest first)
+            const existingItems = digestList.querySelectorAll('.digest-item');
+            let inserted = false;
+            
+            for (let item of existingItems) {
+                const existingDate = item.querySelector('.digest-date').textContent;
+                if (date > new Date(existingDate)) {
+                    digestList.insertBefore(digestItem, item);
+                    inserted = true;
+                    break;
+                }
+            }
+            
+            if (!inserted) {
+                digestList.appendChild(digestItem);
+            }
+        }
+        
+        function formatDate(date) {
+            return new Intl.DateTimeFormat('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(new Date(date));
+        }
+        
+        // Example of how to add digests (your n8n workflow could append to this script)
+        // addDigestToList('2025-08-19', '2025-08-19.html');
+    </script>
+</body>
+</html>
