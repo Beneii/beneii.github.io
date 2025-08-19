@@ -55,29 +55,79 @@
             border-radius: 8px;
             padding: 1.5rem;
             border-left: 4px solid #3498db;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 2rem;
         }
         
-        .digest-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        .digest-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
         }
         
         .digest-date {
             font-size: 1.2rem;
             font-weight: 600;
             color: #2c3e50;
-            margin-bottom: 0.5rem;
+        }
+        
+        .digest-controls {
+            display: flex;
+            gap: 1rem;
         }
         
         .digest-link {
             color: #3498db;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.9rem;
         }
         
         .digest-link:hover {
             text-decoration: underline;
+        }
+        
+        .toggle-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .toggle-btn:hover {
+            background: #2980b9;
+        }
+        
+        .digest-content {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #e1e8ed;
+            display: none;
+        }
+        
+        .digest-content.expanded {
+            display: block;
+        }
+        
+        .digest-content iframe {
+            width: 100%;
+            min-height: 500px;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+            font-style: italic;
         }
         
         .empty-state {
@@ -155,14 +205,30 @@
                     try {
                         const formattedDate = formatDate(date);
                         digestItem.innerHTML = `
-                            <div class="digest-date">${formattedDate}</div>
-                            <a href="${filename}" class="digest-link">Read digest →</a>
+                            <div class="digest-header">
+                                <div class="digest-date">${formattedDate}</div>
+                                <div class="digest-controls">
+                                    <a href="${filename}" class="digest-link" target="_blank">Open in new tab →</a>
+                                    <button class="toggle-btn" onclick="toggleDigestContent('${filename}', this)">Show Content</button>
+                                </div>
+                            </div>
+                            <div class="digest-content" id="content-${filename.replace('.html', '')}">
+                                <div class="loading">Loading digest content...</div>
+                            </div>
                         `;
                     } catch (e) {
                         // Fallback for non-standard filenames
                         digestItem.innerHTML = `
-                            <div class="digest-date">${filename}</div>
-                            <a href="${filename}" class="digest-link">Read digest →</a>
+                            <div class="digest-header">
+                                <div class="digest-date">${filename}</div>
+                                <div class="digest-controls">
+                                    <a href="${filename}" class="digest-link" target="_blank">Open in new tab →</a>
+                                    <button class="toggle-btn" onclick="toggleDigestContent('${filename}', this)">Show Content</button>
+                                </div>
+                            </div>
+                            <div class="digest-content" id="content-${filename.replace('.html', '')}">
+                                <div class="loading">Loading digest content...</div>
+                            </div>
                         `;
                     }
                     
@@ -220,8 +286,16 @@
                 const digestItem = document.createElement('div');
                 digestItem.className = 'digest-item';
                 digestItem.innerHTML = `
-                    <div class="digest-date">${formatDate(date)}</div>
-                    <a href="${filename}" class="digest-link">Read digest →</a>
+                    <div class="digest-header">
+                        <div class="digest-date">${formatDate(date)}</div>
+                        <div class="digest-controls">
+                            <a href="${filename}" class="digest-link" target="_blank">Open in new tab →</a>
+                            <button class="toggle-btn" onclick="toggleDigestContent('${filename}', this)">Show Content</button>
+                        </div>
+                    </div>
+                    <div class="digest-content" id="content-${date}">
+                        <div class="loading">Loading digest content...</div>
+                    </div>
                 `;
                 digestList.appendChild(digestItem);
             });
@@ -240,6 +314,53 @@
                 return dateStr; // Return original if parsing fails
             }
         }
+        
+        // Toggle digest content display
+        async function toggleDigestContent(filename, button) {
+            const contentId = 'content-' + filename.replace('.html', '');
+            const contentDiv = document.getElementById(contentId);
+            
+            if (!contentDiv) return;
+            
+            if (contentDiv.classList.contains('expanded')) {
+                // Hide content
+                contentDiv.classList.remove('expanded');
+                button.textContent = 'Show Content';
+            } else {
+                // Show content
+                contentDiv.classList.add('expanded');
+                button.textContent = 'Hide Content';
+                
+                // Load content if not already loaded
+                if (contentDiv.innerHTML.includes('Loading digest content...')) {
+                    try {
+                        const response = await fetch(filename);
+                        if (response.ok) {
+                            const htmlContent = await response.text();
+                            
+                            // Create iframe to display the HTML safely
+                            const iframe = document.createElement('iframe');
+                            iframe.srcdoc = htmlContent;
+                            iframe.style.width = '100%';
+                            iframe.style.minHeight = '500px';
+                            iframe.style.border = 'none';
+                            iframe.style.borderRadius = '4px';
+                            
+                            contentDiv.innerHTML = '';
+                            contentDiv.appendChild(iframe);
+                        } else {
+                            contentDiv.innerHTML = '<div class="loading">Error loading digest content.</div>';
+                        }
+                    } catch (error) {
+                        console.error('Error fetching digest content:', error);
+                        contentDiv.innerHTML = '<div class="loading">Error loading digest content.</div>';
+                    }
+                }
+            }
+        }
+        
+        // Make function globally available
+        window.toggleDigestContent = toggleDigestContent;
         
         // Load digest files when page loads
         document.addEventListener('DOMContentLoaded', loadDigestFiles);
