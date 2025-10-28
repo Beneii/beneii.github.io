@@ -79,7 +79,38 @@ title: Home
         </div>
       </div>
       
-      <!-- Add more featured projects here -->
+      <div class="project-card">
+        <div class="project-card-image-container">
+          <img src="/assets/images/focusplushero.png" alt="Focus+ Chrome Extension" class="project-card-image" loading="lazy" width="600" height="400">
+          <div class="project-card-overlay">
+            <span class="project-tech">Chrome • JavaScript</span>
+          </div>
+        </div>
+        <div class="project-card-content">
+          <h3>Focus+</h3>
+          <p>Minimalist site blocker with clean UI and instant load. Built for flow.</p>
+          <div class="project-card-actions">
+            <a href="{{ '/projects/focus-plus/' | relative_url }}" class="btn">Case Study</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-image-container">
+          <img src="/assets/images/SpaceMonkeys.png" alt="Space Monkeys" class="project-card-image" style="image-rendering:pixelated;image-rendering:crisp-edges;" loading="lazy" width="600" height="400">
+          <div class="project-card-overlay">
+            <span class="project-tech">Unity • C#</span>
+          </div>
+        </div>
+        <div class="project-card-content">
+          <h3>Space Monkeys</h3>
+          <p>4-level elemental platformer. 2025 UTS Student Games Showcase nominee.</p>
+          <div class="project-card-actions">
+            <a href="{{ '/projects/space-monkeys/' | relative_url }}" class="btn">Case Study</a>
+            <a href="https://liamdskinner.itch.io/space-monkeys" class="btn btn-secondary" target="_blank" aria-label="Open itch.io page for Space Monkeys">Live Demo</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="view-all-projects">
       <a href="{{ '/projects/' | relative_url }}" class="btn btn-large">View All Projects</a>
