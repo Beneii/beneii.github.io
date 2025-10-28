@@ -12,23 +12,11 @@ title: Home
     <div class="hero-gradient-overlay"></div>
   </div>
   <div class="hero-text">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <h1>I build playful, high‑performance web experiences.</h1>
-        <p class="hero-sub">Three.js, WebGL, and delightful UIs. I ship interactive prototypes and production apps.</p>
-        <div class="proof-chips">
-          <span class="chip">WebGL</span>
-          <span class="chip">Hardware prototyping</span>
-          <span class="chip">Accessibility‑first</span>
-        </div>
-        <div class="hero-ctas">
-          <a href="#featured-projects" class="btn" aria-label="See featured projects">See featured projects</a>
-          <a href="{{ '/about/' | relative_url }}" class="btn btn-secondary" aria-label="Read about my process and tooling">Process &amp; tooling</a>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-vignette" aria-hidden="true">Canvas vignette here</div>
-      </div>
+    <img src="/assets/images/portfolio.gif" alt="Portfolio Title" class="hero-gif">
+    <span id="hero-tagline">Building interactive systems that blend code, AI, and physical computing</span>
+    <div class="hero-cta-container">
+      <a href="#featured-projects" class="btn hero-cta">View My Work</a>
+      <a href="#contact" class="btn hero-cta-secondary">Get in Touch</a>
     </div>
   </div>
 </div>
@@ -79,38 +67,7 @@ title: Home
         </div>
       </div>
       
-      <div class="project-card">
-        <div class="project-card-image-container">
-          <img src="/assets/images/focusplushero.png" alt="Focus+ Chrome Extension" class="project-card-image" loading="lazy" width="600" height="400">
-          <div class="project-card-overlay">
-            <span class="project-tech">Chrome • JavaScript</span>
-          </div>
-        </div>
-        <div class="project-card-content">
-          <h3>Focus+</h3>
-          <p>Minimalist site blocker with clean UI and instant load. Built for flow.</p>
-          <div class="project-card-actions">
-            <a href="{{ '/projects/focus-plus/' | relative_url }}" class="btn">Case Study</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-card-image-container">
-          <img src="/assets/images/SpaceMonkeys.png" alt="Space Monkeys" class="project-card-image" style="image-rendering:pixelated;image-rendering:crisp-edges;" loading="lazy" width="600" height="400">
-          <div class="project-card-overlay">
-            <span class="project-tech">Unity • C#</span>
-          </div>
-        </div>
-        <div class="project-card-content">
-          <h3>Space Monkeys</h3>
-          <p>4-level elemental platformer. 2025 UTS Student Games Showcase nominee.</p>
-          <div class="project-card-actions">
-            <a href="{{ '/projects/space-monkeys/' | relative_url }}" class="btn">Case Study</a>
-            <a href="https://liamdskinner.itch.io/space-monkeys" class="btn btn-secondary" target="_blank" aria-label="Open itch.io page for Space Monkeys">Live Demo</a>
-          </div>
-        </div>
-      </div>
+      <!-- Add more featured projects here -->
     </div>
     <div class="view-all-projects">
       <a href="{{ '/projects/' | relative_url }}" class="btn btn-large">View All Projects</a>
