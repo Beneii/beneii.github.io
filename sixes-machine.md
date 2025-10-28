@@ -7,7 +7,7 @@ permalink: /projects/shop-sales-automation/
 {% include head.html %}
 {% include navbar.html %}
 {% include page-hero.html %}
-<div class="page-content-container">
+<main class="page-content-container">
   <div class="project-detail">
     <div class="details">
       <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
@@ -283,10 +283,9 @@ permalink: /projects/shop-sales-automation/
       </div>
     </div>
   </div>
-</div>
+</main>
 
 <script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script>
 
 {% include footer.html %} 

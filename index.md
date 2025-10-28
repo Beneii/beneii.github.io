@@ -21,7 +21,7 @@ title: Home
   </div>
 </div>
 
-<div class="page-content-container">
+<main class="page-content-container">
   <section id="about" class="home-section intro-section reveal">
     <h2>About Me</h2>
     <div class="about-container">
@@ -92,7 +92,7 @@ title: Home
     </div>
   </section>
 
-</div>
+</main>
 
 <script src="{{ '/assets/js/hero-typing.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}" defer></script>

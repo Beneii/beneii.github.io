@@ -8,7 +8,7 @@ permalink: /about/
 {% include navbar.html %}
 {% include page-hero.html %}
 
-<div class="page-content-container">
+<main class="page-content-container">
   <section class="home-section intro-section reveal">
     <h2>About Me</h2>
     <div class="about-container">
@@ -33,10 +33,9 @@ permalink: /about/
       </div>
     </div>
   </section>
-</div>
+</main>
 
 <script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script>
 
 {% include footer.html %} 

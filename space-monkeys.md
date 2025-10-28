@@ -7,12 +7,12 @@ permalink: /projects/space-monkeys/
 {% include head.html %}
 {% include navbar.html %}
 {% include page-hero.html %}
-<div class="page-content-container">
+<main class="page-content-container">
   <div class="project-detail">
     <div class="details">
       <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
         <figure style="flex:1;min-width:250px;text-align:center;">
-          <img src="/assets/images/SpaceMonkeys.png" alt="Space Monkeys pixel art hero image" style="max-width:100%;border-radius:8px;image-rendering:pixelated;image-rendering:crisp-edges;"/>
+          <img src="/assets/images/SpaceMonkeys.png" alt="Space Monkeys pixel art hero image" style="max-width:100%;border-radius:8px;image-rendering:pixelated;image-rendering:crisp-edges;" loading="lazy" width="800" height="500"/>
           <figcaption>Space Monkeys – Group Game Project</figcaption>
         </figure>
       </div>
@@ -56,10 +56,9 @@ permalink: /projects/space-monkeys/
       </div>
     </div>
   </div>
-</div>
+</main>
 
 <script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script>
 
 {% include footer.html %} 

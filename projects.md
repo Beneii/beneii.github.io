@@ -8,7 +8,7 @@ permalink: /projects/
 {% include navbar.html %}
 {% include page-hero.html %}
 
-<div class="page-content-container">
+<main class="page-content-container">
   <div class="projects-toolbar" style="margin:1.5rem 0; display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
     <input type="text" id="projectSearch" placeholder="Search projects…" style="flex:1 1 250px; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px;"/>
   </div>
@@ -16,7 +16,7 @@ permalink: /projects/
   <h2>Projects</h2>
   <div class="projects-list">
     <div class="project-card reveal" data-title="Focus+" data-category="javascript">
-      <img src="/assets/images/focusplushero.png" alt="Focus+ Chrome Extension" class="project-card-image">
+      <img src="/assets/images/focusplushero.png" alt="Focus+ Chrome Extension" class="project-card-image" loading="lazy" width="600" height="400">
       <div class="project-card-content">
         <h3>Focus+</h3>
         <span class="badge">JavaScript</span>
@@ -25,7 +25,7 @@ permalink: /projects/
       </div>
     </div>
     <div class="project-card reveal" data-title="Blobby Ring Generator" data-category="javascript">
-      <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator" class="project-card-image">
+      <img src="/assets/images/blobbyringhero.png" alt="Blobby Ring Generator" class="project-card-image" loading="lazy" width="600" height="400">
       <div class="project-card-content">
         <h3>Blobby Ring Generator</h3>
         <span class="badge">JavaScript</span>
@@ -49,7 +49,7 @@ permalink: /projects/
       </div>
     </div>
     <div class="project-card reveal" data-title="PlanIt" data-category="swift">
-      <img src="/assets/images/PlanIt1.png" alt="PlanIt iOS App" class="project-card-image">
+      <img src="/assets/images/PlanIt1.png" alt="PlanIt iOS App" class="project-card-image" loading="lazy" width="600" height="400">
       <div class="project-card-content">
         <h3>PlanIt</h3>
         <span class="badge">Swift</span>
@@ -58,7 +58,7 @@ permalink: /projects/
       </div>
     </div>
     <div class="project-card reveal" data-title="Space Monkeys" data-category="csharp">
-      <img src="/assets/images/SpaceMonkeys.png" alt="Space Monkeys Game" class="project-card-image" style="image-rendering:pixelated;image-rendering:crisp-edges;">
+      <img src="/assets/images/SpaceMonkeys.png" alt="Space Monkeys Game" class="project-card-image" style="image-rendering:pixelated;image-rendering:crisp-edges;" loading="lazy" width="600" height="400">
       <div class="project-card-content">
         <h3>Space Monkeys</h3>
         <span class="badge">C#</span>
@@ -69,11 +69,10 @@ permalink: /projects/
   </div>
 
   <p style="text-align:center;margin-top:2rem;"><a href="#" class="btn btn-secondary" id="loadMoreBtn">Load More Projects</a></p>
-</div>
+</main>
 
 <script src="/assets/js/project-filter.js" defer></script>
 <script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
 <script src="/assets/js/scroll-reveal.js" defer></script>
-<script src="/assets/js/dark-mode.js" defer></script>
 
 {% include footer.html %}
