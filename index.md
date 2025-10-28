@@ -12,11 +12,23 @@ title: Home
     <div class="hero-gradient-overlay"></div>
   </div>
   <div class="hero-text">
-    <img src="/assets/images/portfolio.gif" alt="Portfolio Title" class="hero-gif">
-    <span id="hero-tagline">Building interactive systems that blend code, AI, and physical computing</span>
-    <div class="hero-cta-container">
-      <a href="#featured-projects" class="btn hero-cta">View My Work</a>
-      <a href="#contact" class="btn hero-cta-secondary">Get in Touch</a>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1>I build playful, high‑performance web experiences.</h1>
+        <p class="hero-sub">Three.js, WebGL, and delightful UIs. I ship interactive prototypes and production apps.</p>
+        <div class="proof-chips">
+          <span class="chip">WebGL</span>
+          <span class="chip">Hardware prototyping</span>
+          <span class="chip">Accessibility‑first</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#featured-projects" class="btn" aria-label="See featured projects">See featured projects</a>
+          <a href="{{ '/about/' | relative_url }}" class="btn btn-secondary" aria-label="Read about my process and tooling">Process &amp; tooling</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-vignette" aria-hidden="true">Canvas vignette here</div>
+      </div>
     </div>
   </div>
 </div>
