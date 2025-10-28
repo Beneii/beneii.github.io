@@ -4,6 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
+{% include head.html %}
 {% include navbar.html %}
 {% include page-hero.html %}
 

@@ -4,6 +4,7 @@ title: About
 permalink: /about/
 ---
 
+{% include head.html %}
 {% include navbar.html %}
 {% include page-hero.html %}
 

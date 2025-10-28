@@ -4,6 +4,7 @@ title: "Focus+"
 permalink: /projects/focus-plus/
 ---
 
+{% include head.html %}
 {% include navbar.html %}
 {% include page-hero.html %}
 <div class="page-content-container">

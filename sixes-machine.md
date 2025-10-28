@@ -4,6 +4,7 @@ title: "Shop Sales Automation"
 permalink: /projects/shop-sales-automation/
 ---
 
+{% include head.html %}
 {% include navbar.html %}
 {% include page-hero.html %}
 <div class="page-content-container">

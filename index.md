@@ -3,6 +3,7 @@ layout: page
 title: Home
 ---
 
+{% include head.html %}
 {% include navbar.html %}
 
 <div class="hero-section">

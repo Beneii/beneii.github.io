@@ -4,6 +4,7 @@ title: "Space Monkeys"
 permalink: /projects/space-monkeys/
 ---
 
+{% include head.html %}
 {% include navbar.html %}
 {% include page-hero.html %}
 <div class="page-content-container">
