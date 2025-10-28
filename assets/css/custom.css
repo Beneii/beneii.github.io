@@ -104,15 +104,59 @@ a:hover {
   overflow: hidden;
 }
 
-/* Halftone overlay replacing gradient fade at bottom of hero */
+/* Halftone overlay with smooth gradient (layered dot sizes) */
 .hero-gradient-overlay {
   background: none !important;
+  color: var(--bg);
+  pointer-events: none;
+  opacity: 0.95;
+  background-image: radial-gradient(currentColor 0.8px, transparent 0.8px);
+  background-size: 6px 6px;
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.25) 25%,
+    rgba(0,0,0,0.7) 55%,
+    rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.25) 25%,
+    rgba(0,0,0,0.7) 55%,
+    rgba(0,0,0,1) 100%);
+}
+.hero-gradient-overlay::before,
+.hero-gradient-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero-gradient-overlay::before {
   background-image: radial-gradient(currentColor 1.2px, transparent 1.2px);
   background-size: 8px 8px;
-  color: var(--bg); /* dots use the page background color for a clean blend */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 100%);
-  opacity: 0.9;
+  color: var(--bg);
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.15) 40%,
+    rgba(0,0,0,0.85) 85%,
+    rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.15) 40%,
+    rgba(0,0,0,0.85) 85%,
+    rgba(0,0,0,1) 100%);
+}
+.hero-gradient-overlay::after {
+  background-image: radial-gradient(currentColor 1.8px, transparent 1.8px);
+  background-size: 10px 10px;
+  color: var(--bg);
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.65) 80%,
+    rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.65) 80%,
+    rgba(0,0,0,1) 100%);
 }
 
 html.light .hero-gradient-overlay {
@@ -534,8 +578,29 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
 }
 
-/* Ensure previous gradient fallback is disabled */
-.hero-section::after { background: none !important; }
+/* Page hero halftone with smooth layer blend */
+.page-hero::after,
+.page-hero::before { content:''; position:absolute; left:0; right:0; bottom:0; pointer-events:none; }
+.page-hero::after {
+  height: 160px;
+  color: var(--bg);
+  background-image: radial-gradient(currentColor 1.2px, transparent 1.2px);
+  background-size: 8px 8px;
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,1) 100%);
+}
+.page-hero::before {
+  height: 140px;
+  color: var(--bg);
+  background-image: radial-gradient(currentColor 1.8px, transparent 1.8px);
+  background-size: 10px 10px;
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 55%, rgba(0,0,0,0.75) 85%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 55%, rgba(0,0,0,0.75) 85%, rgba(0,0,0,1) 100%);
+}
 
 /* CTA button in hero */
 .btn.hero-cta { margin-top: 2rem; font-size:1.1rem; padding:0.9rem 2rem; }
@@ -652,20 +717,6 @@ html { scroll-behavior: smooth; }
   color: var(--text-color);
   position: relative; /* Above overlay */
   z-index: 2;
-}
-
-/* Page hero halftone at bottom */
-.page-hero::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 140px;
-  background-image: radial-gradient(currentColor 1.1px, transparent 1.1px);
-  background-size: 8px 8px;
-  color: var(--bg);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 100%);
-  pointer-events: none;
 }
 
 /* Base styles */
