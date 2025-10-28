@@ -43,12 +43,12 @@ body.loaded {
 }
 
 html.light {
-  --bg: #f5f7fa;
+  --bg: #fff7e6; /* cream background */
   --text: #1B1C1D;
   --accent: #4da3ff;
   --nav-highlight: #4da3ff;
-  --surface-dark: #eaeaea;
-  --surface-light: #fff;
+  --surface-dark: #efe4d3; /* soft cream border/surface */
+  --surface-light: #fffaf0; /* lighter cream panels */
   --primary-color: #4da3ff;
   --text-color: #1B1C1D;
   --card-bg: #fff;
