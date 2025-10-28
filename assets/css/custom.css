@@ -43,15 +43,15 @@ body.loaded {
 }
 
 html.light {
-  --bg: #f5f7fa;
+  --bg: #fff7e6;
   --text: #1B1C1D;
   --accent: #4da3ff;
   --nav-highlight: #4da3ff;
-  --surface-dark: #eaeaea;
-  --surface-light: #fff;
+  --surface-dark: #efe4d3;
+  --surface-light: #ffffff;
   --primary-color: #4da3ff;
   --text-color: #1B1C1D;
-  --card-bg: #fff;
+  --card-bg: #ffffff;
 }
 
 body {
@@ -104,15 +104,15 @@ a:hover {
   overflow: hidden;
 }
 
+/* Halftone overlay replacing gradient fade at bottom of hero */
 .hero-gradient-overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 160px;
-  pointer-events: none;
-  z-index: 2;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--bg) 100%);
+  background: none !important;
+  background-image: radial-gradient(currentColor 1.2px, transparent 1.2px);
+  background-size: 8px 8px;
+  color: var(--bg); /* dots use the page background color for a clean blend */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 100%);
+  opacity: 0.9;
 }
 
 html.light .hero-gradient-overlay {
@@ -534,6 +534,9 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
 }
 
+/* Ensure previous gradient fallback is disabled */
+.hero-section::after { background: none !important; }
+
 /* CTA button in hero */
 .btn.hero-cta { margin-top: 2rem; font-size:1.1rem; padding:0.9rem 2rem; }
 
@@ -651,6 +654,20 @@ html { scroll-behavior: smooth; }
   z-index: 2;
 }
 
+/* Page hero halftone at bottom */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 140px;
+  background-image: radial-gradient(currentColor 1.1px, transparent 1.1px);
+  background-size: 8px 8px;
+  color: var(--bg);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 100%);
+  pointer-events: none;
+}
+
 /* Base styles */
 html, body {
   overflow-x: hidden;
@@ -698,6 +715,10 @@ html.light .site-nav.scrolled, html.light .site-nav.scrolled * {
 html.light .page-hero {
   background-image: url('/assets/images/heroimagelight.jpg'); /* use light hero image */
 }
+
+/* Light mode: use cream separators/borders instead of grey */
+html.light .home-section { border-bottom: 1px solid #efe4d3; }
+html.light .project-card { border-color: #efe4d3; background-color: #ffffff; }
 
 /* Ensure page title remains white in light mode */
 html.light .page-hero h1 {
