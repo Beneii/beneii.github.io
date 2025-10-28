@@ -76,8 +76,13 @@ a:hover {
 
 /* Floating toggle */
 #mode-toggle {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* ensure z-index above hero */
+.site-nav #mode-toggle { z-index: 1001; }
 
 /* Hero Section */
 .hero-section {

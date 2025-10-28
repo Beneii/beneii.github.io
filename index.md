@@ -96,7 +96,6 @@ title: Home
 
 <script src="{{ '/assets/js/hero-typing.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/hero-parallax.js' | relative_url }}" defer></script>
 
