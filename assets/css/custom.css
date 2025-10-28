@@ -762,10 +762,9 @@ html:not(.light) .page-hero { filter: hue-rotate(-15deg) saturate(1.1); }
   font-display: swap;
 }
 
-/* Headings use Pagkaki for handmade vibe */
+/* Force Pagkaki on headings (placed after earlier heading rules) */
 h1, h2, h3, .page-hero h1, .site-nav .logo {
-  font-family: 'Pagkaki', 'Comfortaa', sans-serif;
-  letter-spacing: 0.02em;
+  font-family: 'Pagkaki', 'Inter', sans-serif !important;
 } 
 
 /* Subtle grain overlay across the viewport */
