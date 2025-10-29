@@ -40,8 +40,8 @@ body.loaded {
   --primary-color: #ff6b6b;
   --text-color: #F5F5F5;
   --card-bg: #2d2d2d;
+  --halftone-color: rgba(255,255,255,0.28);
 }
-
 html.light {
   --bg: #fff7e6;
   --text: #1B1C1D;
@@ -52,6 +52,7 @@ html.light {
   --primary-color: #4da3ff;
   --text-color: #1B1C1D;
   --card-bg: #ffffff;
+  --halftone-color: rgba(0,0,0,0.40);
 }
 
 body {
@@ -104,24 +105,18 @@ a:hover {
   overflow: hidden;
 }
 
-/* Halftone overlay with smooth gradient (layered dot sizes) */
+/* Halftone overlay with explicit large dots and smooth vertical blend */
 .hero-gradient-overlay {
   background: none !important;
-  color: var(--bg);
   pointer-events: none;
-  opacity: 0.95;
-  background-image: radial-gradient(currentColor 0.8px, transparent 0.8px);
-  background-size: 6px 6px;
-  -webkit-mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.25) 25%,
-    rgba(0,0,0,0.7) 55%,
-    rgba(0,0,0,1) 100%);
-  mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.25) 25%,
-    rgba(0,0,0,0.7) 55%,
-    rgba(0,0,0,1) 100%);
+  position: absolute;
+  left: 0; right: 0; bottom: 0; height: 200px;
+  /* small dots top */
+  background-image: radial-gradient(var(--halftone-color) 38%, transparent 39%);
+  background-size: 12px 12px;
+  background-position: 0 0;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,1) 100%);
 }
 .hero-gradient-overlay::before,
 .hero-gradient-overlay::after {
@@ -130,33 +125,21 @@ a:hover {
   inset: 0;
   pointer-events: none;
 }
+/* medium dots mid band */
 .hero-gradient-overlay::before {
-  background-image: radial-gradient(currentColor 1.2px, transparent 1.2px);
-  background-size: 8px 8px;
-  color: var(--bg);
-  -webkit-mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.15) 40%,
-    rgba(0,0,0,0.85) 85%,
-    rgba(0,0,0,1) 100%);
-  mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.15) 40%,
-    rgba(0,0,0,0.85) 85%,
-    rgba(0,0,0,1) 100%);
+  background-image: radial-gradient(var(--halftone-color) 40%, transparent 41%);
+  background-size: 18px 18px;
+  background-position: 6px 6px; /* offset to create hex-like packing */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,1) 100%);
 }
+/* large dots bottom band */
 .hero-gradient-overlay::after {
-  background-image: radial-gradient(currentColor 1.8px, transparent 1.8px);
-  background-size: 10px 10px;
-  color: var(--bg);
-  -webkit-mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 55%,
-    rgba(0,0,0,0.65) 80%,
-    rgba(0,0,0,1) 100%);
-  mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 55%,
-    rgba(0,0,0,0.65) 80%,
-    rgba(0,0,0,1) 100%);
+  background-image: radial-gradient(var(--halftone-color) 42%, transparent 43%);
+  background-size: 26px 26px;
+  background-position: 0 0;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.8) 88%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.8) 88%, rgba(0,0,0,1) 100%);
 }
 
 html.light .hero-gradient-overlay {
@@ -578,28 +561,23 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
 }
 
-/* Page hero halftone with smooth layer blend */
-.page-hero::after,
-.page-hero::before { content:''; position:absolute; left:0; right:0; bottom:0; pointer-events:none; }
+/* Page hero halftone */
+.page-hero::after, .page-hero::before { content:''; position:absolute; left:0; right:0; bottom:0; pointer-events:none; }
 .page-hero::after {
   height: 160px;
-  color: var(--bg);
-  background-image: radial-gradient(currentColor 1.2px, transparent 1.2px);
-  background-size: 8px 8px;
-  -webkit-mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,1) 100%);
-  mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,1) 100%);
+  background-image: radial-gradient(var(--halftone-color) 40%, transparent 41%);
+  background-size: 16px 16px;
+  background-position: 0 0;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%);
 }
 .page-hero::before {
-  height: 140px;
-  color: var(--bg);
-  background-image: radial-gradient(currentColor 1.8px, transparent 1.8px);
-  background-size: 10px 10px;
-  -webkit-mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 55%, rgba(0,0,0,0.75) 85%, rgba(0,0,0,1) 100%);
-  mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 55%, rgba(0,0,0,0.75) 85%, rgba(0,0,0,1) 100%);
+  height: 130px;
+  background-image: radial-gradient(var(--halftone-color) 42%, transparent 43%);
+  background-size: 28px 28px;
+  background-position: 8px 8px;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.85) 90%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.85) 90%, rgba(0,0,0,1) 100%);
 }
 
 /* CTA button in hero */
