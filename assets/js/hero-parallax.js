@@ -2,11 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroImage = document.querySelector('.hero-image');
   if (!heroImage) return;
 
-  // Parallax effect settings
-  const maxOffset = 10; // Reduce max offset to prevent gaps
-  const scale = 1.08; // Slightly enlarge image to cover edges
+  const maxOffset = 10; // mouse move
+  const scale = 1.08;   // cover edges
 
-  // Function to handle mouse movement
   const handleMouseMove = (e) => {
     const mouseX = e.clientX / window.innerWidth;
     const mouseY = e.clientY / window.innerHeight;
@@ -15,16 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
     heroImage.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
   };
 
-  // Reset on mouse leave (optional, but not needed if always tracking)
-  // window.addEventListener('mouseout', () => {
-  //   heroImage.style.transform = `translate(0, 0) scale(${scale})`;
-  // });
-
   window.addEventListener('mousemove', handleMouseMove);
 
-  // Handle reduced motion preference
+  // Scroll parallax: subtle vertical translate
+  const maxScrollOffset = 40; // px at bottom of viewport
+  const handleScroll = () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const viewportH = window.innerHeight || 1;
+    const ratio = Math.min(scrollY / viewportH, 1);
+    const y = ratio * maxScrollOffset;
+    heroImage.style.transform = `translateY(${y}px) scale(${scale})`;
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('scroll', handleScroll);
     heroImage.style.transform = `scale(1)`;
   }
 }); 

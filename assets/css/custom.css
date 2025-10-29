@@ -839,3 +839,17 @@ body::before {
 .page-hero h1:hover, .site-nav .logo:hover, h1:hover, h2:hover, h3:hover {
   transform: rotate(-0.4deg) translateY(-1px);
 } 
+
+html:not(.light) { --halftone-color: rgba(255,255,255,0.95); }
+html.light { --halftone-color: rgba(0,0,0,0.95); }
+
+.hero-gradient-overlay { z-index: 2; }
+
+/* Strong comic halftone: big tiles for clear dots */
+.hero-gradient-overlay { height: 240px; }
+.hero-gradient-overlay { background-image: radial-gradient(var(--halftone-color) 45%, transparent 46%); background-size: 20px 20px; }
+.hero-gradient-overlay::before { background-image: radial-gradient(var(--halftone-color) 48%, transparent 49%); background-size: 32px 32px; }
+.hero-gradient-overlay::after { background-image: radial-gradient(var(--halftone-color) 50%, transparent 51%); background-size: 44px 44px; }
+
+.page-hero::after { background-image: radial-gradient(var(--halftone-color) 48%, transparent 49%); background-size: 28px 28px; }
+.page-hero::before { background-image: radial-gradient(var(--halftone-color) 50%, transparent 51%); background-size: 40px 40px; } 
