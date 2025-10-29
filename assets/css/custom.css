@@ -855,54 +855,58 @@ body::before {
   transform: rotate(-0.4deg) translateY(-1px);
 } 
 
-/* Halftone transition - stacks ON TOP of hero image with background reference */
+/* Halftone transition with solid background underneath */
 .hero-gradient-overlay {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 350px;
   pointer-events: none;
   z-index: 2;
-  /* Composite: dots + solid fill */
-  background: 
-    radial-gradient(circle, currentColor 43%, transparent 44%) 0 0 / 16px 16px,
-    linear-gradient(to top, var(--bg) 0%, var(--bg) 140px, transparent 100%);
-  background-blend-mode: normal;
-  color: #000; /* dot color */
-  /* Fade the entire composite from transparent→opaque */
+}
+
+/* Solid background fill layer */
+.hero-gradient-overlay::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 100%;
+  background: linear-gradient(to top, var(--bg) 0%, var(--bg) 180px, transparent 100%);
+  z-index: 1;
+}
+
+/* Halftone dots on top */
+.hero-gradient-overlay::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 100%;
+  background: radial-gradient(circle, currentColor 43%, transparent 44%) 0 0 / 16px 16px;
+  color: #000;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,1) 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,1) 100%);
+  z-index: 2;
 }
 
-html.light .hero-gradient-overlay {
-  color: #000;
-  background: 
-    radial-gradient(circle, currentColor 43%, transparent 44%) 0 0 / 16px 16px,
-    linear-gradient(to top, var(--bg) 0%, var(--bg) 140px, transparent 100%);
+/* Page hero halftone with solid background */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 220px;
+  pointer-events: none;
+  background: linear-gradient(to top, var(--bg) 0%, var(--bg) 140px, transparent 100%);
+  z-index: 1;
 }
 
-.hero-gradient-overlay::before,
-.hero-gradient-overlay::after { display: none !important; }
-
-/* Page hero halftone */
 .page-hero::after {
   content: '';
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 220px;
   pointer-events: none;
-  background: 
-    radial-gradient(circle, currentColor 44%, transparent 45%) 0 0 / 18px 18px,
-    linear-gradient(to top, var(--bg) 0%, var(--bg) 100px, transparent 100%);
+  background: radial-gradient(circle, currentColor 44%, transparent 45%) 0 0 / 18px 18px;
   color: #000;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,1) 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,1) 100%);
-}
-
-html.light .page-hero::after {
-  background: 
-    radial-gradient(circle, currentColor 44%, transparent 45%) 0 0 / 18px 18px,
-    linear-gradient(to top, var(--bg) 0%, var(--bg) 100px, transparent 100%);
-  color: #000;
-}
-
-.page-hero::before { display: none !important; } 
+  z-index: 2;
+} 
