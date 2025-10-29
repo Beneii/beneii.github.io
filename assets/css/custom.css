@@ -880,8 +880,7 @@ body::before {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 100%;
-  background: radial-gradient(circle, currentColor 43%, transparent 44%) 0 0 / 16px 16px;
-  color: #000;
+  background: radial-gradient(circle, var(--bg) 43%, transparent 44%) 0 0 / 16px 16px;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,1) 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,1) 100%);
   z-index: 2;
@@ -904,8 +903,7 @@ body::before {
   left: 0; right: 0; bottom: 0;
   height: 220px;
   pointer-events: none;
-  background: radial-gradient(circle, currentColor 44%, transparent 45%) 0 0 / 18px 18px;
-  color: #000;
+  background: radial-gradient(circle, var(--bg) 44%, transparent 45%) 0 0 / 18px 18px;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,1) 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,1) 100%);
   z-index: 2;
