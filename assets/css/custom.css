@@ -93,6 +93,7 @@ a:hover {
   justify-content: center;
   position: relative;
   padding: 2rem;
+  overflow: hidden; /* Clips hero image at section boundary */
 }
 
 .hero-section .hero-image-container {
