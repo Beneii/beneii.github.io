@@ -855,56 +855,50 @@ body::before {
   transform: rotate(-0.4deg) translateY(-1px);
 } 
 
-/* Halftone transition with solid background underneath */
+/* Halftone transition - scrolls with page content */
 .hero-gradient-overlay {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 350px;
   pointer-events: none;
   z-index: 2;
+  background: var(--bg); /* solid background */
 }
 
-/* Solid background fill layer */
+/* Halftone dots at top of solid fill */
 .hero-gradient-overlay::before {
   content: '';
   position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 100%;
-  background: linear-gradient(to top, var(--bg) 0%, var(--bg) 180px, transparent 100%);
+  left: 0; right: 0; top: 0;
+  height: 200px;
+  background: radial-gradient(circle, transparent 43%, var(--bg) 44%) 0 0 / 16px 16px;
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.35) 70%, transparent 100%);
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.35) 70%, transparent 100%);
   z-index: 1;
 }
 
-/* Halftone dots on top */
-.hero-gradient-overlay::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 100%;
-  background: radial-gradient(circle, var(--bg) 43%, transparent 44%) 0 0 / 16px 16px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,1) 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,1) 100%);
-  z-index: 2;
-}
+.hero-gradient-overlay::after { display: none; }
 
-/* Page hero halftone with solid background */
+/* Page hero solid fill at bottom */
 .page-hero::before {
   content: '';
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 220px;
   pointer-events: none;
-  background: linear-gradient(to top, var(--bg) 0%, var(--bg) 140px, transparent 100%);
+  background: var(--bg);
   z-index: 1;
 }
 
+/* Page hero halftone dots at top of fill */
 .page-hero::after {
   content: '';
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 220px;
   pointer-events: none;
-  background: radial-gradient(circle, var(--bg) 44%, transparent 45%) 0 0 / 18px 18px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,1) 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,1) 100%);
+  background: radial-gradient(circle, transparent 44%, var(--bg) 45%) 0 0 / 18px 18px;
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 75%, transparent 100%);
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 75%, transparent 100%);
   z-index: 2;
 } 
