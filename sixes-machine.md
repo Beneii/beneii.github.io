@@ -1,43 +1,25 @@
 ---
-layout: page
+layout: project
 title: "Shop Sales Automation"
 permalink: /projects/shop-sales-automation/
+hero_video: "/assets/images/Screen Recording 2025-05-22 105303.mp4"
+hero_caption: "Shop Sales Automation – AutoHotkey script in action"
 ---
+<h2>Project Overview</h2>
+<p>The <strong>Shop Sales Automation</strong> is a custom automation tool designed to streamline a repetitive task at work: filling the job column of every shop sale in MYOB with the number '6'. The script uses recorded mouse positions, clipboard checks, and row counting to automate the process, looping through each transaction until completion. It dramatically reduces manual effort and error, making a tedious process fast and reliable.</p>
 
-{% include head.html %}
-{% include navbar.html %}
-{% include page-hero.html %}
-<main class="page-content-container">
-  <div class="project-detail">
-    <div class="details">
-      <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
-        <figure style="flex:1;min-width:250px;text-align:center;">
-          <video controls style="max-width:100%;border-radius:8px;margin-bottom:1.5rem;">
-            <source src="/assets/images/Screen Recording 2025-05-22 105303.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div style="max-width:100%;border-radius:8px;background:var(--surface-dark);padding:2rem;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text);">
-            <div style="font-size:3rem;margin-bottom:1rem;">⚙️</div>
-            <div style="font-size:1.2rem;font-weight:600;">Shop Sales Automation</div>
-            <div style="font-size:0.9rem;opacity:0.8;margin-top:0.5rem;">AutoHotkey Script</div>
-          </div>
-          <figcaption>Shop Sales Automation – AutoHotkey script in action</figcaption>
-        </figure>
-      </div>
-      <h2>Project Overview</h2>
-      <p>The <strong>Shop Sales Automation</strong> is a custom automation tool designed to streamline a repetitive task at work: filling the job column of every shop sale in MYOB with the number '6'. The script uses recorded mouse positions, clipboard checks, and row counting to automate the process, looping through each transaction until completion. It dramatically reduces manual effort and error, making a tedious process fast and reliable.</p>
-      <h2>How It Works</h2>
-      <ul>
-        <li>Records mouse positions for key UI elements in MYOB.</li>
-        <li>Counts rows in each transaction by copying cell data to the clipboard.</li>
-        <li>Automatically enters '6' in the job column for each row.</li>
-        <li>Loops through all transactions, pausing or stopping as needed.</li>
-      </ul>
+<h2>How It Works</h2>
+<ul>
+  <li>Records mouse positions for key UI elements in MYOB.</li>
+  <li>Counts rows in each transaction by copying cell data to the clipboard.</li>
+  <li>Automatically enters '6' in the job column for each row.</li>
+  <li>Loops through all transactions, pausing or stopping as needed.</li>
+</ul>
 
-      <h2>Automation Script (AutoHotkey)</h2>
-      <p>The complete script is provided below for reference and learning purposes.</p>
+<h2>Automation Script (AutoHotkey)</h2>
+<p>The complete script is provided below for reference and learning purposes.</p>
 
-      <div class="code-scroll">
+<div class="code-scroll">
       {% raw %}
       ```autohotkey
       #Persistent
@@ -275,17 +257,5 @@ permalink: /projects/shop-sales-automation/
       ; Hotkey: Esc - Exit the Script
       Esc::ExitApp
       ```
-      {% endraw %}
-      </div>
-
-      <div style="text-align:center;margin:2rem 0;">
-        <a href="/projects/" class="btn">← Back to all projects</a>
-      </div>
-    </div>
-  </div>
-</main>
-
-<script src="{{ '/assets/js/nav-scroll.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}" defer></script>
-
-{% include footer.html %} 
+{% endraw %}
+</div> 

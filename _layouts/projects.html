@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<div class="full-page-hero-bg">
+  <div class="hero-image-container">
+    <img src="/assets/images/heroimage.png" alt="Hero Background" class="hero-image page-hero-image" id="page-hero-bg">
+  </div>
+  
+  <div class="page-hero-title">
+    <h1>{{ page.title }}</h1>
+  </div>
+  
+  <main class="page-content-container">
+    {{ content }}
+  </main>
+</div>
+
+<script>
+  // Swap hero image for light mode on projects page
+  const pageHeroImg = document.getElementById('page-hero-bg');
+  if (pageHeroImg) {
+    const isLight = document.documentElement.classList.contains('light');
+    pageHeroImg.src = isLight ? '/assets/images/heroimagelight.jpg' : '/assets/images/heroimage.png';
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(() => {
+      const nowLight = document.documentElement.classList.contains('light');
+      pageHeroImg.src = nowLight ? '/assets/images/heroimagelight.jpg' : '/assets/images/heroimage.png';
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
+</script>
+

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blobby Ring Generator</title>
+  <!-- Import map for ES-modules so GitHub Pages can fetch Three.js from a CDN -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+      "three/examples/jsm/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+    }
+  }
+  </script>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      font-family: 'Courier New', monospace; /* Retro font style */
+      background: #f4f4f4;
+      color: #333;
+      overflow: hidden;
+    }
+
+    /* Control Panel Section */
+    #drawingSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: #fafafa; /* Light background for controls */
+      width: 50%; /* Half the screen width */
+      box-sizing: border-box;
+      padding: 10px;
+      border-right: 2px solid #ddd; /* Divider between sections */
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      border: 3px solid #333;
+      padding: 5px 15px;
+      background: #fff;
+      color: #333;
+    }
+
+    #controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .slider-container, .brush-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      background: #fff;
+      color: #333;
+      border: 2px solid #333;
+      border-radius: 8px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    #voxelGrid {
+      border: 3px solid #333;
+      margin-top: 10px;
+      background: #eaeaea;
+    }
+
+    /* Rendered View Section */
+    #rendererContainer {
+      width: 50%; /* Half the screen width */
+      height: 100%;
+      background: #f9f9f9; /* Light background for 3D view */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      background: #333; /* Dark buttons */
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    button.toggle.active {
+      background: #0077ff; /* Active buttons highlighted */
+    }
+
+    .regen-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <!-- Site Navbar -->
+  <nav class="site-nav" style="position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #e5e5e5;">
+    <div class="nav-container" style="max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;">
+      <a class="logo" href="/" style="font-weight:700;text-decoration:none;color:#222;font-size:1.25rem;">Benei</a>
+      <ul class="nav-links" style="list-style:none;display:flex;gap:1.5rem;margin:0;">
+        <li><a href="/" style="color:#222;text-decoration:none;font-weight:600;">Home</a></li>
+        <li><a href="/projects/" style="color:#222;text-decoration:none;font-weight:600;">Projects</a></li>
+        <li><a href="/about/" style="color:#222;text-decoration:none;font-weight:600;">About</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div id="drawingSection">
+    <h1>Blobby Ring Generator</h1>
+    <div id="controls">
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <button id="undoButton" class="toggle">Undo</button>
+        <button id="redoButton" class="toggle">Redo</button>
+        <button id="eraseModeButton" class="toggle">Erase</button>
+        <button id="resetGrid" class="toggle">Reset Grid</button>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;width:100%;justify-content:center;align-items:flex-end;margin-bottom:8px;">
+        <div class="slider-container">
+          <label for="brushThicknessSlider">Brush Thickness</label>
+          <input id="brushThicknessSlider" type="range" min="1" max="10" value="1">
+        </div>
+        <div class="slider-container">
+          <label for="isolationSlider">Isolation Value</label>
+          <input id="isolationSlider" type="range" min="0" max="1000" value="300">
+        </div>
+        <div class="slider-container">
+          <label for="ballRadiusSlider">Ball Radius</label>
+          <input id="ballRadiusSlider" type="range" min="0" max="0.05" step="0.001" value="0.01">
+        </div>
+        <div class="slider-container">
+          <label for="resolutionSlider">Marching Cubes Resolution</label>
+          <input id="resolutionSlider" type="range" min="0" max="256" step="16" value="64">
+        </div>
+        <div class="slider-container">
+          <label for="ringHeightSlider">Ring Height Spacing</label>
+          <input id="ringHeightSlider" type="range" min="0" max="5" step="0.1" value="2">
+        </div>
+        <label class="toggle" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;margin-left:16px;">
+          <input type="checkbox" id="liveUpdateToggle" style="margin:0;" /> Live Update
+        </label>
+      </div>
+      <button id="exportObjButton">Export as OBJ</button>
+    </div>
+    <canvas id="voxelGrid" width="420" height="420"></canvas>
+    <p class="instructions" style="max-width:512px;margin:8px auto 0;font-size:0.9rem;line-height:1.4;">
+      Draw on the white band to add voxels. Use the sliders to tweak marching-cubes parameters (isolation = surface threshold, ball radius = blob size, resolution = marching-cubes grid detail, ring height = vertical spacing).<br>
+      Enable "Live Update" to see changes in real-time (may slow performance), or keep it off and press "Generate 3D View" when you're ready.
+    </p>
+  </div>
+  <div id="rendererContainer" style="position:relative;">
+    <select id="textureSelect" class="toggle regen-btn" style="right:10px; top:10px; position:absolute;min-width:160px;">
+      <option value="smooth">Blobby Ring</option>
+      <option value="metallic" selected>Metallic Blobby Ring</option>
+    </select>
+    <button id="generateOverlayButton" class="toggle regen-btn" style="right:180px;top:10px;position:absolute;display:none;" title="Generate Mesh">Generate Mesh</button>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

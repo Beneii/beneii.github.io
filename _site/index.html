@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My personal portfolio showcasing projects, blog posts, and experiments.">
+  <title>Home | Ben's Portfolio</title>
+  <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+<body>
+  <nav class="site-nav" id="mainNav">
+  <div class="nav-container">
+    <a class="logo" href="/">Ben</a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link" data-path="/">Home</a></li>
+      <li><a href="/projects/" class="nav-link" data-path="/projects/">Projects</a></li>
+      <li><a href="/about/" class="nav-link" data-path="/about/">About</a></li>
+    </ul>
+    <button id="mode-toggle" aria-label="Toggle dark/light mode" style="margin-left:1rem;font-size:1.3rem;background:none;border:none;cursor:pointer;">
+      <svg class="icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"/><g><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+      <svg class="icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+    </button>
+  </div>
+</nav>
+<script src="/assets/js/load-handler.js" defer></script> 
+  
+  <div class="hero-section">
+  <div class="hero-image-container">
+    <img src="/assets/images/heroimage.png" alt="Hero Image" class="hero-image" id="hero-image">
+    <div class="hero-gradient-overlay"></div>
+  </div>
+  <div class="hero-text">
+    <img src="/assets/images/portfolio.gif" alt="Portfolio Title" class="hero-gif">
+    <span id="hero-tagline">Building interactive systems that blend code, AI, and physical computing</span>
+    <div class="hero-cta-container">
+      <a href="#featured-projects" class="btn hero-cta" aria-label="Jump to featured projects section">View My Work</a>
+      <a href="#contact" class="btn hero-cta-secondary" aria-label="Jump to contact section">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<main class="page-content-container">
+  <section id="contact" class="home-section contact-section reveal">
+    <h2>Contact</h2>
+    <div class="contact-container" style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;max-width:400px;margin:0 auto;">
+      <div class="contact-method">
+        <strong>Email:</strong> <a href="mailto:ben.eifion.jones@gmail.com">ben.eifion.jones@gmail.com</a>
+      </div>
+      <div class="contact-method">
+        <strong>GitHub:</strong> <a href="https://github.com/beneii" target="_blank">github.com/beneii</a>
+      </div>
+      <div class="contact-method">
+        <strong>Phone:</strong> <a href="tel:0451662807">0451 662 807</a>
+      </div>
+      <div class="contact-method">
+        <strong>Discord:</strong> <span style="background:#23272a;color:#fff;padding:2px 8px;border-radius:6px;">Ben</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="/assets/js/hero-typing.js" defer></script>
+<script src="/assets/js/hero-parallax.js" defer></script>
+
+<!-- Fix hero clipping gap -->
+<style>
+  .hero-gradient-overlay { 
+    bottom: -200vh !important; 
+    height: 400vh !important; 
+  }
+</style>
+
+
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+    <p>Ben.</p>
+  </div>
+</footer> 
+  
+  <script src="/assets/js/dark-mode.js" defer></script>
+  <script src="/assets/js/nav-scroll.js" defer></script>
+  <script src="/assets/js/scroll-reveal.js" defer></script>
+</body>
+</html>
+

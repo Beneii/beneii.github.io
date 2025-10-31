@@ -1,0 +1,36 @@
+- title: "Focus+"
+  slug: "focus-plus"
+  category: "javascript"
+  tech: "JavaScript"
+  image: "/assets/images/focusplushero.png"
+  description: "A Chrome extension that helps you stay focused and productive by blocking distracting websites and providing a clean, minimalist interface."
+  
+- title: "Blobby Ring Generator"
+  slug: "blobby-ring-generator"
+  category: "javascript"
+  tech: "JavaScript"
+  image: "/assets/images/blobbyringhero.png"
+  description: "Draw voxels and generate a smooth or metallic 3-D ring in real-time with Three.js & Marching Cubes."
+
+- title: "Shop Sales Automation"
+  slug: "shop-sales-automation"
+  category: "autohotkey"
+  tech: "AutoHotkey"
+  image_placeholder: true
+  description: "Automates filling the job column in MYOB shop sales with '6' using mouse/clipboard scripting. Saves hours of manual work!"
+
+- title: "PlanIt"
+  slug: "planit"
+  category: "swift"
+  tech: "Swift"
+  image: "/assets/images/PlanIt1.png"
+  description: "Planet-themed iOS app for tasks & calendar management. Integrates with Canvas or lets you add your own tasks!"
+
+- title: "Space Monkeys"
+  slug: "space-monkeys"
+  category: "csharp"
+  tech: "C#"
+  image: "/assets/images/SpaceMonkeys.png"
+  pixel_art: true
+  description: "4-level elemental platformer built in Unity. Nominated for the 2025 UTS Student Games Showcase and a showcase of strong team collaboration."
+
