@@ -357,10 +357,14 @@ html.dark .home-section {
   justify-content: center;
 }
 
+html:not(.light) .project-tile-footer {
+  background: #1a1a1a;
+  color: #fff;
+}
+
 .project-tile-footer h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
-  color: var(--bg);
   line-height: 1.1;
 }
 
@@ -951,12 +955,12 @@ html:not(.light) .hero-image { filter: hue-rotate(-15deg) saturate(1.1); }
 html:not(.light) .page-hero { filter: hue-rotate(-15deg) saturate(1.1); } 
 
 @font-face {
-  font-family: 'Minecraft';
-  src: url('/assets/Minecraft.ttf') format('truetype');
+  font-family: 'Pagkaki';
+  src: url('/assets/pagkaki-regular.ttf') format('truetype');
   font-display: swap;
 }
 
-/* Headings, nav, and large text use Minecraft pixel font */
+/* Headings, nav, and large text use Pagkaki handmade font */
 h1, h2, h3, h4, h5, h6, 
 .page-hero h1, 
 .site-nav .logo,
@@ -964,11 +968,8 @@ h1, h2, h3, h4, h5, h6,
 .hero-text .subtitle,
 #hero-tagline,
 .btn {
-  font-family: 'Minecraft', 'Courier New', monospace;
-  letter-spacing: 0.05em;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  text-rendering: optimizeSpeed;
+  font-family: 'Pagkaki', 'Comfortaa', sans-serif;
+  letter-spacing: 0.02em;
 } 
 
 /* No grain overlay - clean aesthetic */
