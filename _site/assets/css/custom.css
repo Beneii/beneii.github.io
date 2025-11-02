@@ -212,7 +212,7 @@ html.dark .hero-overlay {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: var(--accent);
-  color: var(--text); /* Use main text color (dark on light bg, light on dark bg) */
+  color: #F5F5F5 !important;
   text-decoration: none;
   border-radius: 0;
   font-weight: bold;
@@ -220,10 +220,25 @@ html.dark .hero-overlay {
   border: 2px solid var(--accent);
 }
 
+html.light .btn {
+  color: #2c3e70 !important;
+}
+
+html.dark .btn {
+  color: #F5F5F5 !important;
+}
+
 .btn:hover {
   background-color: var(--accent);
-  color: var(--text);
   filter: drop-shadow(0 0 4px var(--accent));
+}
+
+html.light .btn:hover {
+  color: #2c3e70 !important;
+}
+
+html.dark .btn:hover {
+  color: #F5F5F5 !important;
 }
 
 .btn-secondary {
@@ -234,7 +249,14 @@ html.dark .hero-overlay {
 
 .btn-secondary:hover {
   background-color: var(--accent);
-  color: var(--bg); /* Text color when secondary button is hovered */
+}
+
+html.light .btn-secondary:hover {
+  color: #fff7e6 !important;
+}
+
+html.dark .btn-secondary:hover {
+  color: #1B1C1D !important;
 }
 
 /* Page Content Container for consistent padding */
@@ -313,9 +335,9 @@ html.dark .home-section {
   display: flex;
   flex-direction: column;
   height: 480px;
-  border: 4px solid #2c3e70;
-  background: #fff7e6;
-  color: #2c3e70;
+  border: 4px solid #1a1a1a;
+  background: #2d2d2d;
+  color: #F5F5F5;
   overflow: hidden;
   transition: all 0.25s ease;
   text-decoration: none;
@@ -387,8 +409,8 @@ html.dark .placeholder-graphic {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #fff7e6;
-  color: #2c3e70;
+  background: #1a1a1a;
+  color: #F5F5F5;
 }
 
 html.light .project-tile-footer {
@@ -399,6 +421,16 @@ html.light .project-tile-footer {
 html.dark .project-tile-footer {
   background: #1a1a1a !important;
   color: #F5F5F5 !important;
+}
+
+.project-tile-footer h3,
+.project-tile-footer .tech-label {
+  color: #F5F5F5;
+}
+
+html.light .project-tile-footer h3,
+html.light .project-tile-footer .tech-label {
+  color: #2c3e70 !important;
 }
 
 html.dark .project-tile-footer h3,
@@ -413,7 +445,7 @@ html.dark .project-tile-footer .tech-label {
 }
 
 html.light .project-tile-footer h3 {
-  color: #2c3e70;
+  color: #2c3e70 !important;
 }
 
 .tech-label {
@@ -421,14 +453,15 @@ html.light .project-tile-footer h3 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   opacity: 0.85;
+  color: #F5F5F5;
 }
 
 html.light .tech-label {
-  color: #2c3e70;
+  color: #2c3e70 !important;
 }
 
 html.dark .tech-label {
-  color: #F5F5F5;
+  color: #F5F5F5 !important;
 }
 
 /* Responsive adjustments */
@@ -572,7 +605,7 @@ html.dark .project-detail .details h4,
 html.dark .project-detail .details h5,
 html.dark .project-detail .details h6,
 html.dark .project-detail .details figcaption,
-html.dark .project-detail .details a,
+html.dark .project-detail .details a:not(.btn):not(.btn-secondary),
 html.dark .project-detail .details code,
 html.dark .project-detail .details ul,
 html.dark .project-detail .details ol,
@@ -583,7 +616,7 @@ html.dark .project-detail .details em {
   color: #F5F5F5 !important;
 }
 
-html.dark .project-detail .details a {
+html.dark .project-detail .details a:not(.btn):not(.btn-secondary) {
   color: var(--accent) !important;
 }
 
@@ -601,6 +634,51 @@ html.dark .project-detail figure figcaption {
 }
 .project-detail .media .btn {
   margin-top: 1rem;
+}
+
+/* Override for all buttons in project detail pages - dark mode */
+html.dark .project-detail .btn,
+html.dark .project-detail .details .btn,
+html.dark .project-detail a.btn,
+html.dark .project-detail div .btn,
+html.dark .project-detail .details a.btn,
+html.dark .project-detail .details div .btn {
+  color: #F5F5F5 !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+html.dark .project-detail .btn:hover,
+html.dark .project-detail .details .btn:hover,
+html.dark .project-detail a.btn:hover,
+html.dark .project-detail div .btn:hover,
+html.dark .project-detail .details a.btn:hover,
+html.dark .project-detail .details div .btn:hover {
+  color: #F5F5F5 !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+html.dark .project-detail .btn-secondary,
+html.dark .project-detail .details .btn-secondary,
+html.dark .project-detail a.btn-secondary,
+html.dark .project-detail div .btn-secondary,
+html.dark .project-detail .details a.btn-secondary,
+html.dark .project-detail .details div .btn-secondary {
+  color: var(--accent) !important;
+  background-color: transparent !important;
+  border-color: var(--accent) !important;
+}
+
+html.dark .project-detail .btn-secondary:hover,
+html.dark .project-detail .details .btn-secondary:hover,
+html.dark .project-detail a.btn-secondary:hover,
+html.dark .project-detail div .btn-secondary:hover,
+html.dark .project-detail .details a.btn-secondary:hover,
+html.dark .project-detail .details div .btn-secondary:hover {
+  color: #F5F5F5 !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
 }
 
 .badge {

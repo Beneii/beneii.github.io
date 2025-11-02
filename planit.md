@@ -2,8 +2,6 @@
 layout: project
 title: "PlanIt"
 permalink: /projects/planit/
-hero_image: "/assets/images/projects/PlanIt1.png"
-hero_caption: "PlanIt: Planet-themed Task & Calendar Manager"
 ---
 
 <h2>Problem Statement</h2>
