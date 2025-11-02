@@ -17,7 +17,7 @@ tagline: "Building interactive systems that blend code, AI, and physical computi
         <strong>Phone:</strong> <a href="tel:0451662807">0451 662 807</a>
       </div>
       <div class="contact-method">
-        <strong>Discord:</strong> <span style="background:#23272a;color:#fff;padding:2px 8px;border-radius:6px;">Ben</span>
+        <strong>Discord:</strong> <span style="background:#23272a;color:#fff;padding:2px 8px;border-radius:6px;">Benei</span>
       </div>
     </div>
   </section> 

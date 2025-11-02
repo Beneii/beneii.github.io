@@ -313,10 +313,12 @@ html.dark .home-section {
 
 html.light .project-tile {
   background: #fff7e6;
+  border-color: #2c3e70;
 }
 
 html.dark .project-tile {
   border-color: #1a1a1a;
+  background: #2d2d2d;
 }
 
 .project-tile:hover {
@@ -462,6 +464,14 @@ html.dark .project-detail {
 .project-detail .details p,
 .project-detail .details li {
   color: var(--text);
+}
+
+html.dark .project-detail .details p,
+html.dark .project-detail .details li,
+html.dark .project-detail .details h2,
+html.dark .project-detail .details h3,
+html.dark .project-detail .details h4 {
+  color: #F5F5F5;
 }
 .project-detail .media {
   flex: 0 0 320px;
@@ -851,11 +861,18 @@ html { scroll-behavior: smooth; }
 .full-page-hero-bg .intro-section .about-intro {
   color: #fff;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  margin-bottom: 1.5rem;
 }
 
-.full-page-hero-bg .intro-section p:last-child {
+.full-page-hero-bg .intro-section p:last-child,
+.full-page-hero-bg .intro-section p:not(.about-intro) {
   color: var(--text);
   text-shadow: none;
+}
+
+html.dark .full-page-hero-bg .intro-section p:last-child,
+html.dark .full-page-hero-bg .intro-section p:not(.about-intro) {
+  color: #F5F5F5;
 }
 
 .page-hero::before {
@@ -978,10 +995,13 @@ html.light .page-hero h1 {
 html.light .skill-item {
   background: #fff7e6;
   color: #2c3e70;
+  border-color: #2c3e70;
 }
 
 html.dark .skill-item {
   border-color: #1a1a1a;
+  background: #2d2d2d;
+  color: #F5F5F5;
 }
 
 .skill-item:hover {
