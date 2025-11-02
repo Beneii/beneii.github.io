@@ -2,11 +2,19 @@
 layout: project
 title: "Shop Sales Automation"
 permalink: /projects/shop-sales-automation/
-hero_video: "/assets/images/Screen Recording 2025-05-22 105303.mp4"
+hero_video: "/assets/videos/Screen Recording 2025-05-22 105303.mp4"
 hero_caption: "Shop Sales Automation – AutoHotkey script in action"
 ---
 <h2>Project Overview</h2>
 <p>The <strong>Shop Sales Automation</strong> is a custom automation tool designed to streamline a repetitive task at work: filling the job column of every shop sale in MYOB with the number '6'. The script uses recorded mouse positions, clipboard checks, and row counting to automate the process, looping through each transaction until completion. It dramatically reduces manual effort and error, making a tedious process fast and reliable.</p>
+
+<h3>Tech Stack</h3>
+<ul>
+  <li>AutoHotkey (automation scripting)</li>
+  <li>Windows API integration</li>
+  <li>Clipboard manipulation</li>
+  <li>Mouse & keyboard automation</li>
+</ul>
 
 <h2>How It Works</h2>
 <ul>

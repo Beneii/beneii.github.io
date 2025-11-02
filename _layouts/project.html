@@ -5,15 +5,35 @@ layout: page
 <div class="project-detail">
   <div class="details">
     
-    {% if page.hero_image or page.hero_video %}
-    <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;margin-bottom:2rem;">
-      <figure style="flex:1;min-width:250px;text-align:center;">
-        {% if page.hero_video %}
-        <video controls style="max-width:100%;border-radius:8px;">
+    {% if page.hero_youtube %}
+    {% assign video_id = page.hero_youtube | replace: "https://www.youtube.com/watch?v=", "" | replace: "https://youtube.com/watch?v=", "" | replace: "https://youtu.be/", "" %}
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;margin-bottom:3rem;">
+      <figure style="flex:1;min-width:300px;max-width:1200px;text-align:center;">
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+          <iframe 
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:8px;" 
+            src="https://www.youtube.com/embed/{{ video_id }}" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <figcaption style="margin-top:1rem;font-style:italic;">{{ page.hero_caption | default: page.title }}</figcaption>
+      </figure>
+    </div>
+    {% elsif page.hero_video %}
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;margin-bottom:3rem;">
+      <figure style="flex:1;min-width:300px;max-width:1200px;text-align:center;">
+        <video controls autoplay muted loop style="max-width:100%;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
           <source src="{{ page.hero_video }}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        {% elsif page.hero_image %}
+        <figcaption style="margin-top:1rem;font-style:italic;">{{ page.hero_caption | default: page.title }}</figcaption>
+      </figure>
+    </div>
+    {% elsif page.hero_image %}
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;margin-bottom:2rem;">
+      <figure style="flex:1;min-width:250px;text-align:center;">
         <img 
           src="{{ page.hero_image }}" 
           alt="{{ page.title }} hero image" 
@@ -21,7 +41,6 @@ layout: page
           loading="lazy" 
           width="800" 
           height="500"/>
-        {% endif %}
         <figcaption>{{ page.hero_caption | default: page.title }}</figcaption>
       </figure>
     </div>

@@ -24,12 +24,17 @@
 </nav>
 <script src="/assets/js/load-handler.js" defer></script> 
   
-  <div class="page-hero">
-  <h1>About</h1>
-</div> 
-
-<main class="page-content-container">
-  <section class="home-section intro-section reveal">
+  <div class="full-page-hero-bg">
+  <div class="hero-image-container">
+    <img src="/assets/images/heroimage.png" alt="Hero Background" class="hero-image page-hero-image" id="page-hero-bg">
+  </div>
+  
+  <div class="page-hero-title">
+    <h1>About</h1>
+  </div>
+  
+  <main class="page-content-container">
+    <section class="intro-section reveal">
   <h2>About Me</h2>
   <p class="about-intro">I'm Ben, a passionate developer and technology enthusiast who loves turning ideas into functional, user-focused solutions. My journey in tech is all about building, learning, and sharing.</p>
   
@@ -53,7 +58,24 @@
   <p style="margin-top:3rem;text-align:center;max-width:700px;margin-left:auto;margin-right:auto;">When I'm not in front of a screen, you can find me exploring new music, dabbling in design, or enjoying the outdoors. Feel free to connect with me on <a href="https://github.com/beneii" target="_blank">GitHub</a> or email me at <a href="mailto:ben.eifion.jones@gmail.com">ben.eifion.jones@gmail.com</a>.</p>
 </section>
 
-</main>
+  </main>
+</div>
+
+<script>
+  // Swap hero image for light mode on about page
+  const pageHeroImg = document.getElementById('page-hero-bg');
+  if (pageHeroImg) {
+    const isLight = document.documentElement.classList.contains('light');
+    pageHeroImg.src = isLight ? '/assets/images/heroimagelight.jpg' : '/assets/images/heroimage.png';
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(() => {
+      const nowLight = document.documentElement.classList.contains('light');
+      pageHeroImg.src = nowLight ? '/assets/images/heroimagelight.jpg' : '/assets/images/heroimage.png';
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
+</script>
 
 
   

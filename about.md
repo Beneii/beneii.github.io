@@ -1,9 +1,9 @@
 ---
-layout: page
+layout: about
 title: About
 permalink: /about/
 ---
-<section class="home-section intro-section reveal">
+<section class="intro-section reveal">
   <h2>About Me</h2>
   <p class="about-intro">I'm Ben, a passionate developer and technology enthusiast who loves turning ideas into functional, user-focused solutions. My journey in tech is all about building, learning, and sharing.</p>
   

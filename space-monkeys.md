@@ -2,7 +2,7 @@
 layout: project
 title: "Space Monkeys"
 permalink: /projects/space-monkeys/
-hero_image: "/assets/images/SpaceMonkeys.png"
+hero_image: "/assets/images/projects/SpaceMonkeys.png"
 hero_caption: "Space Monkeys – Group Game Project"
 pixel_art: true
 links:
@@ -11,7 +11,7 @@ links:
     external: true
     label: "Play Space Monkeys on itch.io"
   - text: "View Source Code"
-    url: "https://github.com/JamesKirwanUTS/Cozy"
+    url: "https://github.com/JamesKirwanUTS/Cozy.git"
     secondary: true
     external: true
     label: "View Space Monkeys source code on GitHub"
