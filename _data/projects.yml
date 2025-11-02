@@ -1,9 +1,9 @@
-- title: "Focus+"
-  slug: "focus-plus"
+- title: "Desk companion"
+  slug: "desk-companion"
   category: "javascript"
   tech: "JavaScript"
   image: "/assets/images/focusplushero.png"
-  description: "A Chrome extension that helps you stay focused and productive by blocking distracting websites and providing a clean, minimalist interface."
+  description: "Details coming soon."
   
 - title: "Blobby Ring Generator"
   slug: "blobby-ring-generator"
