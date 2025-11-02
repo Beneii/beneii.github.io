@@ -871,7 +871,8 @@ html { scroll-behavior: smooth; }
 }
 
 html.dark .full-page-hero-bg .intro-section p:last-child,
-html.dark .full-page-hero-bg .intro-section p:not(.about-intro) {
+html.dark .full-page-hero-bg .intro-section p:not(.about-intro),
+html.dark .full-page-hero-bg .intro-section figure figcaption {
   color: #F5F5F5;
 }
 
