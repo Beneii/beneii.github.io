@@ -311,7 +311,7 @@ html.dark .home-section {
   box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
 }
 
-html:not(.light) .project-tile {
+html.dark .project-tile {
   border-color: #1a1a1a;
 }
 
@@ -356,7 +356,7 @@ html:not(.light) .project-tile {
   justify-content: center;
 }
 
-html:not(.light) .project-tile-footer {
+html.dark .project-tile-footer {
   background: #1a1a1a;
   color: #fff;
 }
@@ -936,7 +936,7 @@ html.light .page-hero h1 {
   justify-content: center;
 }
 
-html:not(.light) .skill-item {
+html.dark .skill-item {
   border-color: #1a1a1a;
 }
 
