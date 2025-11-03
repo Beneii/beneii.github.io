@@ -1065,6 +1065,10 @@ html.light .about-content-card p:not(.about-text-content p) {
   .about-text-content {
     padding: 1.5rem;
   }
+  
+  .full-page-hero-bg .page-content-container {
+    padding: 0 1rem;
+  }
 }
 
 .expertise-grid {
