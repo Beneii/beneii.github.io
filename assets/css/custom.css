@@ -1057,6 +1057,14 @@ html.light .about-content-card p:not(.about-text-content p) {
   .about-rings-grid {
     grid-template-columns: 1fr;
   }
+  
+  .about-content-card {
+    padding: 1.5rem;
+  }
+  
+  .about-text-content {
+    padding: 1.5rem;
+  }
 }
 
 .expertise-grid {

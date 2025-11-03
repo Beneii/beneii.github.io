@@ -19,5 +19,8 @@ tagline: "Building interactive systems that blend code, AI, and physical computi
       <div class="contact-method">
         <strong>Discord:</strong> <span style="background:#23272a;color:#fff;padding:2px 8px;border-radius:6px;">Benei</span>
       </div>
+      <div class="contact-method">
+        <a href="/assets/images/about/Benjamin Jones Resume (4).pdf" style="text-decoration: underline; color: var(--text); font-weight: 600;">Resume</a>
+      </div>
     </div>
   </section> 
