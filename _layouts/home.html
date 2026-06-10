@@ -8,8 +8,8 @@ layout: default
     <div class="hero-gradient-overlay"></div>
   </div>
   <div class="hero-text">
-    <img src="/assets/images/portfolio.gif" alt="Portfolio — Ben" class="hero-gif">
-    <span id="hero-typed" data-text="Creative Developer" aria-label="Creative Developer"></span>
+    <p class="hero-kicker">Creative Developer</p>
+    <h1 class="hero-name">Benjamin Jones</h1>
     <p class="hero-tagline">{{ page.tagline | default: "Building interactive systems that blend code, AI, and physical computing" }}</p>
     <div class="hero-cta-container">
       <a href="/projects/" class="btn" aria-label="View all projects">View My Work</a>
@@ -24,5 +24,3 @@ layout: default
 <main class="page-content-container">
   {{ content }}
 </main>
-
-<script src="{{ '/assets/js/hero-typing.js' | relative_url }}" defer></script>

@@ -6,7 +6,7 @@ tagline: "Building interactive systems that blend code, AI, and physical computi
 
 <section class="home-section featured-section reveal">
   <h2>Featured Projects</h2>
-  <p class="section-lede">A few things I've designed, built, soldered, and shipped.</p>
+  <p class="section-lede">Selected work spanning software, hardware, and interaction design.</p>
   <div class="projects-masonry">
     {% for project in site.data.projects limit: 3 %}
       {% include project-tile.html project=project %}
