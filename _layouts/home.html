@@ -4,18 +4,19 @@ layout: default
 
 <div class="hero-section">
   <div class="hero-image-container">
-    <img src="/assets/images/heroimage.png" alt="Hero Image" class="hero-image" id="hero-image">
+    <img src="/assets/images/heroimage.png" alt="Sky background" class="hero-image" id="hero-image">
     <div class="hero-gradient-overlay"></div>
   </div>
   <div class="hero-text">
-    <img src="/assets/images/portfolio.gif" alt="Portfolio Title" class="hero-gif">
-    <span id="hero-tagline">{{ page.tagline | default: "Building interactive systems that blend code, AI, and physical computing" }}</span>
+    <img src="/assets/images/portfolio.gif" alt="Portfolio — Ben" class="hero-gif">
+    <span id="hero-typed" data-text="Creative Developer" aria-label="Creative Developer"></span>
+    <p class="hero-tagline">{{ page.tagline | default: "Building interactive systems that blend code, AI, and physical computing" }}</p>
     <div class="hero-cta-container">
-      <a href="/projects/" class="btn hero-cta" aria-label="View all projects">View My Work</a>
-      <a href="#contact" class="btn hero-cta-secondary" aria-label="Jump to contact section">Get in Touch</a>
+      <a href="/projects/" class="btn" aria-label="View all projects">View My Work</a>
+      <a href="#contact" class="btn btn-secondary" aria-label="Jump to contact section">Get in Touch</a>
     </div>
-    <div style="margin-top: 1rem;">
-      <a href="{{ '/assets/images/about/Benjamin Jones Resume (4).pdf' | relative_url }}" class="btn" target="_blank" style="text-decoration: underline; color: var(--text); font-weight: 600; background: transparent; border: none; padding: 0;">Resume</a>
+    <div>
+      <a href="{{ '/assets/images/about/Benjamin Jones Resume (4).pdf' | relative_url }}" class="hero-resume" target="_blank">Resume</a>
     </div>
   </div>
 </div>
@@ -25,13 +26,3 @@ layout: default
 </main>
 
 <script src="{{ '/assets/js/hero-typing.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/hero-parallax.js' | relative_url }}" defer></script>
-
-<!-- Fix hero clipping gap -->
-<style>
-  .hero-gradient-overlay { 
-    bottom: -200vh !important; 
-    height: 400vh !important; 
-  }
-</style>
-

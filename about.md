@@ -77,6 +77,6 @@ permalink: /about/
       </div>
     </div>
     
-    <p style="margin-top:3rem;text-align:center;max-width:700px;margin-left:auto;margin-right:auto;">When I'm not in front of a screen, you can find me exploring new music, dabbling in design, or enjoying the outdoors. Feel free to connect with me on <a href="https://github.com/beneii" target="_blank">GitHub</a> or email me at <a href="mailto:ben.eifion.jones@gmail.com">ben.eifion.jones@gmail.com</a>.</p>
+    <p class="about-outro">When I'm not in front of a screen, you can find me exploring new music, dabbling in design, or enjoying the outdoors. Feel free to connect with me on <a href="https://github.com/beneii" target="_blank">GitHub</a> or email me at <a href="mailto:ben.eifion.jones@gmail.com">ben.eifion.jones@gmail.com</a>.</p>
   </div>
 </section>
