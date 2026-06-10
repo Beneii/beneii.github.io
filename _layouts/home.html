@@ -2,24 +2,22 @@
 layout: default
 ---
 
-<div class="hero-section">
+<header class="hero-section">
   <div class="hero-image-container">
     <img src="/assets/images/heroimage.png" alt="Sky background" class="hero-image" id="hero-image">
     <div class="hero-gradient-overlay"></div>
   </div>
-  <div class="hero-text">
-    <p class="hero-kicker">Creative Developer</p>
-    <h1 class="hero-name">Benjamin Jones</h1>
-    <p class="hero-tagline">{{ page.tagline | default: "Building interactive systems that blend code, AI, and physical computing" }}</p>
-    <div class="hero-cta-container">
-      <a href="/projects/" class="btn" aria-label="View all projects">View My Work</a>
-      <a href="#contact" class="btn btn-secondary" aria-label="Jump to contact section">Get in Touch</a>
-    </div>
-    <div>
-      <a href="{{ '/assets/images/about/Benjamin Jones Resume (4).pdf' | relative_url }}" class="hero-resume" target="_blank">Resume</a>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Creative Developer</p>
+    <h1 class="hero-name">Benjamin<br>Jones</h1>
+    <p class="hero-tagline">Building <em>interactive systems</em> that blend code, AI, and physical computing</p>
+    <div class="hero-links">
+      <a href="#work">Selected work ↓</a>
+      <a href="#contact">Get in touch</a>
+      <a href="{{ '/assets/images/about/Benjamin Jones Resume (4).pdf' | relative_url }}" target="_blank">Resume ↗</a>
     </div>
   </div>
-</div>
+</header>
 
 <main class="page-content-container">
   {{ content }}
