@@ -2,23 +2,22 @@
 layout: default
 ---
 
-<header class="hero-section">
-  <div class="hero-image-container">
-    <img src="/assets/images/heroimage.png" alt="Sky background" class="hero-image" id="hero-image">
-    <div class="hero-gradient-overlay"></div>
-  </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Creative Developer</p>
-    <h1 class="hero-name">Benjamin<br>Jones</h1>
-    <p class="hero-tagline">Building <em>interactive systems</em> that blend code, AI, and physical computing</p>
-    <div class="hero-links">
-      <a href="#work">Selected work ↓</a>
-      <a href="#contact">Get in touch</a>
-      <a href="{{ '/assets/images/about/Benjamin Jones Resume (4).pdf' | relative_url }}" target="_blank">Resume ↗</a>
+<main>
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow">Software engineer <span>•</span> Sydney</p>
+      <h1>Benjamin Jones</h1>
+      <p class="hero-statement">Software engineer <em>designing systems</em><br>that make complex work simpler.</p>
+      <p class="hero-summary">I build backend systems, automate operations, and develop AI systems with a focus on dependable architecture and measurable outcomes.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#work">View engineering work <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="{{ '/assets/resume/Benjamin_Jones_Resume.pdf' | relative_url }}" download>Download résumé <span aria-hidden="true">↓</span></a>
+      </div>
     </div>
-  </div>
-</header>
+    <figure class="hero-image">
+      <img src="{{ '/assets/images/about/My_setup.jpg' | relative_url }}" alt="Benjamin's home engineering workspace beside a garden window">
+    </figure>
+  </section>
 
-<main class="page-content-container">
   {{ content }}
 </main>

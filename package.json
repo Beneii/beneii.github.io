@@ -1,0 +1,11 @@
+{
+  "name": "benjamin-jones-portfolio",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build:preview": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^7.1.3"
+  }
+}
