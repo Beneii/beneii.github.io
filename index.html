@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Benjamin Jones is a Sydney software engineer working across backend systems, automation and applied AI.">
+  <meta name="theme-color" content="#f4efe5">
+  <title>Benjamin Jones — Software Engineer</title>
+  <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+<body>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="wordmark" href="#top">Benjamin Jones</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="/about/">About</a>
+      <a class="nav-cta" href="mailto:ben.eifion.jones@gmail.com">Get in touch</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Software engineer <span>•</span> Sydney</p>
+        <h1>Benjamin Jones</h1>
+        <p class="hero-statement">Software engineer <em>designing systems</em><br>that make complex work simpler.</p>
+        <p class="hero-summary">I build backend systems, automate operations, and develop AI systems with a focus on dependable architecture and measurable outcomes.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">View engineering work <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="/assets/resume/Benjamin_Jones_Resume.pdf" download>Download résumé <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <figure class="hero-image">
+        <img src="/assets/images/about/My_setup.jpg" alt="Benjamin's home engineering workspace beside a garden window">
+      </figure>
+    </section>
+
+    <section class="work-section" id="work">
+      <header class="section-heading">
+        <p class="eyebrow">Selected work</p>
+        <p>Systems built to understand, automate and improve real work.</p>
+      </header>
+
+      <article class="project-row project-featured">
+        <a class="project-image" href="/tokenmix/">
+          <img src="/assets/images/projects/tokenmix-editorial.png" alt="Abstract layered token-flow illustration for the TokenMix research project">
+        </a>
+        <div class="project-copy">
+          <p class="project-type">AI infrastructure &amp; research</p>
+          <h2><a href="/tokenmix/">TokenMix: recurrent latent reasoning for arithmetic</a></h2>
+          <p>UTS Computing Science capstone comparing answer-only, visible chain-of-thought and recurrent latent-compute GPT-2 variants on carry-balanced arithmetic.</p>
+        </div>
+        <div class="project-meta">
+          <p>Python <span>•</span> PyTorch <span>•</span> Transformers</p>
+          <p>Experiment design <span>•</span> Model evaluation</p>
+          <a href="/tokenmix/">View case study <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="project-row">
+        <div class="project-image">
+          <img src="/assets/images/projects/automation-editorial.png" alt="Tactile process illustration representing operations automation">
+        </div>
+        <div class="project-copy">
+          <p class="project-type">Automation &amp; operations</p>
+          <h2>Shop sales automation</h2>
+          <p>Automated shop-sales calculations and multi-step print routines for a live business workflow, replacing repetitive manual processing.</p>
+        </div>
+        <div class="project-meta">
+          <p>AutoHotkey <span>•</span> MYOB <span>•</span> Workflow design</p>
+          <p class="impact">About 3 hours to under 10 minutes</p>
+        </div>
+      </article>
+
+      <article class="project-row">
+        <a class="project-image" href="/projects/desk-companion/">
+          <img src="/assets/images/projects/desk-companion/View recent photos.png" alt="Desk companion physical computing prototype">
+        </a>
+        <div class="project-copy">
+          <p class="project-type">Physical computing &amp; product craft</p>
+          <h2><a href="/projects/desk-companion/">Desk companion</a></h2>
+          <p>An end-to-end interactive object combining embedded electronics, custom 3D modelling, fabrication, animation and software.</p>
+        </div>
+        <div class="project-meta">
+          <p>ESP32 <span>•</span> C++ <span>•</span> 3D printing</p>
+          <p>Embedded systems <span>•</span> Rapid prototyping</p>
+          <a href="/projects/desk-companion/">View project <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </section>
+
+    <section class="experience-section" id="experience">
+      <header class="section-heading compact"><p class="eyebrow">Experience</p></header>
+      <div class="experience-list">
+        <article>
+          <p class="experience-date">Mar 2026 – present</p>
+          <div><h2>FUJIFILM Data Management Solutions</h2><p>Graduate Software Engineer</p></div>
+          <p>Contributing to software delivery in an enterprise data-management environment across requirements, implementation, testing and maintainable production systems.</p>
+        </article>
+        <article>
+          <p class="experience-date">Aug 2025 – Mar 2026</p>
+          <div><h2>Adiona</h2><p>AI &amp; Automation Engineer</p></div>
+          <p>Worked on AI and automation initiatives in logistics technology, connecting software, data and operational workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-band">
+      <p class="eyebrow">Have a difficult system to untangle?</p>
+      <h2>Let’s make it simpler.</h2>
+      <a class="button button-secondary" href="mailto:ben.eifion.jones@gmail.com">Get in touch <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <p>Building reliable software from Sydney.</p>
+    <div>
+      <a href="mailto:ben.eifion.jones@gmail.com">Email</a>
+      <a href="https://github.com/beneii" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/ben-jones-68963a1ba" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.addEventListener('click', event => {
+      if (event.target.matches('a')) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>

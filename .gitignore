@@ -1,10 +1,5 @@
-# Ignore Node dependencies and build artifacts
 node_modules/
-Projects/**/node_modules/
-
-# Lock files (optional — keep locally)
-package-lock.json
-Projects/**/package-lock.json
-
-# macOS clutter
-.DS_Store 
+dist/
+vite-*.log
+qa-compare.html
+reference-option-3.png
