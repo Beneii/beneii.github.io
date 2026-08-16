@@ -1,1 +1,0 @@
-Html must be hosted in order for the code to work not just opened in browser !

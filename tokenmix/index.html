@@ -11,8 +11,9 @@
 <body>
   <nav class="site-nav" aria-label="Primary navigation">
     <a class="wordmark" href="/">Benjamin Jones</a>
-    <div class="nav-links">
-      <a href="/#work">Work</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="/projects/">Work</a>
       <a href="/#experience">Experience</a>
       <a href="/about/">About</a>
       <a class="nav-cta" href="mailto:ben.eifion.jones@gmail.com">Get in touch</a>
@@ -33,5 +34,6 @@
     </article>
   </main>
   <footer class="site-footer"><p>Building reliable software from Sydney.</p><div><a href="mailto:ben.eifion.jones@gmail.com">Email</a><a href="https://github.com/beneii">GitHub</a><a href="https://linkedin.com/in/ben-jones-68963a1ba">LinkedIn</a></div></footer>
+  <script type="module" src="/assets/js/site.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 node_modules/
+.vite/
 dist/
 vite-*.log
 qa-compare.html
