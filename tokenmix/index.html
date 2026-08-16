@@ -1,39 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A UTS Computing Science capstone investigating recurrent latent reasoning for arithmetic.">
-  <meta name="theme-color" content="#f4efe5">
-  <title>TokenMix — Benjamin Jones</title>
-  <link rel="stylesheet" href="/assets/css/custom.css">
-</head>
-<body>
-  <nav class="site-nav" aria-label="Primary navigation">
-    <a class="wordmark" href="/">Benjamin Jones</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <div class="nav-links" id="nav-links">
-      <a href="/projects/">Work</a>
-      <a href="/#experience">Experience</a>
-      <a href="/about/">About</a>
-      <a class="nav-cta" href="mailto:ben.eifion.jones@gmail.com">Get in touch</a>
-    </div>
-  </nav>
-  <main class="page-content-container">
-    <article class="case-study">
-      <p class="eyebrow">UTS Computing Science capstone · 2026</p>
-      <h1>TokenMix: recurrent latent reasoning for arithmetic</h1>
-      <p class="case-lead">A research and engineering project comparing answer-only, visible chain-of-thought and recurrent latent-compute GPT-2 variants on carry-balanced arithmetic.</p>
-      <img class="case-hero" src="/assets/images/projects/tokenmix-editorial.png" alt="Abstract layered token-flow illustration for TokenMix">
-      <div class="case-grid">
-        <section><h2>The question</h2><p>Can recurrent latent computation improve arithmetic reasoning without requiring a model to expose every reasoning step as text?</p></section>
-        <section><h2>My contribution</h2><p>I designed and evaluated the model variants, built deterministic data generation, training and evaluation workflows, and analysed accuracy, latency, carry-vector failures, adaptive routing and curriculum transfer.</p></section>
-        <section><h2>Result</h2><p>The five-digit curriculum experiment reached 99.25% accuracy. The project also documents architectural decisions, limitations and reproducible experimental evidence.</p></section>
-        <section><h2>Tools</h2><p>Python, PyTorch, GPT-2, transformer models, experiment design and model evaluation.</p></section>
-      </div>
-    </article>
-  </main>
-  <footer class="site-footer"><p>Building reliable software from Sydney.</p><div><a href="mailto:ben.eifion.jones@gmail.com">Email</a><a href="https://github.com/beneii">GitHub</a><a href="https://linkedin.com/in/ben-jones-68963a1ba">LinkedIn</a></div></footer>
-  <script type="module" src="/assets/js/site.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A detailed capstone case study comparing explicit and latent reasoning approaches for arithmetic."><meta name="theme-color" content="#f4efe5"><title>TokenMix - Benjamin Jones</title><link rel="stylesheet" href="/assets/css/custom.css"></head><body>
+<nav class="site-nav" aria-label="Primary navigation"><a class="wordmark" href="/">Benjamin Jones</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button><div class="nav-links" id="nav-links"><a href="/projects/">Work</a><a href="/#experience">Experience</a><a href="/about/">About</a><a class="nav-cta" href="mailto:ben.eifion.jones@gmail.com">Get in touch</a></div></nav>
+<main class="case-page"><header class="case-header"><p class="eyebrow">UTS Computing Science capstone / 2026</p><h1>Testing recurrent latent reasoning on arithmetic.</h1><p class="case-lead">TokenMix compares answer-only, visible chain-of-thought and recurrent latent-compute GPT-2 variants using controlled arithmetic experiments.</p></header>
+<img class="case-cover" src="/assets/images/projects/tokenmix-editorial.png" alt="Abstract layered token-flow illustration for TokenMix"><div class="case-facts"><div><span>Role</span><strong>Research design and implementation</strong></div><div><span>Technology</span><strong>Python, PyTorch, GPT-2</strong></div><div><span>Best recorded result</span><strong>99.25% on the five-digit curriculum experiment</strong></div></div>
+<article class="project-report">
+<section class="report-intro"><p class="eyebrow">Overview</p><h2>Can a model reason longer without writing every step?</h2><div><p>Visible chain-of-thought gives a language model extra tokens for intermediate work, but those tokens increase output length and expose the full reasoning trace. TokenMix investigates an alternative: recurrent computation in latent space before the answer is decoded.</p><p>The project is both a model experiment and an evaluation system. The useful result is not one headline accuracy number, but a reproducible comparison across training objectives, arithmetic difficulty and compute strategies.</p></div></section>
+<section><p class="eyebrow">01 / Research question</p><h2>Compare reasoning strategies under controlled conditions.</h2><div><p>I implemented three families of GPT-2-based models: direct answer prediction, visible chain-of-thought generation and recurrent latent computation. Holding the task family and evaluation pipeline constant made architectural differences easier to interpret.</p><p>Carry-balanced addition was used because carries create identifiable difficulty. It supports overall accuracy measurement while also allowing errors to be grouped by carry pattern.</p></div></section>
+<section><p class="eyebrow">02 / Experimental system</p><h2>Build reproducibility into the architecture.</h2><div><p>I created deterministic data generation and shared training and evaluation workflows so model variants could be compared against the same distributions. The system records accuracy and latency, with further analysis by digit length and carry vector.</p><ul><li>Controlled generation of arithmetic examples.</li><li>Common experiment configuration across model variants.</li><li>Evaluation by exact answer accuracy and inference cost.</li><li>Failure analysis that goes beyond aggregate scores.</li></ul></div></section>
+<section><p class="eyebrow">03 / Latent computation</p><h2>Separate internal compute from visible output.</h2><div><p>The recurrent variant reuses a computation block in latent space before producing an answer. This creates a tunable internal-compute budget without requiring the model to emit an equivalent number of reasoning tokens.</p><p>I also examined adaptive routing: allocating additional recurrence when an example appears to need it, rather than applying the maximum compute depth to every input.</p></div></section>
+<section><p class="eyebrow">04 / Curriculum and analysis</p><h2>Test whether easier structure transfers upward.</h2><div><p>Curriculum experiments progressively increased arithmetic difficulty instead of training only on the final digit length. The five-digit curriculum run reached <strong>99.25% exact-answer accuracy</strong>.</p><p>I treated that result as evidence for the specific experiment, not a universal model claim. Carry-vector breakdowns, latency and transfer behaviour remained necessary to understand where performance came from and where it failed.</p><div class="evidence-callout"><span>Recorded result</span><strong>99.25% exact-answer accuracy.</strong><p>Observed on the five-digit curriculum experiment within the project's controlled evaluation workflow.</p></div></div></section>
+<section><p class="eyebrow">05 / Engineering decisions</p><h2>Design the codebase around comparable experiments.</h2><div><p>Model configuration, data generation, training and analysis were kept as distinct concerns. This reduced the chance that a change intended for one variant silently altered the evaluation of another.</p><p>The work strengthened my understanding of experiment architecture: deterministic inputs, explicit configuration and failure-level analysis are as important as the model implementation itself.</p></div></section>
+<section><p class="eyebrow">06 / Limitations and next steps</p><h2>Arithmetic is a useful probe, not a complete theory of reasoning.</h2><div><p>The experiments operate on a narrow synthetic task and small GPT-2 variants. Strong arithmetic accuracy does not establish equivalent gains on open-ended language tasks.</p><p>The next useful step is to test whether routing decisions remain stable on broader algorithmic tasks, then compare accuracy and latency at matched compute budgets.</p></div></section>
+</article><a class="back-link" href="/projects/">Back to all selected work</a></main>
+<footer class="site-footer"><p>Building reliable software from Sydney.</p><div><a href="mailto:ben.eifion.jones@gmail.com">Email</a><a href="https://github.com/beneii">GitHub</a><a href="https://linkedin.com/in/ben-jones-68963a1ba">LinkedIn</a></div></footer><script type="module" src="/assets/js/site.js"></script></body></html>

@@ -106,8 +106,24 @@ img { display: block; width: 100%; }
 .case-sections h2 { margin: 0; font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 3rem); font-weight: 400; line-height: 1.12; }
 .case-sections section > p:last-child { margin: 0; color: var(--muted); }
 .back-link, .text-link { display: inline-block; margin-top: 3rem; color: var(--rust); font-weight: 600; }
-.phone-gallery { padding: 3rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; background: var(--forest); }
+.phone-gallery { padding: 3rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; background: var(--forest); }
 .phone-gallery img { height: min(62vw, 620px); object-fit: contain; }
+
+.project-report { margin-top: 5rem; border-bottom: 1px solid var(--line); }
+.project-report section { display: grid; grid-template-columns: 170px minmax(240px, .82fr) minmax(320px, 1.18fr); gap: clamp(1.5rem, 4vw, 4.5rem); padding: clamp(3rem, 6vw, 5.5rem) 0; border-top: 1px solid var(--line); align-items: start; }
+.project-report .report-intro { background: var(--paper-deep); padding-inline: clamp(1.5rem, 3vw, 3rem); }
+.project-report h2 { margin: 0; font-family: var(--serif); font-size: clamp(1.9rem, 3.5vw, 3.6rem); font-weight: 400; line-height: 1.08; letter-spacing: -.035em; }
+.project-report section > div { color: var(--muted); font-size: 1.04rem; }
+.project-report section > div > :first-child { margin-top: 0; }
+.project-report section > div > :last-child { margin-bottom: 0; }
+.project-report ul { padding-left: 1.2rem; }
+.project-report li + li { margin-top: .55rem; }
+.evidence-callout { margin-top: 2rem; padding: 1.5rem; border-left: 3px solid var(--rust); background: rgba(233,224,208,.62); }
+.evidence-callout span { display: block; color: var(--rust); text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; font-weight: 600; }
+.evidence-callout strong { display: block; margin-top: .45rem; color: var(--ink); font-family: var(--serif); font-size: 1.35rem; font-weight: 400; line-height: 1.3; }
+.evidence-callout p { margin: .55rem 0 0; font-size: .88rem; }
+.report-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.report-actions .button { font-size: .9rem; }
 
 .page-content-container { max-width: 1180px; margin: 0 auto; padding: 5rem 3.5vw; }
 .case-study > h1 { font-size: clamp(3rem, 6vw, 6rem); line-height: .98; letter-spacing: -.055em; max-width: 1000px; margin: 0; }
@@ -143,6 +159,9 @@ img { display: block; width: 100%; }
   .about-editorial figure { position: static; }
   .case-sections section { grid-template-columns: 145px 1fr; }
   .case-sections section > p:last-child { grid-column: 2; }
+  .project-report section { grid-template-columns: 130px 1fr; }
+  .project-report section > div { grid-column: 2; }
+  .project-report .report-intro { padding-inline: 1.5rem; }
 }
 
 @media (max-width: 620px) {
@@ -167,7 +186,9 @@ img { display: block; width: 100%; }
   .case-facts div { border-top: 1px solid var(--line); }
   .case-sections section { grid-template-columns: 1fr; }
   .case-sections section > p:last-child { grid-column: 1; }
-  .phone-gallery { padding: 1.25rem; gap: .75rem; overflow-x: auto; grid-template-columns: repeat(3, 220px); }
+  .project-report section { grid-template-columns: 1fr; gap: 1rem; }
+  .project-report section > div { grid-column: 1; }
+  .phone-gallery { padding: 1.25rem; gap: .75rem; overflow-x: auto; grid-template-columns: repeat(4, 220px); }
   .phone-gallery img { height: 440px; }
 }
 
